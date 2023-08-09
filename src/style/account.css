@@ -1,0 +1,233 @@
+@media screen {
+  .Account-container {
+    gap: 30px;
+    display: flex;
+    width: inherit;
+    flex-direction: column;
+  }
+
+  .Account-header {
+    padding: 20px 0;
+    font-size: 0.7rem;
+    color: var(--light-color);
+    text-transform: capitalize;
+  }
+
+  .Account-header span {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .Account-header h1 {
+    font-weight: 400;
+  }
+
+  .Account-game-p {
+    padding: 10px;
+    gap: 20px;
+    display: flex;
+    height: inherit;
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    background-color: var(--dark-primary-color);
+  }
+
+  .Account-info {
+    gap: 10px;
+    display: flex;
+    overflow-y: hidden;
+    overflow: hidden;
+    align-items: center;
+    overflow-x: auto;
+    justify-content: space-between;
+  }
+
+  .Account-card {
+    width: 200px;
+    display: flex;
+    padding: 10px;
+    min-width: 200px;
+    border-radius: 8px;
+    flex-direction: column;
+    background-color: var(--dark-primary-color);
+  }
+
+  .Account-card h5 {
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    color: var(--background-color);
+  }
+
+  .Account-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .Account-card-icon h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--background-color);
+  }
+
+  .icon-acc {
+    width: 50px;
+    height: 50px;
+    fill: var(--background-color);
+  }
+
+  .acc-m {
+    padding: 20px;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-radius: 8px;
+    background-color: var(--dark-primary-color);
+  }
+
+  .gm-m {
+    overflow-x: auto;
+    background-color: var(--dark-primary-color);
+
+  }
+
+  .acc-m thead {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+  }
+
+  .acc-m th,
+  td {
+    padding: 20px;
+  }
+
+  .acc-m td {
+    font-weight: 200;
+    text-align: center;
+    border-bottom: none;
+    text-transform: capitalize;
+    color: var(--background-color);
+    border: 3px solid var(--primary-color);
+    background-color: var(--light-primary-color);
+
+  }
+
+  .acc-m th {
+    
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--light-color);
+  }
+
+  .Account-tbl-img {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .Account-pi {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 360%;
+    object-position: center;
+  }
+
+  .Account-t-con {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Account-toggle {
+    gap: 10px;
+    padding: 5px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    border-radius: 360px;
+    transition: all 0.8s ease 0s;
+    -webkit-transition: all 0.8s ease 0s;
+    background-color: var(--primary-color);
+  }
+
+  .Account-mode {
+    width: 25px;
+    height: 25px;
+    border-radius: 360%;
+    background-color: var(--light-primary-color);
+  }
+
+  .Account-toggle span {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--light-color);
+  }
+
+  .on {
+    display: flex;
+    background-color: var(--secondary-color);
+  }
+
+  .on span {
+    color: var(--light-primary-color);
+  }
+
+  .off {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .Account-delete {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-delete {
+    width:24px;
+    height: 24px;
+    fill: var(--red-color);
+  }
+ 
+}
+
+.game-edit {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  position: fixed;
+  overflow: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+  background-color: var(--light-primary-color);
+}
+
+.mobile-exit {
+  cursor: pointer;
+}
+
+.showEdit {
+  display: flex;
+}
+
+.closeEdit {
+  display: none;
+}
+
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+.acc-m {
+  height: 428px;
+}
+
+}

@@ -1,0 +1,77 @@
+@media screen {
+  .vip-container {
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vip-wrapper {
+    height: 100%;
+    display: flex;
+    background-size: cover;
+    flex-direction: column;
+    background-repeat: no-repeat;
+  }
+
+  .vip-notpaid {
+    gap: 30px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+  }
+
+  .vip-notpaid h1 {
+    font-size: 1.1rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--background-color);
+  }
+
+  .vip-btn {
+    gap: 10px;
+    display: flex;
+    padding: 8px 24px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    color: var(--background-color);
+    background: var(--button-bg);
+  }
+
+  .vip-btn:hover {
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
+
+  .vip-pay-icon {
+    height: 24px;
+    fill: var(--background-color);
+  }
+
+  .vip-btn:hover .vip-pay-icon {
+    fill: var(--background-color);
+  }
+
+
+  .vip-p {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .vip-sp {
+    gap: 10px;
+    display: flex;
+  }
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .vip-m {
+    margin: 10px;
+  }
+}

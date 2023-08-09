@@ -1,0 +1,35 @@
+@media screen {
+
+
+  .match-table {
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .match-table thead {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .match-table th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .match-table th {
+    font-weight: 500;
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .main-bet {
+    min-height: 80%;
+  }
+}

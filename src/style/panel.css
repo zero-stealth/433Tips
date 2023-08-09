@@ -1,0 +1,233 @@
+@media screen {
+  .panel-container {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    display: flex;
+    z-index: 9999;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: auto;
+    color: var(--background-color);
+    flex-direction: column-reverse;
+    background-color: var(--primary-color);
+  }
+
+  .panel-bar {
+    flex: 10%;
+    gap: 30px;
+    height: 60%;
+    width: 100%;
+    display: flex;
+    z-index: 9999;
+    overflow-y: auto;
+    position: absolute;
+    padding: 30px 10px;
+    flex-direction: column;
+    border-radius: 20px 20px 0 0;
+    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    background-color: var(--dark-primary-color);
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  }
+
+  .panel-exit {
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .panel-menu {
+    bottom: 0;
+    right: 45%;
+    padding: 5px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+    background-color: transparent;
+    border: 2px solid var(--light-color);
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  }
+
+  .panel-icon-exit {
+    height: 32px;
+    fill: var(--light-color);
+  }
+  
+
+  .panel-icon-nav {
+    height: 30px;
+    fill: var(--light-color);
+  }
+
+  .open-p {
+    height: 70%;
+  }
+
+  .close-p {
+    height: 0;
+    bottom: -100px;
+  }
+
+  .panel-profile {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .panel-profile h1 {
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  .panel-profile span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--light-color);
+    }
+
+  .panel-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .panel-nav {
+    gap: 20px;
+    display: flex;
+    padding: 0 20px;
+    flex-direction: column;
+  }
+
+  .panel-nav h1 {
+    font-size: .9rem;
+  }
+
+  .panel-btn-container {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panel-btn {
+    display: flex;
+    padding: 15px;
+    font-size: .9rem;
+    border-radius: 4px;
+    align-items: center;
+    color: var(--light-color);
+    justify-content: space-between;
+    border: 1px solid var(--light-color);
+    background-color: var(--dark-primary-color);
+  }
+
+  .panel-btn span {
+    font-size: 0.8rem;
+    font-weight: 200;
+    text-transform: capitalize;
+  }
+
+  .panel-btn:hover {
+    color: var(--background-color);
+    border: 1px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+  }
+
+  .panel-btn:hover .icon-panel {
+    fill: var(--background-color);
+  }
+
+  .icon-panel {
+    height: 20px;
+    fill: var(--light-color);
+  }
+
+  .active-cp {
+    color: var(--background-color);
+    border: 1px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+  }
+
+  .active-cp .icon-panel {
+    fill: var(--background-color);
+  }
+
+  .inactive-cp {
+    color: var(--light-color);
+    border: 1px solid var(--light-color);
+    background-color: var(--dark-primary-color);
+  }
+
+  .panel-main {
+    flex: 100%;
+    padding: 10px;
+
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  @media screen {
+    .panel-container {
+      flex-direction: row;
+    }
+
+    .panel-bar {
+      flex: 14%;
+      height: 100%;
+      padding: 10px;
+      position: relative;
+      border-radius: 0 20px 20px 0;
+    }
+
+    .open-p {
+      height: 100%;
+    }
+
+    .close-p {
+      height: 100%;
+      bottom: 0;
+    }
+
+    .panel-exit {
+      display: none;
+    }
+
+    .panel-menu {
+      display: none;
+     }
+
+    .panel-profile {
+      gap: 10px;
+    }
+
+  
+    .panel-img {
+      width: 90px;
+      height: 90px;
+    }
+    
+    .panel-btn {
+      font-size: .9rem;
+    }
+
+
+    .panel-main {
+      flex: 70%;
+      min-width:70%;
+      padding: 10px;
+    }
+  }
+
+}

@@ -1,0 +1,366 @@
+@media screen {
+  
+  .home-container {
+    height: 100%;
+    padding: 20px;
+
+  }
+
+
+  .layout {
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .upcoming-p {
+    min-height: 40vh;
+  }
+
+  .main-h {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .booom-h {
+    margin: 10px;
+  }
+
+  .desk-show {
+    display: flex;
+  }
+
+.main-layout {
+  gap: 20px;
+  display: flex;
+  border-radius: 50px;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+}
+
+  .news-layout {
+    padding-bottom: 100px;
+    
+  }
+
+  .m-cardGame {
+    height: inherit;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
+
+  .main-header {
+    gap: 20px;
+    display: flex;
+    padding: 25px 10px;
+    text-align: center;
+    border-radius: 0;
+    align-items: center;
+    flex-direction: column;
+    color: var(--background-color);
+    justify-content: space-between;
+    background: var(--background);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+
+  }
+
+  .m-sgam {
+    padding: 10px;
+    border-radius: 30px;
+  }
+
+  .main-cardGame {
+    gap: 20px;
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-info h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+
+  .header-btn {
+    gap: 10px;
+    display: flex;
+  }
+
+  .active-btn {
+    
+    background-color: var(--secondary-color);
+  }
+
+  .btn-h {
+    height: 30px;
+    width: 90px;
+    display: flex;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .btn-h:hover {
+    color: var(--primary-color);
+    background-color: var(--background-color);
+  }
+
+  .btn-icon {
+    width: 20px;
+    fill: var(--background-color);
+  }
+
+  .btn-h:hover .btn-icon  {
+    fill: var(--primary-color);
+  }
+
+  .icon-left {
+    transform: rotate(180deg);
+  }
+
+  .main-h-c {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .date-filter {
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 25px;
+    background: var(--button-bg);
+    color: var(--background-color);
+  }
+
+
+  .betw-banner-comp {
+    display: flex;
+    cursor: pointer;
+    margin-top: 10px;
+    align-items: center ;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+
+  @keyframes moveLeftToRight {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+  
+  .betw-banner {
+    height: 60px;
+    animation: moveLeftToRight 10s linear infinite; 
+  }
+
+  .main-h-card {
+    gap: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px 10px;
+    align-items: center;
+    justify-content: space-around;
+    
+  }
+
+  .home-freetip {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .c-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-freetip h1 {
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 300px;
+    text-align: center;
+    color: var(--tertiary-color);
+    text-transform: capitalize;
+    color: var(--secondary-color);
+
+  }
+
+  .news-main {
+    gap: 20px;
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .news-header {
+    display: flex;
+    padding: 20px 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .news-info h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+
+  .news-link {
+    display: flex;
+    cursor: pointer;
+    font-size: 0.9rem;
+    align-items: center;
+    text-transform: capitalize;
+  }
+
+  .news-link span {
+    font-weight: 200;
+  }
+
+  .news-icon {
+    height: 28px;
+    fill: var(--background-color);
+  }
+
+  .news-wrapper {
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .news-wrapper h2 {
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    color: var(--secondary-color);
+  }
+
+  .news-wrapper p {
+    font-size: 0.8rem;
+  }
+
+  .home-up {
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+    justify-content: center;
+  }
+
+  .ads-home {
+    height: 20vh;
+    margin:  10px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .home-container {
+    height: 100vh;
+    padding: 0;
+    
+  }
+ 
+  .m-cardGame {
+    height: 100%;
+    padding-bottom: 150px;
+  }
+
+  
+  .main-layout {
+    gap: 10px;
+  }
+  
+  .main-cardGame {
+    gap: 20px;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .main-header {
+    padding: 20px;
+    flex-direction: row;
+  }
+
+  .ads-home {
+    height: 40vh;
+    background-size: cover;
+  }
+
+  .betw-banner {
+    height: 100px;
+  }
+  
+
+
+  .mobile-show {
+    display: none;
+  }
+
+  .mobilenav-layout {
+    display: none;
+  }
+
+  .layout {
+    gap: 20px;
+    height: 90%;
+    display: flex;
+    padding: 15px;
+    flex-direction: row;
+  }
+
+  .league-layout {
+    flex: 20%;
+    border-radius:20px;
+    background-color:  var(--dark-primary-color);
+  }
+  
+  .main-layout{
+    flex: 55%;
+    overflow-y: auto;
+    overflow: hidden;
+    border-radius:20px;
+    overflow-x: hidden;
+    
+  }
+
+  .news-layout {
+    flex: 25%;
+    overflow-y: auto;
+    overflow: auto;
+    padding-bottom: 0;
+    border-radius:20px;
+    overflow-x: hidden;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    
+    
+    
+  }
+}

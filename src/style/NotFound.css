@@ -1,0 +1,43 @@
+@media screen {
+
+.container-not-found{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: auto;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--background-color);
+}
+
+
+.container-not-found h1 {
+    font-size: 1.7rem;
+    color: #403c3b;
+}
+
+.imag-gif {
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.not-f-btn {
+    padding: 12px 60px;
+    border-radius: 12px;
+    text-transform: capitalize;
+    background-color:#f77a67;
+    color: var(--background-color);
+}
+
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+
+}

@@ -1,0 +1,118 @@
+@media screen {
+.auth-container {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    position: fixed;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+}
+
+.form-l-wrapper {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: var(--primary-color);
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    gap: 5px;
+
+}
+
+.form-l-wrapper h1 {
+    padding: 10px;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.click-a {
+    text-decoration: underline;
+}
+
+.form-l-wrapper p {
+    font-size: .8rem;
+    color: var( --secondary-color) ;
+}
+
+.l-form {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.l-form span {
+    cursor: pointer;
+    font-size: .8rem;
+    font-weight: 300;
+    text-decoration: underline;
+}
+
+.input-l {
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: var(--light-color);
+    background-color: var(--dark-primary-color);
+}
+
+.input-l::placeholder {
+    color: var(--light-color);
+}
+
+.btn-f {
+    font-size: .7rem;
+    border-radius: 4px;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+}
+
+.l-alternatives {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.alt-btn {
+    gap: 10px;
+    display: flex;
+    font-size: .7rem;
+    font-weight: 300;
+    padding: 15px 20px;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    border:1px solid var(--light-primary-color);
+    
+}
+
+.alt-btn:hover {
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+}
+
+.alt-icon {
+    height: 18px;
+    fill: var(--light-color);
+}
+
+.alt-btn:hover .alt-icon {
+    fill: var(--background-color);
+}
+
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+
+}

@@ -1,0 +1,33 @@
+@media screen {
+  .news-details-i  {
+    gap: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .news-details-i h1 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+  }
+
+  .news-details-i p {
+    font-weight: 300;
+    font-family: 1rem;
+    color: var(--light-color);
+    text-transform: capitalize;
+  }
+
+  .news-details-i a {
+    font-family: 1rem;
+    color: var(--red-color);
+    text-transform: capitalize;
+
+  }
+
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+}

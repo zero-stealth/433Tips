@@ -1,0 +1,152 @@
+@media screen {
+  .upcoming-in {
+    gap: 30px;
+    display: flex;
+    padding: 20px 10px;
+    flex-direction: column;
+  }
+
+  .team-form-u {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-as {
+    gap: 20px;
+    padding: 10px;
+    display: flex;
+    border-radius: 12px;
+    flex-direction: column;
+    background-color: var(--tertiary-color);
+  }
+
+  .team-header {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .Cf-p {
+    gap: 20px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  .cp-sp {
+    gap: 20px;
+    display: flex;
+
+  }
+
+  .team-header h4 {
+    font-weight: 400;
+    text-align: center;
+    
+  }
+
+  .form-xs {
+    gap: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .formation-img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 5px;
+    object-position: center;
+  }
+
+  .formation-score {
+    gap: 5px;
+    display: flex;
+    padding: 4px 10px;
+    border-radius: 4px;
+    align-items: center;
+    background-color: var(--primary-color);
+  }
+
+  .formation-score span {
+    font-size: 0.8rem;
+  }
+
+  .team-form-a {
+    gap: 20px;
+    padding: 10px;
+    display: flex;
+    overflow: hidden;
+    border-radius: 12px;
+    flex-direction: column;
+    background-color: var(--tertiary-color);
+  }
+
+  .team-header h1 {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+
+  .tbl-slider {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  td {
+    padding: 8px;
+    font-size: 1rem;
+    font-weight: 100;
+    color: var(--background-color);
+  }
+
+  .table-formation {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .table-formation span {
+    font-size: 0.8rem;
+    text-transform: capitalize;
+  }
+
+  .tbl-f-image {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  th {
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-align: start;
+    text-transform: uppercase;
+    color: var(--background-color);
+  }
+
+  /* table css  */
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .upcoming-in {
+    padding: 30px 20px;
+  }
+
+  .form-as {
+    padding: 30px;
+  }
+
+  .team-form-a {
+    padding: 30px;
+  }
+}

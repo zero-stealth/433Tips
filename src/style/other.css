@@ -1,0 +1,68 @@
+@media screen {
+  .other-p-btn {
+    height: 70px;
+    width: 140px;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  }
+
+  .other-p-btn:hover {
+    background: var(--button-bg);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  }
+
+  .fh-btn {
+    background-color: var(--green-color);
+
+  }
+
+  /* component css  */
+  .prediction-con {
+    gap: 30px;
+    display: flex;
+    padding: 5px;
+    text-align: center;
+    flex-direction: column;
+    background: var(--button-bg);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+  }
+
+  .prediction-con h1 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .prediction-p {
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  /* component css  */
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .other-p-btn {
+    height: 90px;
+    width: 250px;
+  }
+  /* component css  */
+
+  .prediction-con {
+    padding: 100px;
+    text-align: start;
+  }
+
+  /* component css  */
+}

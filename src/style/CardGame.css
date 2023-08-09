@@ -1,0 +1,277 @@
+@media screen {
+
+  .CardGame-container {
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    flex-direction: column;
+    text-transform: capitalize;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  }
+
+  .CardGame-title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    border-bottom: 1px solid var(--fade-color);
+  }
+
+  .title-m {
+    gap: 10px;
+    display: flex;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title-m span {
+    font-weight: 300;
+  }
+
+  .league-c-img {
+    width: 25px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .Tip {
+    width: 100%;
+    display: flex;
+    font-weight: 600;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .CardGame-center {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .CardGame-a {
+    gap: 10px;
+    width: 50%;
+    display: flex;
+    font-size: 0.6rem;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .CardGame-a h2 {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .CardGame-fade {
+    display: flex;
+    align-items: center;
+    border-radius: 360%;
+    justify-content: center;
+  }
+
+  .CardGame-inner {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    border-radius: 360%;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff; 
+    box-shadow: inset rgba(161, 161, 161, 0.17) 0px -23px 25px 0px,
+      inset rgba(0, 0, 0, 0.15) 0px -36px 30px 0px, inset rgba(0, 0, 0, 0.1) 0px -79px 40px 0px,
+      rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+      rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+      rgba(163, 163, 163, 0.09) 0px 32px 16px;
+  }
+
+  .TCardGame-inner {
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .CardGame-img {
+    height: 50px;
+    object-fit: contain;
+    object-position: center;
+    /* background-color: var(--fade-color); */
+  }
+
+  .CardGame-in {
+    gap: 5px;
+    display: flex;
+    min-width: 40%;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .CardGame-in-s {
+    gap: 2px;
+    display: flex;
+    padding: 2px 6px;
+    font-weight: 400;
+    font-size: small;
+    color: var(--grey-color);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  }
+
+  .CardGame-score {
+    width: 100%;
+    display: flex;
+    font-weight: 600;
+    font-size: 1.8rem;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .CardGame-p {
+    font-weight: 400;
+  }
+
+  .CardGame-s {
+    color: var(--secondary-color);
+  }
+
+  .bet-adv {
+    margin: 0 20px;
+    cursor: pointer;
+  }
+
+  .bet-adv:hover .bet-winner-logo {
+    filter: brightness(90%);
+  }
+
+  .bet-winner-logo {
+    height: 30px;
+  }
+
+  .CardGame-footer {
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--fade-color);
+  }
+
+  .tfooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .CardGame-f {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .CardGame-fi {
+    font-weight: 400;
+    font-size: 0.8rem;
+  }
+
+  .CardGame-f span {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    border-radius: 8px;
+    text-transform: capitalize;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  }
+
+  .CardGame-f .loose {
+    background-color: var(--red-color);
+  }
+
+  .CardGame-f .win {
+    background-color: var(--green-color);
+  }
+
+  .CardGame-f .draw {
+    background-color: var(--grey-color);
+  }
+
+  .circle-tennis {
+    border-radius: 360%;
+  }
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .CardGame-container {
+    height: fit-content;
+    padding: 0 20px;
+    min-width: 500px;
+    min-height: 300px;
+  }
+
+  .CardGame-title {
+    font-size: 1rem;
+  }
+
+  .CardGame-status {
+    gap: 5px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 2px 10px;
+    border-radius: 4px;
+    color: var(--primary-color);
+  }
+
+  .CardGame-center {
+    padding: 20px;
+    justify-content: space-between;
+  }
+
+  .CardGame-fade {
+    padding: 12px;
+  }
+
+  .CardGame-inner {
+    width: 100px;
+    height: 100px;
+    background-color: var(--background-color);
+  }
+
+  .CardGame-in {
+    gap: 5px;
+  }
+
+  .CardGame-in-s {
+    gap: 2px;
+  }
+
+  .CardGame-score {
+    font-size: 2rem;
+  }
+
+  .bet-winner-logo {
+    height: 40px;
+  }
+
+  .CardGame-fi {
+    font-size: 0.9rem;
+  }
+
+  .CardGame-f span {
+    font-size: 0.8rem;
+    height: 30px;
+    width: 30px;
+  }
+}
