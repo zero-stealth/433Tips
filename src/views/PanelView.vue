@@ -6,8 +6,8 @@
       </div>
       <div class="panel-profile">
         <div class="panel-img" :style="{ backgroundImage: `url(${logo})` }"></div>
-        <h1>SportyPredict</h1>
-        <span>Administrator</span>
+        <h1>433Tips</h1>
+        <span>Admin</span>
       </div>
       <div class="panel-nav">
         <div class="panel-btn-container">
@@ -27,12 +27,7 @@
             <span>Game management</span>
             <ArrowIcon class="icon-panel ap" />
           </button>
-          <button @click="setActivePage(BetOfTheDay)" :class="getButtonClass(BetOfTheDay)">
-            <FileIcon class="icon-panel" />
-            <span> Bet of the day </span>
-            <ArrowIcon class="icon-panel ap" />
-          </button>
-          <button @click="setActivePage(jackpot)" :class="getButtonClass(jackpot)">
+          <button @click="setActivePage(Jackpot)" :class="getButtonClass(Jackpot)">
             <FileIcon class="icon-panel" />
             <span> Jackpot </span>
             <ArrowIcon class="icon-panel ap" />
@@ -47,7 +42,7 @@
             <span> Free tips </span>
             <ArrowIcon class="icon-panel ap" />
           </button>
-          <button @click="setActivePage(SportGames)" :class="getButtonClass(SportGames  )">
+          <button @click="setActivePage(SportGames)" :class="getButtonClass(SportGames)">
             <SportIcon class="icon-panel" />
             <span>Other sport </span>
             <ArrowIcon class="icon-panel ap" />
@@ -95,9 +90,8 @@ const showMenu = () => {
 // pages
 import AccountManagement from '../components/AccountManagement.vue'
 import GameManagement from '../components/GameManagement.vue'
-import jackpot from '../components/Jackpot.vue'
+import Jackpot from '../components/Jackpot.vue'
 import SportGames from '../components/SportGames.vue'
-import BetOfTheDay from '../components/BetOfTheDay.vue'
 import VipGames from '../components/VipGames.vue'
 import Freetips from '../components/Freetips.vue'
 
