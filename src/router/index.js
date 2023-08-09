@@ -38,11 +38,6 @@ const router = createRouter({
       component: () => import('../views/SignInView.vue')
     },
     {
-      path: '/predictions/:id',
-      name: 'Predictions',
-      component: () => import('../views/predictionView.vue')
-    },
-    {
       path: '/vip',
       name: 'Vip',
       component: () => import('../views/VipView.vue'),
