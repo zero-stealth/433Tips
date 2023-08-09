@@ -68,8 +68,8 @@
       </p>
     </div>
     <div class="abt-p-in p-in">
-      <h1>All Football Betting Tips.</h1>
-      <p>Explore our comprehensive range of free football predictions for major bet markets:</p>
+      <h1>Our Betting Links.</h1>
+      <p>Explore our range of links for free football predictions for major bets</p>
       <ul>
         <li @click="goToB()">Free Tip</li>
         <li @click="goToJ()">Jackpot</li>

@@ -11,19 +11,19 @@ const router = createRouter({
     },
     {
       path: '/naruto',
-      name: 'Panel',
+      name: 'naruto',
       component: () => import('../views/PanelView.vue'),
       meta: {
         isAdmin: true
       }
     },
     {
-      path: '/admin-login',
+      path: '/login',
       name: 'AdminLogin',
       component: () => import('../views/AdminLoginView.vue')
     },
     {
-      path: '/admin-signin',
+      path: '/signin',
       name: 'AdminSignin',
       component: () => import('../views/AdminSigninView.vue')
     },

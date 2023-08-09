@@ -21,6 +21,10 @@ const heroSectionStyle = {
   backgroundImage: `url(${background})`
 }
 
+const Login = () => {
+  router.push({ name: 'AdminLogin' });
+};
+
 const heroSectionStyle1 = {
   backgroundImage: `url(${background1})`
 }
@@ -99,7 +103,7 @@ const reset = () => {
       <div class="contact-wrapper">
         <div class="contact-d1">
           <h1>Contact information</h1>
-          <p>For queries or help, please feel <br> free to contact us on:</p>
+          <p>For queries or help, <span @click="Login()">please</span> feel<br> free to contact us on:</p>
           <div class="d1-contact">
             <div class="d1-icon" @click="openWhatsapp">
               <whatsappIcon class="icon-d1" />
