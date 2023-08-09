@@ -89,7 +89,7 @@ const predictions = async () => {
       `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${selectedDate.value}`
     )
     console.log(response.data)
-    cardData.value = response.data.length > 0 ? [response.data] : []
+    cardData.value = response.data
   } catch (err) {
     console.log(err)
   }
