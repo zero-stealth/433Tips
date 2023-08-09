@@ -79,7 +79,7 @@ import ExitIcon from '../icons/ExitIcon.vue'
 import DrawIcon from '../icons/DrawIcon.vue'
 import FileIcon from '../icons/FileIcon.vue'
 import VipIcon from '../icons/VipIcon.vue'
-import logo from '../assets/logo.png'
+import logo from '../assets/profile.jpg'
 import { useRouter } from 'vue-router'
 
 const username = ref('admin')
