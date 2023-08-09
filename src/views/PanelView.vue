@@ -69,7 +69,6 @@
   </div>
 </template>
 <script setup>
-import basketballIcon from '../icons/basketballIcon.vue'
 import { ref , watchEffect , shallowRef} from 'vue'
 import SportIcon from '../icons/SportIcon.vue'
 import LogoutIcon from '../icons/logoutIcon.vue'
@@ -96,7 +95,7 @@ const showMenu = () => {
 // pages
 import AccountManagement from '../components/AccountManagement.vue'
 import GameManagement from '../components/GameManagement.vue'
-import jackpot from '../components/JackpotView.vue'
+import jackpot from '../components/Jackpot.vue'
 import SportGames from '../components/SportGames.vue'
 import BetOfTheDay from '../components/BetOfTheDay.vue'
 import VipGames from '../components/VipGames.vue'
