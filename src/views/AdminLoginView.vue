@@ -1,14 +1,6 @@
 <template>
   <div
-    class="auth-container"
-    :style="{
-      backgroundImage: `linear-gradient(
-      110deg,
-      rgba(3, 30, 60, 0.8),
-      rgba(3, 30, 60, 0.7)
-    ), url(${SportBg})`
-    }"
-  >
+    class="auth-container">
     <div class="form-l-wrapper">
       <h1>{{ title }}</h1>
       <form @submit.prevent="login" class="l-form" v-if="!resetPage">
@@ -23,13 +15,11 @@
         <input type="password" class="input-l" placeholder="Password" v-model="password" />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Reset</button>
-        <span @click="create">Create an account</span>
       </form>
       <span>or</span>
       <div class="l-alternatives">
-        <button class="alt-btn" @click="useGoogle">
-          <googleIcon class="alt-icon" />
-          Login with Google
+        <button class="alt-btn" @click="create">
+          Create an account
         </button>
       </div>
     </div>
@@ -40,7 +30,6 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import SportBg from '../assets/sport-bg.png'
 import googleIcon from '../icons/googleIcon.vue'
 
 const resetPage = ref(false)

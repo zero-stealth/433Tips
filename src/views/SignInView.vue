@@ -1,14 +1,6 @@
 <template>
   <div
-    class="auth-container"
-    :style="{
-      backgroundImage: `linear-gradient(
-        110deg,
-        rgba(3, 30, 60, 0.8),
-        rgba(3, 30, 60, 0.7)
-      ), url(${SportBg})`
-    }"
-  >
+    class="auth-container">
     <div class="form-l-wrapper">
       <h1>Create an account</h1>
       <form @submit.prevent="create" class="l-form">
@@ -24,15 +16,13 @@
         <input type="password" class="input-l" placeholder="Confirm password" v-model="confirmPassword" />
         <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Sign up</button>
-        <span @click="login">Login</span>
       </form>
-      <!-- <span>or</span> -->
-      <!-- <div class="l-alternatives">
-        <button class="alt-btn" @click="useGoogle">
-          <google-icon class="alt-icon" />
-          Sign up with Google
+      <span>or</span>
+      <div class="l-alternatives">
+        <button class="alt-btn" @click="login">
+          Login
         </button>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -41,8 +31,6 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import SportBg from '../assets/sport-bg.png'
-import GoogleIcon from '../icons/googleIcon.vue'
 import countriesData from '../components/countries.json'
 
 const selectedCountry = ref('')

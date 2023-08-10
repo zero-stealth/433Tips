@@ -10,7 +10,7 @@
     --light-color:rgb(13, 21, 41);
     --background-color: #fff;
     --tertiary-color: #466598;
-    --primary-color: #060c1b;
+    --primary-color: rgb(6, 12, 27);
     --secondary-color: #00eda1; /* Mixed shade of orange and red */
     --background: linear-gradient(90deg, rgba(13,20,38,1) 35%, rgba(70,101,152,1) 100%);
     --button-bg:  linear-gradient(90deg, rgba(70,101,152,1) 0%, rgba(0,237,161,1) 100%);

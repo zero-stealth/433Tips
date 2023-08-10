@@ -9,6 +9,8 @@
     background-color: var(--background-color);
   }
 
+
+
   .card-n-img {
     height: 70%;
     width: 100%;
@@ -26,8 +28,8 @@
   .news-header h1 {
     font-size: 1rem;
     text-align: justify;
-    font-weight: 800;
-    color: var(--green-color);
+    font-weight: 400;
+    color: var(--background-color);
   }
 
   .news-component {
@@ -36,6 +38,7 @@
     padding: 10px;
     flex-direction: column;
   }
+  
 
   .news-con {
     gap: 5px;
@@ -84,6 +87,7 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
+    z-index: 1000;
   }
 
   .news-list p {
@@ -117,6 +121,11 @@
     flex-direction: column;
   }
 
+  
+  .without-background {
+    background-image: none;
+  }
+  
   .news-list {
     height: 100%;
     display: flex;
@@ -124,6 +133,22 @@
     justify-content: end;
   }
 
+  .news-component {
+    position: relative;
+  }
+  
+  .news-component::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: in;
+    background-color: rgba(6, 12, 27, 90); /* Adjust opacity as needed */
+    pointer-events: none; /* Allow interactions with content behind */
+  }
+  
   .news-banner {
     display: flex;
     height: 200px;
@@ -131,6 +156,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 1000;
 
   }
 

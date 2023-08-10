@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue'
-import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 const newsData = ref([])
