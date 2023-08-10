@@ -64,7 +64,7 @@ const reset = () => {
 const create = async () => {
   if (username.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post('https://predictions-reg9.onrender.com/auth/register', {
+      const response = await axios.post('https://four33tips.onrender.com/auth/register', {
         username: username.value,
         email: email.value,
         password: password.value,
@@ -92,7 +92,7 @@ const create = async () => {
 
 const useGoogle = async () => {
   try {
-    const response = await axios.get('https://predictions-reg9.onrender.com/auth/auth/google')
+    const response = await axios.get('https://four33tips.onrender.com/auth/auth/google')
 
     // Handle the response from the server
     // You may redirect the user to the returned URL or perform other operations based on the response

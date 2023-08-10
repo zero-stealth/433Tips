@@ -56,7 +56,7 @@ const cardData = ref([]);
 const getPrediction = async () => {
   try {
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/sports/sport/Tennis/${currentDate.value}`
+      `https://four33tips.onrender.com/sports/sport/Tennis/${currentDate.value}`
     );
     cardData.value = response.data;
   } catch (err) {

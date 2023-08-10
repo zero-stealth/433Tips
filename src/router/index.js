@@ -44,11 +44,6 @@ const router = createRouter({
       // meta: { auth: true }
     },
     {
-      path: '/news/:id',
-      name: 'News',
-      component: () => import('../views/NewsView.vue')
-    },
-    {
       path: '/free-tip',
       name: 'FreeTip',
       component: () => import('../views/FreeView.vue')

@@ -33,7 +33,7 @@ async function getPrediction() {
 
   try {
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/sports/sport/Basketball/${currentDate.value}`,
+      `https://four33tips.onrender.com/predictions/jackpot-predictions/jackpot/${currentDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`

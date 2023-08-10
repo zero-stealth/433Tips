@@ -25,6 +25,9 @@
           <span class="CardGame-p">:</span>
           <span class="CardGame-s">{{ teamBscore }}</span>
         </div>
+        <div class="CardTip">
+        <span>{{ tip }}</span>
+      </div>
       </div>
       <div class="CardGame-a">
         <div class="CardGame-fade">
@@ -39,23 +42,7 @@
         <h2>{{ teamB }}</h2>
       </div>
     </div>
-    <div class="Tip">
-        <h4>Tip:</h4>
-        <span>{{ tip }}</span>
-      </div>
-    <div class="CardGame-footer">
-      <div class="CardGame-f" v-for="formationA in formationsA" :key="formationA">
-        <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{
-          formationA
-        }}</span>
-      </div>
-      <div class="CardGame-fi">form</div>
-      <div class="CardGame-f" v-for="formationB in formationsB" :key="formationB">
-        <span :class="[formationB === 'l' ? 'loose' : formationB === 'w' ? 'win' : 'draw']">{{
-          formationB
-        }}</span>
-      </div>
-    </div>
+   
   </div>
 </template>
 
@@ -63,16 +50,6 @@
 import { ref, computed } from 'vue'
 
 const props = defineProps({
-  formationA: {
-    type: Array,
-    required: true,
-    default: () => ['l', 'w', 'd', 'l', 'w']
-  },
-  formationB: {
-    type: Array,
-    required: true,
-    default: () => ['l', 'w', 'd', 'l', 'w']
-  },
   leagueIcon: {
     type: String,
     required: true
@@ -122,9 +99,6 @@ const props = defineProps({
     default: false
   }
 })
-
-const formationsA = ref(props.formationA)
-const formationsB = ref(props.formationB)
 
 const shouldShowScore = computed(() => {
   return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined

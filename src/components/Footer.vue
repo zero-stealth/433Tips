@@ -1,3 +1,4 @@
+
 <script setup>
 import { ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
@@ -17,9 +18,6 @@ const errMessage = ref('')
 const router = useRouter()
 const phoneNumber = ref('+254703147237')
 
-const heroSectionStyle = {
-  backgroundImage: `url(${background})`
-}
 
 const Login = () => {
   router.push({ name: 'AdminLogin' });
@@ -35,6 +33,7 @@ const openWhatsapp = () => {
     '_blank'
   )
 }
+
 
 const openIos = () => {
   window.open('https://itunes.apple.com/app/idYOUR_APP_ID', '_blank')
@@ -83,6 +82,7 @@ const reset = () => {
 }
 </script>
 
+
 <template>
   <div class="contact-so-main">
     <div class="foot-main-c">
@@ -97,7 +97,9 @@ const reset = () => {
             <youtubeIcon class="bk-icon" @click="openYoutube" />
           </div>
       </div>
-    <div class="contact-so" :style="heroSectionStyle"></div>
+    <div class="contact-so" >
+    <img :src="background" alt="football" class="contact-dm">
+    </div>
     </div>
     <div class="contact-contain" :style="heroSectionStyle1">
       <div class="contact-wrapper">
@@ -111,7 +113,7 @@ const reset = () => {
             </div>
             <div class="d1-icon">
               <emailIcon class="icon-d1" />
-              <span>contact@sportypredict.com</span>
+              <span>contact@433tip.com</span>
             </div>
           </div>
         </div>

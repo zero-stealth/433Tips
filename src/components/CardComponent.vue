@@ -2,7 +2,6 @@
   <div class="card-container">
     <div class="card-title">
       <div class="Tip">
-        <h4>Tip:</h4>
         <span>{{ tip }}</span>
       </div>
     </div>

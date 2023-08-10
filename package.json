@@ -14,7 +14,8 @@
     "moment": "^2.29.4",
     "pinia": "^2.0.36",
     "vue": "^3.3.2",
-    "vue-router": "^4.2.0"
+    "vue-router": "^4.2.0",
+    "vue-spline": "^0.0.4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

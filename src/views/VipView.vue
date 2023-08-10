@@ -72,7 +72,6 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 import MoneyIcon from '../icons/payIcon.vue'
 import Card from '../components/CardComponent.vue'
-import ProfileIcon from '../icons/profileIcon.vue'
 import { ref, onMounted, watchEffect, watch } from 'vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
@@ -137,7 +136,7 @@ const getPrediction = async () => {
 
   try {
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/vipPredictions/vip/${selectedDate.value}`,
+      `https://four33tips.onrender.com/predictions/vipPredictions/vip/${selectedDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -156,7 +155,7 @@ const getAccountDetails = async () => {
   const id = localStorage.getItem('id')
 
   try {
-    const response = await axios.get(`https://predictions-reg9.onrender.com/auth/${id}`, {
+    const response = await axios.get(`https://four33tips.onrender.com/auth/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

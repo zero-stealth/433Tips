@@ -3,7 +3,7 @@
     <h1>Terms & Condition</h1>
     <div class="abt-p-in">
       <p>
-        By accessing or using predictions and betting tips on the Sportypredict.com website or any of our
+        By accessing or using predictions and betting tips on the 433tips.com website or any of our
         affiliate sites, pages, accounts, or signing up on the website, you agree to be bound by and
         comply with:
       </p>
@@ -24,16 +24,16 @@
     </div>
     <div class="abt-p-in">
       <p>
-        The betting tips, predictions, analysis, previews, and statistics published on  Sportypredict.com
+        The betting tips, predictions, analysis, previews, and statistics published on  433tips.com
         are our recommendations and personal opinions. They are not definitive or guaranteed
-        predictions with no possibility of loss. Every user of  Sportypredict.com engages in betting at
+        predictions with no possibility of loss. Every user of  433tips.com engages in betting at
         their own risk.
       </p>
     </div>
     <div class="abt-p-in">
       <p>
         We strongly advise and encourage responsible betting. Do not wager more than you can afford
-        to lose.  Sportypredict.com cannot be held responsible for the actions of its users and visitors.
+        to lose.  433tips.com cannot be held responsible for the actions of its users and visitors.
         Any profits or losses resulting from gambling are solely the user's responsibility. Refunds
         for payments made are not granted
       </p>
@@ -43,7 +43,7 @@
         Betting may be illegal in certain countries or regions, so we urge all users to comply with
         the relevant regulations in their jurisdiction. Users are responsible for acting in
         accordance with their local laws. Reproduction and unauthorized use of materials such as
-        tips, analysis, and strategies from  Sportypredict.com are strictly prohibited. If you wish to
+        tips, analysis, and strategies from  433tips.com are strictly prohibited. If you wish to
         reproduce any original content from the site, please contact us to discuss your request.
       </p>
     </div>
@@ -53,21 +53,21 @@
         affiliate bookmakers. Users will be informed about the specific sites to which the codes
         pertain. Any opinions expressed regarding strategies, bookmakers, and football predictions,
         among others, are subjective and do not represent a broader, inferred population.
-         Sportypredict.com does not publish sports fixtures or fixture lists, and currently has no
+         433tips.com does not publish sports fixtures or fixture lists, and currently has no
         intention to do so. We make every effort not to infringe copyright regarding fixture
         publications by bookmakers and do not possess any license to publish fixtures. If you
-        believe that any data published on  Sportypredict.com violates copyright, please contact us
+        believe that any data published on  433tips.com violates copyright, please contact us
         immediately
       </p>
     </div>
     <div class="abt-p-in">
       <h1>OUR LIABILITY</h1>
       <p>
-        Sportypredict does not accept any liability for damages, liabilities, or losses arising from or
+        433tips does not accept any liability for damages, liabilities, or losses arising from or
         connected to the services, picks, and predictions on the website or its affiliates. While we
         strive to ensure the accuracy of the information on the website, we do not guarantee the
         accuracy or completeness of the information and material provided. The website may contain
-        typographical errors, inaccuracies, or outdated information.  Sportypredict.com is under no
+        typographical errors, inaccuracies, or outdated information.  433tips.com is under no
         obligation to update such material. The information and material on the website are provided
         "as is," without any conditions, warranties, or other terms. Therefore, to the maximum
         extent permitted by law, Predict provides the website on the basis of excluding all
@@ -78,12 +78,12 @@
     </div>
     <div class="abt-p-in">
       <p>
-        Sportypredict ensures the accuracy and currency of all information presented on its site. However,
-         Sportypredict.com cannot be held responsible for users' individual calculations or accumulations,
+        433tips ensures the accuracy and currency of all information presented on its site. However,
+         433tips.com cannot be held responsible for users' individual calculations or accumulations,
         as we provide accumulations in our Accumulator category. By accessing or using predictions
-        and betting tips on the  Sportypredict.com website or any of our affiliate sites, pages, accounts,
+        and betting tips on the  433tips.com website or any of our affiliate sites, pages, accounts,
         or signing up on the website, you agree to be bound by our terms and conditions. By creating
-        a profile and signing up to use  Sportypredict.com, you confirm your acceptance of the summarized
+        a profile and signing up to use  433tips.com, you confirm your acceptance of the summarized
         terms and conditions. Additionally, by signing up, you have entrusted us with your email and
         subscription details, and we are obligated to protect your information.
       </p>
@@ -128,7 +128,7 @@
     </div>
     <div class="abt-p-in">
       <p>
-        Sportypredict shall not be in breach of these Terms and Conditions or liable for any delay or
+        433tips shall not be in breach of these Terms and Conditions or liable for any delay or
         failure to perform its obligations if such delay or failure results from events,
         circumstances, or causes beyond its reasonable control. These may include, but are not
         limited to, telecommunications network failures, power failures, failures in third-party

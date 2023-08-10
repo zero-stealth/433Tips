@@ -65,7 +65,7 @@ const predictions = async () => {
   try {
     const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/tips/freeTip/${selectedDate.value}`
+      `https://four33tips.onrender.com/predictions/tips/freeTip/${selectedDate.value}`
     )
     console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []

@@ -26,7 +26,7 @@ const formationsB = ref([])
 
 async function getTip() {
   const response = await axios.get(
-    `https://predictions-reg9.onrender.com/predictions/single/${props.id}`
+    `https://four33tips.onrender.com/predictions/single/${props.id}`
   )
   teamA.value = response.data.teamA
   teamB.value = response.data.teamB

@@ -15,7 +15,7 @@ const showLeague = () => {
 const getPrediction = async () => {
   try {
     const response = await axios.get(
-      `https://predictions-reg9.onrender.com/predictions/tips/freeTip/07-08-2023`
+      `https://four33tips.onrender.com/predictions/tips/freeTip/07-08-2023`
     )
     LeagueData.value = response.data
   } catch (err) {

@@ -4,7 +4,7 @@
     display: flex;
     padding: 10px;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 8px;
     flex-direction: column;
     text-transform: capitalize;
     justify-content: space-between;
@@ -41,13 +41,34 @@
     object-position: center center;
   }
 
-  .Tip {
+
+  .CardTip {
     width: 100%;
     display: flex;
+    font-size: .8rem;
     font-weight: 600;
     text-align: center;
     flex-direction: column;
+    color: var(--secondary-color);
+    animation: glow 10s ease-in-out infinite;
   }
+
+  @keyframes glow {
+    0%,
+    100% {
+      text-shadow: 0 0 30px var(--fade-color);
+    }
+    25% {
+      text-shadow: 0 0 30px var(--green-color);
+    }
+    50% {
+      text-shadow: 0 0 30px var(--tertiary-color);
+    }
+    75% {
+      text-shadow: 0 0 30px var(--secondary-color);
+    }
+  }
+
 
   .CardGame-center {
     display: flex;
@@ -218,7 +239,6 @@
     height: fit-content;
     padding: 0 20px;
     min-width: 500px;
-    min-height: 300px;
   }
 
   .CardGame-title {
@@ -251,6 +271,10 @@
 
   .CardGame-in {
     gap: 5px;
+  }
+
+  .CardTip {
+    font-size: 1rem;
   }
 
   .CardGame-in-s {

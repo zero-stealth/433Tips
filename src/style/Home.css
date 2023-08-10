@@ -74,6 +74,7 @@
 
   .m-sgam {
     padding: 10px;
+    height: auto;
     border-radius: 30px;
   }
 
@@ -318,7 +319,9 @@
     height: 100px;
   }
   
-
+  .m-sgam {
+    height: 60px;
+  }
 
   .mobile-show {
     display: none;
