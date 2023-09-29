@@ -1,9 +1,9 @@
 <template>
-  <div class="CardGame-container">
+  <div class="CardGame-container"  :style="{ backgroundImage: `url(${darkBackground})` }">
     <div class="CardGame-center">
       <div class="CardGame-a">
         <div class="CardGame-fade">
-          <div class="CardGame-inner team-logo">
+          <div class="CardGame-inner">
             <img
               :src="teamAIcon"
               :alt="teamA"
@@ -47,7 +47,8 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
+import darkBackground from '../assets/animation.gif'
 
 const props = defineProps({
   leagueIcon: {

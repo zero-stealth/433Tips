@@ -23,7 +23,7 @@
   }
 
   .league-header h1 {
-    font-size: 0.9rem;
+    font-size: .9rem;
     text-transform: capitalize;
     color: var(--background-color);
   }

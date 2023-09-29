@@ -9,9 +9,8 @@
     text-transform: capitalize;
     justify-content: space-between;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    background-position: center center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: fill;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   }
 
@@ -98,20 +97,7 @@
     justify-content: center;
   }
 
-  .CardGame-inner {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    border-radius: 360%;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff; 
-    box-shadow: inset rgba(161, 161, 161, 0.17) 0px -23px 25px 0px,
-      inset rgba(0, 0, 0, 0.15) 0px -36px 30px 0px, inset rgba(0, 0, 0, 0.1) 0px -79px 40px 0px,
-      rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
-      rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-      rgba(163, 163, 163, 0.09) 0px 32px 16px;
-  }
+
 
   .TCardGame-inner {
     width: 70px;
@@ -263,11 +249,6 @@
     padding: 12px;
   }
 
-  .CardGame-inner {
-    width: 100px;
-    height: 100px;
-    background-color: var(--background-color);
-  }
 
   .CardGame-in {
     gap: 5px;

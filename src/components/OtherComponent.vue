@@ -1,6 +1,7 @@
 <template>
       <div class="prediction-con">
       <div class="prediction-p">
+        <button class="other-p-btn" @click="goToV()">Vip</button>
         <button class="other-p-btn" @click="goToB()">Free Tip</button>
         <button class="other-p-btn" @click="goToJ()">Jackpot</button>
         <button class="other-p-btn" @click="goToO()">Other sports</button>
@@ -24,6 +25,10 @@ const goToO = () => {
   router.push({ name: 'Sport' }) 
 }
 
+const goToV = () => {
+  router.push({ name: 'Vip' }) 
+
+}
 
 
 </script>

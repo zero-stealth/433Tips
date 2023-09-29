@@ -107,7 +107,7 @@ const showDate = () => {
 
 const onDateChange = () => {
   updateCurrentDate()
-  predictions()
+  getPrediction()
 }
 
 const updateCurrentDate = () => {

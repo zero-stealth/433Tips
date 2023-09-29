@@ -10,9 +10,9 @@
     position: fixed;
     overflow: hidden;
     overflow-y: auto;
-    color: var(--background-color);
+    color: var(--tertiary-color);
     flex-direction: column-reverse;
-    background-color: var(--primary-color);
+    background-color: var(--light-color);
   }
 
   .panel-bar {
@@ -29,7 +29,7 @@
     border-radius: 20px 20px 0 0;
     transition: all 0.5s ease 0s;
     -webkit-transition: all 0.5s ease 0s;
-    background-color: var(--dark-primary-color);
+    background-color: var(--primary-color);
     box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   }
 
@@ -51,19 +51,19 @@
     justify-content: center;
     border-radius: 20px 20px 0 0;
     background-color: transparent;
-    border: 2px solid var(--light-color);
+    border: 2px solid var(--tertiary-color);
     box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   }
 
   .panel-icon-exit {
     height: 32px;
-    fill: var(--light-color);
+    fill: var(--tertiary-color);
   }
   
 
   .panel-icon-nav {
     height: 30px;
-    fill: var(--light-color);
+    fill: var(--tertiary-color);
   }
 
   .open-p {
@@ -92,7 +92,7 @@
     font-size: 0.8rem;
     font-weight: 500;
     text-transform: uppercase;
-    color: var(--light-color);
+    color: var(--tertiary-color);
     }
 
   .panel-img {
@@ -126,10 +126,10 @@
     font-size: .9rem;
     border-radius: 4px;
     align-items: center;
-    color: var(--light-color);
+    color: var(--background-color);
     justify-content: space-between;
-    border: 1px solid var(--light-color);
-    background-color: var(--dark-primary-color);
+    border: 1px solid var(--tertiary-color);
+    background-color: var(--primary-color);
   }
 
   .panel-btn span {
@@ -150,7 +150,7 @@
 
   .icon-panel {
     height: 20px;
-    fill: var(--light-color);
+    fill: var(--tertiary-color);
   }
 
   .active-cp {
@@ -164,9 +164,8 @@
   }
 
   .inactive-cp {
-    color: var(--light-color);
-    border: 1px solid var(--light-color);
-    background-color: var(--dark-primary-color);
+    color: var(--tertiary-color);
+    border: 1px solid var(--tertiary-color);
   }
 
   .panel-main {

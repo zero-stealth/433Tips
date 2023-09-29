@@ -15,7 +15,7 @@
     "pinia": "^2.0.36",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0",
-    "vue-spline": "^0.0.4"
+    "@splinetool/runtime": "^0.9.429"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

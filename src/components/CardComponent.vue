@@ -1,16 +1,21 @@
 <template>
-  <div class="card-container">
+  <div class="card-comp" :style="backgroundImg">
+    <div class="card-container">
     <div class="card-title">
-      <div class="Tip">
-        <span>{{ tip }}</span>
+      <div class="card-s-leag">
+        <img :src="leagueIcon" alt="league-img" class="league-c-img" />
+        <span>{{ league }}</span>
+      </div>
+      <div class="card-in-s">
+        <span>{{ time }}</span>
       </div>
     </div>
     <div class="card-center">
       <div class="card-a">
         <div class="card-fade">
-          <div class="card-inner team-logo">
+          <div class="card-inner ">
             <img
-              :src="teamAIcon"
+              :src="teamAIcon"  
               :alt="teamA"
               :class="[sport === 'Sport' ? 'card-img circle-tennis' : 'card-img square-img']"
             />
@@ -27,9 +32,6 @@
           <span class="card-p">:</span>
           <span class="card-s">{{ teamBscore }}</span>
         </div>
-        <div class="card-in-s">
-          <span>{{ time }}</span>
-        </div>
       </div>
       <div class="card-a">
         <div class="card-fade">
@@ -45,10 +47,10 @@
       </div>
     </div>
     <div class="title-m">
-      <img :src="leagueIcon" alt="league-img" class="league-c-img" />
-      <span>{{ league }}</span>
+      <div class="Tip">
+        <span>{{ tip }}</span>
+      </div>
     </div>
-
     <div class="card-footer">
       <div class="card-f" v-for="formationA in formationsA" :key="formationA">
         <span :class="[formationA === 'l' ? 'loose' : formationA === 'w' ? 'win' : 'draw']">{{
@@ -63,10 +65,12 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
+import CardAnimation from '../assets/dark.png'
 
 const props = defineProps({
   formationA: {
@@ -129,13 +133,16 @@ const props = defineProps({
   }
 })
 
+const backgroundImg = {
+  backgroundImage: `url(${CardAnimation})`
+}
+
 const formationsA = ref(props.formationA)
 const formationsB = ref(props.formationB)
 
 const shouldShowScore = computed(() => {
   return props.showScore && props.teamAscore !== undefined && props.teamBscore !== undefined
 })
-
 </script>
 
 <style scoped>

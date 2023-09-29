@@ -3,38 +3,78 @@
     <h1>Disclaimer</h1>
     <div class="abt-p-in">
       <p>
-        sportypredict.com is not a bookmaker or betting platform and does not accept bets. We provide
-        predictions, techniques, guides, and recommendations to the best of our ability, but please
-        note that errors may occur.
+        The information and analysis provided on 433Tips is intended for informational and
+        entertainment purposes only. By accessing or using the Website, you acknowledge and agree to
+        the terms and conditions set forth in this Disclaimer. The following statement elucidates
+        the scope, limitations, and implications of the content presented on the Website.
       </p>
     </div>
     <div class="abt-p-in">
+      <h2>No Guarantees or Warranties</h2>
       <p>
-        It is important to consider our predictions as recommendations and not as encouragement to
-        engage in betting activities. Gambling should be viewed as a form of entertainment. The
-        visitor and user of sportypredict are solely responsible for their actions and decisions, and
-        the site and its employees cannot be held accountable for the information provided on
-        sportypredict.
+        The predictions, analyses, and opinions expressed on the Website are based on a synthesis of
+        historical data, statistical models, and heuristic algorithms. However, they should not be
+        construed as a guarantee of accuracy, reliability, or predictive certainty. We make no
+        representations or warranties, express or implied, regarding the correctness, timeliness,
+        completeness, or suitability of the information provided.
       </p>
     </div>
     <div class="abt-p-in">
+      <h2>Assumption of Risks</h2>
       <p>
-        sportypredict will not be held liable for any financial losses or other consequences resulting
-        from the use of the information on our website. Additionally, please be aware that some
-        countries have restrictions on sports betting, and it is the user's responsibility to comply
-        with their local regulations. We reserve the right to make changes and corrections to our
-        site without prior notice. The images used on the website, unless otherwise indicated, are
-        sourced from the web. If any images have been mistakenly included in violation of copyright,
-        please contact the administrator for immediate removal.
+        You acknowledge that sports predictions inherently involve uncertainties and variables that
+        may impact the outcome of events. Engaging with the Website's content involves a degree of
+        risk, and you expressly assume all such risks associated with acting upon or relying upon
+        the information presented herein.
       </p>
     </div>
     <div class="abt-p-in">
+      <h2>No Financial or Legal Advice</h2>
       <p>
-        By opting to receive soccer predictions and tips, you acknowledge that all of sportypredict's
-        predictions and tips are provided for informational purposes only. sportypredict assumes no
-        responsibility for any losses incurred by subscribers as a direct result of acting upon the
-        information provided. We do not endorse or encourage gambling in any form. Users under 18
-        years of age must obtain parental consent.
+        The content presented on the Website does not constitute financial, investment, legal, or
+        professional advice. You are advised to consult with qualified professionals before making
+        any financial or legal decisions based on the information provided on the Website.However,
+        our tipsters do their very best to ensure you have quality tips at your fingertips
+      </p>
+    </div>
+    <div class="abt-p-in">
+      <h2>Limitation of Liability</h2>
+      <p>
+        In no event shall 433Tips or its affiliates, partners, directors, officers, employees,
+        agents, or representatives be liable for any direct, indirect, incidental, special, or
+        consequential damages arising out of or in connection with the use or misuse of the
+        Website's content.
+      </p>
+    </div>
+    <div class="abt-p-in">
+      <h2>Third-Party Content</h2>
+      <p>
+        The Website may contain links to third-party websites or content. We do not endorse or
+        control such content and disclaim any responsibility for the accuracy, legality, or
+        reliability of third-party information.
+      </p>
+    </div>
+    <div class="abt-p-in">
+      <h2>Intellectual Property</h2>
+      <p>
+        The intellectual property rights, including copyrights and trademarks, pertaining to the
+        Website's content belong to 433Tips or its licensors. Reproduction, distribution, or
+        modification of the content without explicit authorization is prohibited.
+      </p>
+    </div>
+    <div class="abt-p-in">
+      <h2>Jurisdiction</h2>
+      <p>
+        This Disclaimer shall be governed by and construed in accordance with the laws of 433Tips.
+        Any disputes arising from the use of the Website shall be subject to the exclusive
+        jurisdiction of the competent courts of 433Tips.
+      </p>
+    </div>
+    <div class="abt-p-in">
+      <h2>Changes to this Disclaimer</h2>
+      <p>
+        433Tips reserves the right to modify, amend, or update this Disclaimer at any time without
+        notice. Users are encouraged to review this Disclaimer periodically for changes.
       </p>
     </div>
   </div>

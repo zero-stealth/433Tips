@@ -10,9 +10,9 @@
     </div>
     <template v-if="cardData.length > 0">
       <div class="m-cardGame">
-        <div v-for="item in cardData" class="main-cardGame">
+        <div v-for="item in cardData" class="main-cardGame" :key="item._id">
         <CardGame
-          v-for="(card, index) in item"
+          v-for="(card) in item"
           :key="card._id"
           :tip="card.tip"
           :status="card.status"
@@ -25,9 +25,8 @@
           :showScore="card.showScore"
           :teamAscore="card.teamAscore"
           :teamBscore="card.teamBscore"
-          :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
-          :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
+          class="card-game-a"
         />
       </div>
       </div>
@@ -41,15 +40,17 @@
 </template>
 <script setup>
 import CardGame from '../components/CardGame.vue'
-import { ref, watchEffect, onMounted } from 'vue'
+import { ref, watchEffect, watch, onMounted } from 'vue'
 import axios from 'axios'
 
 const cardData = ref([])
 const currentDate = ref('')
 const selectedDate = ref(formatDate(new Date()))
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
 
 const showDate = () => {
-  if (selectedDate != '') {
+  if (selectedDate.value != '') {
     watch(selectedDate, () => {
       return selectedDate.value
     })
@@ -60,9 +61,9 @@ const showDate = () => {
 
 const predictions = async () => {
   try {
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/tips/freeTip/${selectedDate.value}`
+      `${SERVER_HOST}/predictions/tips/freeTip/${selectedDate.value}`
     )
     console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []
@@ -74,6 +75,7 @@ const predictions = async () => {
 const onDateChange = () => {
   updateCurrentDate()
   predictions()
+  showDate()
 }
 
 const updateCurrentDate = () => {
@@ -89,12 +91,6 @@ watchEffect(() => {
   predictions()
 })
 
-const formatFormation = (formation) => {
-  if (formation && formation.length > 0) {
-    return formation[0].split('-')
-  }
-  return []
-}
 </script>
 
 <script>

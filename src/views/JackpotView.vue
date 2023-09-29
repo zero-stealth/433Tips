@@ -18,7 +18,7 @@
 </template>
 <script setup>
 import axios from 'axios';
-import news from '../components/news.vue'
+import news from '../components/newsComponent.vue'
 import league from '../components/league.vue'
 import adpanel from '../components/adPanel.vue'
 import gamePanel from '../components/gamePanel.vue'
@@ -53,17 +53,7 @@ onMounted(() => {
 
 const offset = ref(0);
 
-const previousDay = () => {
-  offset.value--;
-  updateCurrentDate();
-};
 
-const nextDay = () => {
-  if (offset.value < 1) {
-    offset.value++;
-    updateCurrentDate();
-  }
-};
 
 const updateCurrentDate = () => {
   const today = new Date();
@@ -78,12 +68,7 @@ const updateCurrentDate = () => {
 
 updateCurrentDate();
 
-const formatFormation = (formation) => {
-  if (Array.isArray(formation)) {
-    return formation[0].split('-');
-  }
-  return [];
-};
+
 
 watch(currentDate, () => {
   getPrediction();

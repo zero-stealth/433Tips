@@ -57,11 +57,10 @@
 
 
   .main-header {
-    gap: 20px;
+    gap: 10px;
     display: flex;
     padding: 25px 10px;
     text-align: center;
-    border-radius: 0;
     align-items: center;
     flex-direction: column;
     color: var(--background-color);
@@ -88,7 +87,7 @@
 
   .header-info h1 {
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-transform: capitalize;
   }
 
@@ -139,9 +138,9 @@
   }
 
   .date-filter {
+    padding: 6px;
     border: none;
     outline: none;
-    padding: 8px;
     border-radius: 25px;
     background: var(--button-bg);
     color: var(--background-color);
@@ -286,7 +285,10 @@
   .home-container {
     height: 100vh;
     padding: 0;
-    
+ 
+  }
+  .header-info h1 {
+    font-size: 1.5rem;
   }
  
   .m-cardGame {
@@ -294,7 +296,7 @@
     padding-bottom: 150px;
   }
 
-  
+ 
   .main-layout {
     gap: 10px;
   }

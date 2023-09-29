@@ -18,6 +18,21 @@
 
   }
 
+  .info-p ul li {
+    list-style: none;
+  }
+
+  .abt-p-in h1 {
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
+
+  .abt-p-in h2 {
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
   .abt-p-in {
     gap: 10px;
     display: flex;

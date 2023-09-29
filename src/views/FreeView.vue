@@ -11,7 +11,7 @@
     <template v-if="cardData.length > 0">
       <div v-for="item in cardData" class="main-h-card booom-h">
         <Card
-          v-for="(card, index) in item"
+          v-for="(card) in item"
           :key="card._id"
           :tip="card.tip"
           :status="card.status"

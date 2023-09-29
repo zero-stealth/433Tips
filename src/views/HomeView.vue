@@ -13,7 +13,7 @@
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
-            v-for="(card, index) in cardData"
+            v-for="(card) in cardData"
             :key="card._id"
             :tip="card.tip"
             :status="card.status"
@@ -57,6 +57,7 @@ import HeroComponent from '../components/HeroComponent.vue'
 import AboutComponent from '../components/aboutComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const selectedDate = ref(formatDate(new Date()))
 const currentDate = ref('')
 const router = useRouter()
@@ -66,14 +67,10 @@ const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
 }
 
-const goAds = () => {
-  window.open(
-    'https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription'
-  )
-}
+
 
 const showDate = () => {
-  if (selectedDate != '') {
+  if (selectedDate.value != '') {
     watch(selectedDate, () => {
       return selectedDate.value
     })
@@ -84,9 +81,9 @@ const showDate = () => {
 
 const predictions = async () => {
   try {
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/tips/freeTip/${selectedDate.value}`
+      `${SERVER_HOST}/predictions/tips/freeTip/${selectedDate.value}`
     )
     console.log(response.data)
     cardData.value = response.data
@@ -101,17 +98,19 @@ const onDateChange = () => {
 }
 
 const updateCurrentDate = () => {
-  currentDate.value = formatDate(new Date(selectedDate.value)) // Format selectedDate to "dd-mm-yyyy"
+  currentDate.value = formatDate(new Date(selectedDate.value)) 
 }
 
 
 onMounted(() => {
   updateCurrentDate() // Format currentDate on mount
   predictions()
+  showDate()
 })
 
 watchEffect(() => {
   predictions()
+  showDate()
 })
 
 const formatFormation = (formation) => {

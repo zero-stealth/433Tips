@@ -9,7 +9,7 @@ const errMsg = ref('')
 const searchTerm = ref('')
 
 const showPayment = () => {
-  if (Selectedcountry.value === '' && sport.value === '') {
+  if (Selectedcountry.value === '' ) {
     errMsg.value = 'Empty field is not supported'
   } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'KE') {
     reveal.value = 'kenya'
@@ -31,8 +31,6 @@ const showPayment = () => {
     reveal.value = 'Rwanda'
   } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'MW') {
     reveal.value = 'Malawi'
-  } else if (Selectedcountry.value !== '' && Selectedcountry.value === 'TZ') {
-    reveal.value = 'Tanzania'
   } else {
     reveal.value = 'others'
   }
@@ -757,7 +755,7 @@ const filteredCountries = computed(() => {
           </div>
         </div>
       </div>
-      <div v-else="reveal === ''"></div>
+      <div v-else></div>
     </div>
   </div>
   <div class="mobilenav-layout">

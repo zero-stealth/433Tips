@@ -48,7 +48,7 @@ const openAndroid = () => {
 }
 
 const openFacebook = () => {
-  window.open('https://www.facebook.com/profile.php?id=100093225097104&mibextid=LQQJ4d', '_blank')
+  window.open('https://www.facebook.com/profile.php?id=61550333845293&mibextid=9R9pXO', '_blank')
 }
 
 const openTwitter = () => {
