@@ -297,7 +297,7 @@
     color: var(--secondary-color);
     text-align: center;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
     
     
   }
@@ -476,11 +476,13 @@
   }
 
   .hero-info h1 {
-    text-align: start;
-    font-size: 2rem;
+    text-align: justify;
+    font-size: 1.4rem;
+    text-transform: uppercase;
   }
 
   .hero-info p {
+    font-size: 1.1rem;
     text-align: start;
     padding-right: 50px;
   }

@@ -103,7 +103,7 @@ const filteredCountries = computed(() => {
           <h1>PAY USING SKRILL</h1>
           <ul>
             <li>Go to your SKRILL account</li>
-            <li>Use <span>betsmart.inc@gmail.com</span></li>
+            <li>Use <span> 433tip@gmail.com</span></li>
             <li>Pay the required amount</li>
             <li>Your VIP account will be activated once we receive your payment.</li>
           </ul>
@@ -144,7 +144,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -201,7 +201,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -260,7 +260,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -318,7 +318,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -376,7 +376,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -435,7 +435,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -493,7 +493,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -536,7 +536,7 @@ const filteredCountries = computed(() => {
           <h1>PAY USING SKRILL</h1>
           <ul>
             <li>Go to your SKRILL account</li>
-            <li>Use <span>betsmart.inc@gmail.com</span></li>
+            <li>Use <span> 433tip@gmail.com</span></li>
             <li>Pay the required amount</li>
             <li>Your VIP account will be activated once we receive your payment.</li>
           </ul>
@@ -561,7 +561,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -621,7 +621,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -681,7 +681,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>
@@ -741,7 +741,7 @@ const filteredCountries = computed(() => {
           <div class="Question-con">
             <h1>Q: How do I get these daily games sent to me?</h1>
             <p>
-              <span>Answer:</span> We post games on our platform <span>https://sportyPredict.com/vip</span>.
+              <span>Answer:</span> We post games on our platform <span>https://433tips.com/vip</span>.
               You need to log in on the website using your email and password or through social
               accounts to view games.
             </p>

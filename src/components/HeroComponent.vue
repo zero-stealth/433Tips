@@ -2,10 +2,13 @@
   <div class="hero-section">
     <div class="hero-s-contain">
       <div class="hero-info">
-        <h1>GET AMAZING FREE TIPS AND JACKPOT PREDICTIONS WITH US ON A DAILY</h1>
+        <h1>
+          Boost Your Success: Access Free Tips, Jackpot Predictions, and VIP Insights to Elevate
+          Your Game and Win Daily.
+        </h1>
         <p>
-          We provide the best betting tips and predictions for football and sports. Sit back, relax,
-          and enjoy the benefits. We've taken care of all the hard work for you.
+          Witness excellence in football and sports predictions. Lean back and embrace effortless
+          success while we champion the complexities.
         </p>
       </div>
       <div class="hero-img">
@@ -41,8 +44,6 @@ onMounted(() => {
     console.error('Canvas element not found.')
   }
 })
-
-
 </script>
 
 <style>

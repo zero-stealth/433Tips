@@ -3,139 +3,110 @@
     <h1>Terms & Condition</h1>
     <div class="abt-p-in">
       <p>
-        By accessing or using predictions and betting tips on the 433tips.com website or any of our
-        affiliate sites, pages, accounts, or signing up on the website, you agree to be bound by and
-        comply with:
+        Welcome to 433Tips! These Terms and Conditions govern your use of our website and services.
+        By accessing or using 433Tips, you acknowledge and agree to abide by these Terms. Please
+        read them carefully before using our services.
       </p>
     </div>
     <div class="abt-p-in">
-      <ul>
-        <li>Our Privacy Policy</li>
-        <li>Our Disclaimer Notice</li>
-        <li>Our Terms and Conditions</li>
-        <li>The rules applicable to our betting or gaming products</li>
-      </ul>
-    </div>
-    <div class="abt-p-in">
+      <h2>1. Use of Services</h2>
+      <span>a. Our Services: </span>
       <p>
-        Please carefully read the Terms and if you do not accept them, refrain from using the
-        website.
+        We provide match predictions, analyses, and related content for various sports, including
+        but not limited to football, basketball, tennis, rugby, and horse riding. We also offer both
+        free tips and premium VIP subscription tips, including jackpot tips.
+      </p>
+      <span>b. Accuracy of Information:</span>
+      <p>
+        While we strive for accuracy, our predictions are speculative and subject to unpredictable
+        events. We do not guarantee the accuracy, completeness, or timeliness of our content.
       </p>
     </div>
     <div class="abt-p-in">
+      <h2>2. VIP Subscription</h2>
+      <span>a. Paid VIP Tips:</span>
       <p>
-        The betting tips, predictions, analysis, previews, and statistics published on  433tips.com
-        are our recommendations and personal opinions. They are not definitive or guaranteed
-        predictions with no possibility of loss. Every user of  433tips.com engages in betting at
-        their own risk.
+        Our VIP subscription offers exclusive access to premium match predictions and analyses. Upon
+        payment for the VIP subscription, no refunds will be granted.
+      </p>
+      <span>b. No Refund Policy: </span>
+      <p>
+        All payments for the VIP subscription are final. Refunds will not be provided for any
+        reason.
       </p>
     </div>
     <div class="abt-p-in">
+      <h1>3. Free Tips and Jackpot Tips</h1>
+      <span>a. Free Tips:</span>
       <p>
-        We strongly advise and encourage responsible betting. Do not wager more than you can afford
-        to lose.  433tips.com cannot be held responsible for the actions of its users and visitors.
-        Any profits or losses resulting from gambling are solely the user's responsibility. Refunds
-        for payments made are not granted
+        We offer certain match predictions and analyses for free. These tips are provided as general
+        information and are not guaranteed to be accurate.
+      </p>
+      <span>b. Jackpot Tips:</span>
+      <p>
+        We may occasionally offer free jackpot tips. These are provided solely for entertainment
+        purposes, and we do not guarantee their success or accuracy.
       </p>
     </div>
     <div class="abt-p-in">
+      <h1>4. Intellectual Property</h1>
+      <span>a. Content Ownership: </span>
       <p>
-        Betting may be illegal in certain countries or regions, so we urge all users to comply with
-        the relevant regulations in their jurisdiction. Users are responsible for acting in
-        accordance with their local laws. Reproduction and unauthorized use of materials such as
-        tips, analysis, and strategies from  433tips.com are strictly prohibited. If you wish to
-        reproduce any original content from the site, please contact us to discuss your request.
+        The content on our website, including predictions, analyses, graphics, and text, is
+        protected by intellectual property laws and belongs to 433Tips or its licensors.
+      </p>
+      <span>b. Usage Restrictions: </span>
+      <p>
+        You may not reproduce, distribute, modify, or create derivative works from our content
+        without our explicit consent.
       </p>
     </div>
     <div class="abt-p-in">
+      <h1>5. User Conduct</h1>
+      <span>a. Compliance: </span>
       <p>
-        The bet codes associated with events previewed on the site belong exclusively to our
-        affiliate bookmakers. Users will be informed about the specific sites to which the codes
-        pertain. Any opinions expressed regarding strategies, bookmakers, and football predictions,
-        among others, are subjective and do not represent a broader, inferred population.
-         433tips.com does not publish sports fixtures or fixture lists, and currently has no
-        intention to do so. We make every effort not to infringe copyright regarding fixture
-        publications by bookmakers and do not possess any license to publish fixtures. If you
-        believe that any data published on  433tips.com violates copyright, please contact us
-        immediately
+        You agree to use our services in compliance with applicable laws and regulations. You will
+        not engage in any activity that disrupts or interferes with our website's functioning.
       </p>
     </div>
     <div class="abt-p-in">
-      <h1>OUR LIABILITY</h1>
+      <h1>6. Limitation of Liability</h1>
+      <span>a. No Liability for Losses:</span>
       <p>
-        433tips does not accept any liability for damages, liabilities, or losses arising from or
-        connected to the services, picks, and predictions on the website or its affiliates. While we
-        strive to ensure the accuracy of the information on the website, we do not guarantee the
-        accuracy or completeness of the information and material provided. The website may contain
-        typographical errors, inaccuracies, or outdated information.  433tips.com is under no
-        obligation to update such material. The information and material on the website are provided
-        "as is," without any conditions, warranties, or other terms. Therefore, to the maximum
-        extent permitted by law, Predict provides the website on the basis of excluding all
-        representations, express or implied warranties, conditions, and other terms that might have
-        an effect in relation to the website, except as expressly stated in these terms and
-        conditions.
+        We are not liable for any direct, indirect, incidental, consequential, or punitive damages
+        arising from your use of our services or reliance on our predictions.
       </p>
     </div>
     <div class="abt-p-in">
+      <h1>7. Third-Party Links</h1>
+      <span>a. External Websites:</span>
       <p>
-        433tips ensures the accuracy and currency of all information presented on its site. However,
-         433tips.com cannot be held responsible for users' individual calculations or accumulations,
-        as we provide accumulations in our Accumulator category. By accessing or using predictions
-        and betting tips on the  433tips.com website or any of our affiliate sites, pages, accounts,
-        or signing up on the website, you agree to be bound by our terms and conditions. By creating
-        a profile and signing up to use  433tips.com, you confirm your acceptance of the summarized
-        terms and conditions. Additionally, by signing up, you have entrusted us with your email and
-        subscription details, and we are obligated to protect your information.
+        Our website may contain links to third-party websites. We do not endorse or control the
+        content of these websites and are not responsible for their accuracy or legality.
       </p>
     </div>
     <div class="abt-p-in">
-      <h1>OTHER PROVISIONS</h1>
+      <h1>8. Modification of Terms</h1>
+      <span>a. Changes:</span>
       <p>
-        These Terms and Conditions, along with the Privacy Policy, Cookies Policy, Rules, and any
-        referenced documents, guidelines, or rules posted on the website, constitute the entire
-        agreement and understanding between the parties, superseding any prior agreements related to
-        the subject matter. You acknowledge and agree that by entering into and agreeing to these
-        Terms and Conditions, the Privacy Policy, Cookies Policy, Rules, and any referenced
-        documents, guidelines, or rules, you do not rely on any statement, representation, warranty,
-        understanding, promise, or assurance (whether negligently or innocently made) of any person
-        other than what is expressly set out therein. Nothing in this clause shall limit or exclude
-        any liability for fraud or fraudulent misrepresentation.
+        We reserve the right to modify or update these Terms at any time. You are responsible for
+        reviewing the Terms periodically to stay informed of any changes.
       </p>
     </div>
     <div class="abt-p-in">
+      <h1>9. Governing Law</h1>
+      <span>a. Jurisdiction: </span>
       <p>
-        No delay, failure, or omission (in whole or in part) in enforcing, exercising, or pursuing
-        any right, power, privilege, claim, or remedy provided by these Terms and Conditions or by
-        law shall be considered a waiver of that right, power, privilege, claim, or remedy in
-        respect to the circumstances at hand or bar the enforcement of that or any other right,
-        power, privilege, claim, or remedy in any other instance at any time.
+        These Terms are governed by and construed in accordance with the laws of 433Tips. Any
+        disputes arising from these Terms shall be subject to the exclusive jurisdiction of the
+        courts in 433Tips.
       </p>
     </div>
     <div class="abt-p-in">
+      <h1>10. Contact Us</h1>
       <p>
-        If any provision of these Terms and Conditions is found invalid or unenforceable by any
-        court or administrative body of competent jurisdiction, such invalidity or unenforceability
-        shall not affect the validity of the remaining provisions, which shall remain in full force
-        and effect.
-      </p>
-    </div>
-    <div class="abt-p-in">
-      <p>
-        These Terms and Conditions do not create a partnership, joint venture, or principal-agent
-        relationship between the parties, and no party has the authority to bind any other party
-        unless expressly provided otherwise in these Terms and Conditions.
-      </p>
-    </div>
-    <div class="abt-p-in">
-      <p>
-        433tips shall not be in breach of these Terms and Conditions or liable for any delay or
-        failure to perform its obligations if such delay or failure results from events,
-        circumstances, or causes beyond its reasonable control. These may include, but are not
-        limited to, telecommunications network failures, power failures, failures in third-party
-        computer hardware or software, fire, lightning, explosion, flood, severe weather, industrial
-        disputes or lock-outs, terrorist activity, and acts of government or other competent
-        authorities. In such circumstances, the time for performance shall be extended by a period
-        equivalent to the delay or failure.
+        For inquiries, concerns, or clarifications regarding these Terms and Conditions, please
+        contact us at support@433tips.com
       </p>
     </div>
   </div>

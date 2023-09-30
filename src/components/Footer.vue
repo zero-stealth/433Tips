@@ -10,13 +10,14 @@ import whatsappIcon from '../icons/whatsapp.vue'
 import instagramIcon from '../icons/instagram.vue'
 import facebookIcon from '../icons/facebook.vue'
 import telegramIcon from '../icons/telegram.vue'
+import ThreadIcon from '../icons/ThreadIcon.vue'
 import background from '../assets/background.png'
 import background1 from '../assets/background.gif'
 
 const booknow = ref('')
 const errMessage = ref('')
 const router = useRouter()
-const phoneNumber = ref('+254703147237')
+const phoneNumber = ref('+254115734732')
 
 
 const Login = () => {
@@ -29,7 +30,7 @@ const heroSectionStyle1 = {
 
 const openWhatsapp = () => {
   window.open(
-    'https://wa.me/+254703147237?text=Hi sporty predict, I want to buy VIP subcription',
+    'https://wa.me/+254115734732?text=Hi sporty predict, I want to buy VIP subcription',
     '_blank'
   )
 }
@@ -40,7 +41,7 @@ const openIos = () => {
 }
 
 const openTelegram = () => {
-  window.open('https://t.me/sportypredict_tips', '_blank')
+  window.open('https://t.me/@four_three_three_tips', '_blank')
 }
 
 const openAndroid = () => {
@@ -51,20 +52,25 @@ const openFacebook = () => {
   window.open('https://www.facebook.com/profile.php?id=61550333845293&mibextid=9R9pXO', '_blank')
 }
 
+const openThread = () => {
+  window.open('https://www.threads.net/@433__tips', '_blank')
+}
+
+
 const openTwitter = () => {
-  window.open('https://twitter.com/sportypredict?s=21&t=ordgrMn8HjrBLUy3PdpsBA', '_blank')
+  window.open('https://twitter.com/433__tips?t=0gSFRZkJ3AM0DAfj4rglDw&s=09', '_blank')
 }
 
 const openInstagram = () => {
-  window.open('https://instagram.com/sportypredict_?igshid=MTIzZWMxMTBkOA==', '_blank')
+  window.open('https://instagram.com/433__tips?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D', '_blank')
 }
 
 const openTiktok = () => {
-  window.open('https://www.tiktok.com/@sportypredict?_t=8dxjShAnRI5&_r=1', '_blank')
+  window.open(' tiktok.com/@433__tips', '_blank')
 }
 
 const openYoutube = () => {
-  window.open('https://www.youtube.com/@Sportypredict', '_blank')
+  window.open(' https://www.youtube.com/@433__Tips', '_blank')
 }
 
 const book = () => {
@@ -89,6 +95,7 @@ const reset = () => {
       <div class="footer-x">
        <span>Our social media links</span> 
         <div class="book-social">
+            <ThreadIcon class="bk-icon" @click="openThread" />
             <facebookIcon class="bk-icon" @click="openFacebook" />
             <twitterIcon class="bk-icon" @click="openTwitter" />
             <telegramIcon class="bk-icon" @click="openTelegram" />
@@ -109,11 +116,11 @@ const reset = () => {
           <div class="d1-contact">
             <div class="d1-icon" @click="openWhatsapp">
               <whatsappIcon class="icon-d1" />
-              <span>+254703147237</span>
+              <span>+254115734732</span>
             </div>
             <div class="d1-icon">
               <emailIcon class="icon-d1" />
-              <span>contact@433tip.com</span>
+              <span>support@433tips.com</span>
             </div>
           </div>
         </div>
