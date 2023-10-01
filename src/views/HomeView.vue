@@ -1,5 +1,5 @@
 <template>
-  <HeroComponent />
+  <!-- <HeroComponent /> -->
   <div class="home-main">
     <div class="main-h">
       <div class="main-header">
