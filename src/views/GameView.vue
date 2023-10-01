@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import banner from '@/assets/banner.jpeg'
+import banner from '@/assets/banner.jpg'
 import ArrowIcon from '@/icons/ArrowIcon.vue'
 import axios from 'axios'
 

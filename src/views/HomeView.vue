@@ -52,36 +52,22 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 import Card from '../components/CardComponent.vue'
 import Upcoming from '../components/UpcomingPicks.vue'
-import { ref, onMounted, watch, watchEffect } from 'vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import AboutComponent from '../components/aboutComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+const router = useRouter()
 const selectedDate = ref(formatDate(new Date()))
 const currentDate = ref('')
-const router = useRouter()
 const cardData = ref([])
 
 const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } })
 }
 
-
-
-const showDate = () => {
-  if (selectedDate.value != '') {
-    watch(selectedDate, () => {
-      return selectedDate.value
-    })
-  } else {
-    return selectedDate.value
-  }
-}
-
 const predictions = async () => {
   try {
-    // const token = localStorage.getItem('token')
     const response = await axios.get(
       `${SERVER_HOST}/predictions/tips/freeTip/${selectedDate.value}`
     )
@@ -98,32 +84,20 @@ const onDateChange = () => {
 }
 
 const updateCurrentDate = () => {
-  currentDate.value = formatDate(new Date(selectedDate.value)) 
+  currentDate.value = formatDate(new Date(selectedDate.value))
 }
-
-
-onMounted(() => {
-  updateCurrentDate() // Format currentDate on mount
-  predictions()
-  showDate()
-})
-
-watchEffect(() => {
-  predictions()
-  showDate()
-})
 
 const formatFormation = (formation) => {
   if (formation && formation.length > 0) {
     return formation[0].split('-')
   }
   return []
-
-
 }
-
 </script>
+
 <script>
+import { ref } from 'vue'
+
 const formatDate = (date) => {
   const day = String(date.getDate()).padStart(2, '0')
   const month = String(date.getMonth() + 1).padStart(2, '0')
@@ -131,6 +105,7 @@ const formatDate = (date) => {
   return `${day}-${month}-${year}`
 }
 </script>
+
 <style scoped>
 @import '../style/Home.css';
 </style>
