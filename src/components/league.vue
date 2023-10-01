@@ -5,6 +5,7 @@ import { ref, onMounted } from 'vue'
 
 const LeagueData = ref([]);
 const isLeague = ref(true)
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 
 
 const showLeague = () => {
@@ -15,7 +16,7 @@ const showLeague = () => {
 const getPrediction = async () => {
   try {
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/tips/freeTip/07-08-2023`
+      `${SERVER_HOST}/predictions/tips/freeTip/07-08-2023`
     )
     LeagueData.value = response.data
   } catch (err) {

@@ -104,13 +104,13 @@ import ProfileIcon from '../icons/profileIcon.vue'
 import GroupIcon from '../icons/GroupIcon.vue'
 import ExitIcon from '../icons/ExitIcon.vue'
 import LogoutIcon from '../icons/logoutIcon.vue'
-import { ref, watchEffect, watch } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 const router = useRouter()
 const isOpen = ref(false)
-const isDropOpen = ref(false)
 const isDrpOpen = ref(false)
 const token = ref(null)
+
 
 watchEffect(() => {
   token.value = localStorage.getItem('token')
@@ -121,13 +121,6 @@ const showMenu = () => {
   isDrpOpen.value = false
 }
 
-const showDrop = () => {
-  isDropOpen.value = !isDropOpen.value
-}
-
-const showDrp = () => {
-  isDrpOpen.value = !isDrpOpen.value
-}
 
 const openTelegram = () => {
   window.open('https://t.me/sportypredict_tips', '_blank')
@@ -138,8 +131,6 @@ const logOut = () => {
   localStorage.removeItem('token')
   localStorage.removeItem('username')
   token.value = null
-  username.value = null
-  isAdmin.value = false
   window.location.reload()
 }
 
@@ -157,10 +148,6 @@ const goSport = () => {
 
 const goLogin = () => {
   router.push({ name: 'Login' })
-}
-
-const goHome = () => {
-  router.push({ name: 'Home' })
 }
 
 const goSignin = () => {

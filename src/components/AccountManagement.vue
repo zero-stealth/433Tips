@@ -74,7 +74,7 @@
 
 <script setup>
 import axios from 'axios';
-import { ref, watchEffect, onMounted, computed, watch } from 'vue';
+import { ref, watchEffect, onMounted, computed } from 'vue';
 import NotPaid from '../icons/NotPaid.vue';
 import VipIcon from '../icons/VipIcon.vue';
 import Profile from '../assets/profile.jpg';
@@ -83,6 +83,7 @@ import AdminIcon from '../icons/AdminIcon.vue';
 import DeleteIcon from '../icons/DeleteIcon.vue';
 import ProfileIcon from '../icons/profileIcon.vue';
 
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 const username = ref(null);
 const accountCards = ref([]);
 const accountInfo = ref([]);
@@ -92,7 +93,7 @@ const message = ref();
 const accountsData = async () => {
   try {
     const user = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.get(`https://four33tips.onrender.com/auth`, {
+    const response = await axios.get(`${SERVER_HOST}/auth`, {
       headers: {
         Authorization: `Bearer ${user}`,
       },
@@ -123,7 +124,7 @@ const accountData = computed(() => {
 const deleteAccount = async (id) => {
   try {
     const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.delete(`https://four33tips.onrender.com/auth/delete/${id}`,{
+    const response = await axios.delete(`${SERVER_HOST}/auth/delete/${id}`,{
       headers:{
         Authorization: `Bearer ${token}`
       }
@@ -188,7 +189,7 @@ async function toggleStatus(account) {
   account.status = !account.status;
 
   try {
-    const response = await axios.put(`https://four33tips.onrender.com/auth/update/${account._id}`, {
+    const response = await axios.put(`${SERVER_HOST}/auth/update/${account._id}`, {
       paid: account.status,
     });
 

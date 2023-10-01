@@ -40,6 +40,8 @@ const password = ref('')
 const errMsg = ref('')
 const email = ref('')
 const confirmPassword = ref('')
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+
 
 const reset = () => {
   email.value = ''
@@ -52,7 +54,7 @@ const reset = () => {
 const create = async () => {
   if (username.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post('https://four33tips.onrender.com/auth/register', {
+      const response = await axios.post( `${SERVER_HOST}/auth/register`, {
         username: username.value,
         email: email.value,
         password: password.value,
@@ -78,19 +80,6 @@ const create = async () => {
   }
 }
 
-const useGoogle = async () => {
-  try {
-    const response = await axios.get('https://four33tips.onrender.com/auth/auth/google')
-
-    // Handle the response from the server
-    // You may redirect the user to the returned URL or perform other operations based on the response
-    router.push({ name: 'Home' })
-  } catch (error) {
-    // Handle the error
-    errMsg.value = error;
-    alert(errMsg.value)
-  }
-}
 
 const login = () => {
   router.push({ name: 'Login' })

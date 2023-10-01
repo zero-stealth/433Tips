@@ -11,7 +11,7 @@
     <template v-if="cardData.length > 0">
       <div v-for="item in cardData" class="main-h-card booom-h">
         <Card
-          v-for="(card, index) in item"
+          v-for="(card) in item"
           :key="card._id"
           :tip="card.tip"
           :status="card.status"
@@ -50,6 +50,8 @@ import axios from 'axios'
 const cardData = ref([])
 const currentDate = ref('')
 const selectedDate = ref(formatDate(new Date()))
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+
 
 const showDate = () => {
   if (selectedDate != '') {
@@ -65,7 +67,7 @@ const predictions = async () => {
   try {
     const token = localStorage.getItem('token')
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/tips/freeTip/${selectedDate.value}`
+      `${SERVER_HOST}/predictions/tips/freeTip/${selectedDate.value}`
     )
     console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []

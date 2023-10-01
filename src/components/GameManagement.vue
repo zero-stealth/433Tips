@@ -326,34 +326,34 @@
 
 <script setup>
 import axios from 'axios'
-import { ref, watchEffect, onMounted, computed, watch, shallowRef } from 'vue'
+import { ref, watchEffect, onMounted, watch, shallowRef } from 'vue'
 import ExitIcon from '../icons/ExitIcon.vue'
 import FileIcon from '../icons/FileIcon.vue'
 import DeleteIcon from '../icons/DeleteIcon.vue'
-import Freetips from '../components/FreetipsEdit.vue'
+import Freetips from '../components/Freetips.vue'
 import UpcomingGames from '../components/UpcomingGamesEdits.vue'
 import SportGames from '../components/SportGamesEdits.vue'
 import VipGames from './VipGamesEdits.vue'
+import FreetipsEdit from '../components/FreetipsEdit.vue'
 
 const username = ref(null)
-const accountInfo = ref([])
 const currentDate = ref('')
 const offset = ref(0)
 const message = ref()
 const isGameOpen = ref(false)
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 
-const cardData = ref([])
+
 const vipData = ref([])
 const predictionData = ref([])
 const freeTipData = ref([])
 const upcomingData = ref([])
 const SportData = ref([])
-const basketBallData = ref([])
 
 const getVipGames = async () => {
   try {
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/vipPredictions/vip/${currentDate.value}`
+      `${SERVER_HOST}/predictions/vipPredictions/vip/${currentDate.value}`
     )
     console.log(response.data)
     vipData.value = response.data.length > 0 ? [response.data] : []
@@ -366,7 +366,7 @@ const getPredictions = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/${currentDate.value}`
+      `${SERVER_HOST}/predictions/${currentDate.value}`
     )
     console.log(response.data)
     predictionData.value = response.data.length > 0 ? [response.data] : []
@@ -379,7 +379,7 @@ const getFreeTips = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/tips/freeTip/${currentDate.value}`
+      `${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`
     )
     console.log(response.data)
     freeTipData.value = response.data.length > 0 ? [response.data] : []
@@ -392,7 +392,7 @@ const getUpcoming = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/upcomingPredictions/upcoming/${currentDate.value}`
+      `${SERVER_HOST}/predictions/upcomingPredictions/upcoming/${currentDate.value}`
     )
     console.log(response.data)
     upcomingData.value = response.data.length > 0 ? [response.data] : []
@@ -405,7 +405,7 @@ const getSportBets = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(
-      `https://four33tips.onrender.com/sports/sport/Sport/${currentDate.value}`
+      `${SERVER_HOST}/sports/sport/Sport/${currentDate.value}`
     )
     console.log(response.data)
     SportData.value = response.data.length > 0 ? [response.data] : []
@@ -419,7 +419,7 @@ const showEdit = () => {
   isGameOpen.value = !isGameOpen.value
 }
 
-const activePage = shallowRef(BetOfTheDay)
+const activePage = shallowRef(FreetipsEdit)
 const gameId = ref('')
 const sportId = ref('')
 
@@ -439,7 +439,7 @@ async function updateGame(teamAscore, teamBscore, showScore) {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
     const response = await axios.put(
-      `https://four33tips.onrender.com/predictions/update/${gameId.value}`,
+      `${SERVER_HOST}/predictions/update/${gameId.value}`,
       { teamAscore, teamBscore, showScore },
       {
         headers: {
@@ -448,14 +448,16 @@ async function updateGame(teamAscore, teamBscore, showScore) {
       }
     )
     console.log(response.data)
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 async function updateSport(teamAscore, teamBscore, showScore) {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
     const response = await axios.put(
-      `https://four33tips.onrender.com/sports/update/${sportId.value}`,
+      `${SERVER_HOST}/sports/update/${sportId.value}`,
       { teamAscore, teamBscore, showScore },
       {
         headers: {
@@ -464,7 +466,9 @@ async function updateSport(teamAscore, teamBscore, showScore) {
       }
     )
     console.log(response.data)
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 
@@ -504,16 +508,13 @@ onMounted(() => {
   getSportBets()
 })
 
-const accountData = computed(() => {
-  return accountInfo.value
-})
 
 const deletePrediction = async (id) => {
   try {
     const token = JSON.parse(localStorage.getItem('token'))
 
     const response = await axios.delete(
-      `https://four33tips.onrender.com/predictions/delete/${id}`,
+      `${SERVER_HOST}/predictions/delete/${id}`,
       {
         headers: { Authorization: `Bearer ${token}` }
       }
@@ -535,7 +536,7 @@ const deleteSport = async (id) => {
     const token = JSON.parse(localStorage.getItem('token'))
 
     const response = await axios.delete(
-      `https://four33tips.onrender.com/sports/delete/${id}`,
+      `${SERVER_HOST}/sports/delete/${id}`,
       {
         headers: { Authorization: `Bearer ${token}` }
       }

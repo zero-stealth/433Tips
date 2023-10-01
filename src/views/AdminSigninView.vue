@@ -33,6 +33,7 @@ import { useRouter } from 'vue-router'
 import GoogleIcon from '../icons/googleIcon.vue'
 import countriesData from '../components/countries.json'
 
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 const selectedCountry = ref('')
 const router = useRouter()
 const username = ref('')
@@ -52,7 +53,7 @@ const reset = () => {
 const create = async () => {
   if (username.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post('https://four33tips.onrender.com/auth/register-admin', {
+      const response = await axios.post(`${SERVER_HOST}/auth/register-admin`, {
         username: username.value,
         email: email.value,
         password: password.value,
@@ -76,19 +77,6 @@ const create = async () => {
   }
 }
 
-const useGoogle = async () => {
-  try {
-    const response = await axios.get('https://four33tips.onrender.com/auth/auth/google')
-
-    // Handle the response from the server
-    // You may redirect the user to the returned URL or perform other operations based on the response
-    console.log(response.data)
-    router.push({ name: 'Home' })
-  } catch (error) {
-    // Handle the error
-    console.error(error)
-  }
-}
 
 const login = () => {
   router.push({ name: 'AdminLogin' })

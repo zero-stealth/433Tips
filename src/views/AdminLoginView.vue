@@ -32,6 +32,7 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 import googleIcon from '../icons/googleIcon.vue'
 
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 const resetPage = ref(false)
 const router = useRouter()
 const password = ref('')
@@ -42,7 +43,7 @@ const email = ref('')
 const login = async () => {
   if (email.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post('https://four33tips.onrender.com/auth/login', {
+      const response = await axios.post(`${SERVER_HOST}/auth/login`, {
         email: email.value,
         password: password.value
       });
@@ -83,7 +84,7 @@ const create = () => {
 const resetAuth = async () => {
   if (email.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post('https://four33tips.onrender.com/auth/reset', {
+      const response = await axios.post('${SERVER_HOST}/auth/reset', {
         email: email.value,
         password: password.value
       })
@@ -94,25 +95,9 @@ const resetAuth = async () => {
     }
   } else {
     errMsg.value = 'Write something'
-    reset()
   }
 }
 
-const useGoogle = async () => {
-  try {
-    const response = await axios.get('https://four33tips.onrender.com/auth/auth/google')
-
-    // Handle the response from the server
-    if (response.data.redirectTo) {
-      router.push({ path: response.data.redirectTo })
-    } else {
-      console.error('Invalid response from server')
-    }
-  } catch (error) {
-    // Handle the error
-    console.error(error)
-  }
-}
 </script>
 
 <style>

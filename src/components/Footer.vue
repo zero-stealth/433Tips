@@ -14,8 +14,6 @@ import ThreadIcon from '../icons/ThreadIcon.vue'
 import background from '../assets/background.png'
 import background1 from '../assets/background.gif'
 
-const booknow = ref('')
-const errMessage = ref('')
 const router = useRouter()
 const phoneNumber = ref('+254115734732')
 
@@ -30,7 +28,7 @@ const heroSectionStyle1 = {
 
 const openWhatsapp = () => {
   window.open(
-    'https://wa.me/+254115734732?text=Hi sporty predict, I want to buy VIP subcription',
+    `https://wa.me/${phoneNumber.value}?text=Hi sporty predict, I want to buy VIP subcription`,
     '_blank'
   )
 }
@@ -73,19 +71,7 @@ const openYoutube = () => {
   window.open(' https://www.youtube.com/@433__Tips', '_blank')
 }
 
-const book = () => {
-  if (booknow.value !== '') {
-    window.open(`https://wa.me/${phoneNumber.value}?text=${booknow.value}`, '_blank')
-  } else {
-    errMessage.value = 'Write something'
-  }
 
-  reset()
-}
-
-const reset = () => {
-  booknow.value = ''
-}
 </script>
 
 
@@ -116,7 +102,7 @@ const reset = () => {
           <div class="d1-contact">
             <div class="d1-icon" @click="openWhatsapp">
               <whatsappIcon class="icon-d1" />
-              <span>+254115734732</span>
+              <span>{{ phoneNumber }}</span>
             </div>
             <div class="d1-icon">
               <emailIcon class="icon-d1" />

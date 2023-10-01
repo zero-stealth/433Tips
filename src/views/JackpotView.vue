@@ -24,6 +24,7 @@ import adpanel from '../components/adPanel.vue'
 import gamePanel from '../components/gamePanel.vue'
 import { ref, onMounted, watch } from 'vue';
 
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 const upcomingDates = ref('');
 const currentDate = ref('');
 const cardData = ref([]);
@@ -33,7 +34,7 @@ async function getPrediction() {
 
   try {
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/jackpot-predictions/jackpot/${currentDate.value}`,
+      `${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`

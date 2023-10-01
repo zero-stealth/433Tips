@@ -97,6 +97,8 @@ const teamAscore = ref(0);
 const teamBscore = ref(0);
 const date = ref('');
 const tip = ref('');
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0];
@@ -155,7 +157,7 @@ async function handleSubmit() {
       formData.append('tip', tip.value);
 
       const response = await axios.post(
-        'https://four33tips.onrender.com/predictions/create/tip/freeTip',
+        `${SERVER_HOST}//predictions/create/tip/freeTip`,
         formData,
         {
           headers: {

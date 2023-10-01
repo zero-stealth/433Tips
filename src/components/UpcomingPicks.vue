@@ -9,7 +9,7 @@
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
           <Card
-            v-for="(card, index) in cardData"
+            v-for="(card) in cardData"
             :key="card._id"
             :tip="card.tip"
             :status="card.status"
@@ -46,6 +46,8 @@ import Card from '../components/CardComponent.vue';
 
 const router = useRouter();
 const currentDate = ref('');
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+
 
 const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } });
@@ -56,7 +58,7 @@ const cardData = ref([]);
 const getPrediction = async () => {
   try {
     const response = await axios.get(
-      `https://four33tips.onrender.com/sports/sport/Tennis/${currentDate.value}`
+      `${SERVER_HOST}/sports/sport/Tennis/${currentDate.value}`
     );
     cardData.value = response.data;
   } catch (err) {
