@@ -29,25 +29,24 @@
           />
         </div>
       </template>
-        <template v-else>
-          <div class="home-freetip">
-            <h1>No upcoming predictions available today</h1>
-          </div>
-        </template>
-      </div>
+      <template v-else>
+        <div class="home-freetip">
+          <h1>No upcoming predictions available today</h1>
+        </div>
+      </template>
     </div>
+  </div>
 </template>
 
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import Card from '../components/CardComponent.vue';
+import Card from '../components/CardComponent.vue'; // Make sure CardComponent.vue path is correct
 
 const router = useRouter();
 const currentDate = ref('');
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
-
 
 const showCard = (cardID) => {
   router.push({ name: 'Tips', params: { id: cardID } });
@@ -62,7 +61,7 @@ const getPrediction = async () => {
     );
     cardData.value = response.data;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
@@ -88,6 +87,6 @@ const formatFormation = (formation) => {
 };
 </script>
 
-<style>
+<style scoped>
 @import '../style/Home.css';
 </style>
