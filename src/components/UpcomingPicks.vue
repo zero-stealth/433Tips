@@ -1,10 +1,11 @@
+Sure, here's the updated code with the suggested changes applied:
+
+```vue
 <template>
   <div class="home-main">
     <div class="main-h">
       <div class="main-header home-up">
-        <div class="header-info home-up">
-          <h1>Other sports</h1>
-        </div>
+        <h1>Free tips</h1>
       </div>
       <template v-if="cardData.length > 0">
         <div class="main-h-card">
@@ -31,18 +32,24 @@
       </template>
       <template v-else>
         <div class="home-freetip">
-          <h1>No upcoming predictions available today</h1>
+          <h1>No predictions yet! Check back later.</h1>
         </div>
       </template>
     </div>
+    <div class="main-header header-info c-info">
+      <h1>Available Predictions</h1>
+    </div>
+    <OtherComponent />
+    <Upcoming />
+    <AboutComponent />
   </div>
 </template>
 
 <script setup>
 import axios from 'axios';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import Card from '../components/CardComponent.vue'; // Make sure CardComponent.vue path is correct
+import Card from '../components/CardComponent.vue'; // Check the path
 
 const router = useRouter();
 const currentDate = ref('');
@@ -70,7 +77,10 @@ onMounted(() => {
   getPrediction();
 });
 
-const offset = ref(0);
+const offset = computed(() => {
+  // Calculate offset logic here if needed
+  return 0; // Example value, change as needed
+});
 
 const updateCurrentDate = () => {
   const today = new Date();
