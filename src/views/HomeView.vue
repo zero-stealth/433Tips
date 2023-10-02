@@ -69,7 +69,7 @@ const showCard = (cardID) => {
 const predictions = async () => {
   try {
     const response = await axios.get(
-      `${SERVER_HOST}/predictions/tips/freeTip/${selectedDate.value}`
+      `${SERVER_HOST}/sports/sport/Tennis/${currentDate.value}`
     )
     console.log(response.data)
     cardData.value = response.data
