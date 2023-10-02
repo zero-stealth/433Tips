@@ -39,9 +39,6 @@ Sure, here's the updated code with the suggested changes applied:
     <div class="main-header header-info c-info">
       <h1>Available Predictions</h1>
     </div>
-    <OtherComponent />
-    <Upcoming />
-    <AboutComponent />
   </div>
 </template>
 
