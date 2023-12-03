@@ -73,7 +73,7 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 import MoneyIcon from '../icons/payIcon.vue'
 import { useToast } from 'vue-toastification';
-import Card from '../components/cardcomponent.vue'
+import Card from '../components/CardComponent.vue'
 import vipComponent from '../components/vipComponent.vue';
 import { ref, onMounted, watchEffect, watch } from 'vue'
 import OtherComponent from '../components/OtherComponent.vue'
