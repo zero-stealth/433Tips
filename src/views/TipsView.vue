@@ -1,7 +1,7 @@
 <script setup>
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import banner from '@/assets/banner.jpeg'
+import banner from '../assets/dark.png'
 import ArrowIcon from '@/icons/ArrowIcon.vue'
 import { onMounted, ref, shallowRef } from 'vue'
 import { useGameStore } from '../stores/game'
