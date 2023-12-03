@@ -675,9 +675,9 @@ const deleteAds = async (id) => {
     message.value = response.data.message
     await getAds()
   } catch (err) {
-    toast.error(error.response.data.message)
+    toast.error(err.response.data.message)
   }
-  alert('deleted')
+  toast.error('deleted')
 }
 
 const deletePrediction = async (id) => {
