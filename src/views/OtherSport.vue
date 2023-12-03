@@ -47,7 +47,7 @@
 <script setup>
 import OtherComponent from '../components/OtherComponent.vue'
 import sportComponent from '../components/sportComponent.vue'
-import Card from '../components/cardcomponent.vue'
+import Card from '../components/CardComponent.vue'
 import { ref, watchEffect, onMounted } from 'vue'
 import { useToast } from 'vue-toastification';
 import { useGameStore } from '../stores/game'
