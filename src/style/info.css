@@ -12,6 +12,12 @@
  
   }
 
+  .abt-info-p span {
+    font-weight: 500;
+    font-style: italic;
+    color: var(--tertiary-color);
+  }
+
   .info-dn {
     margin-top: 20%;
     padding: 20px;
@@ -29,7 +35,7 @@
 
 
   .abt-p-in h2 {
-    font-size: 1rem;
+    font-size: .9rem;
     text-decoration: underline;
   }
 

@@ -1,153 +1,280 @@
 @media screen {
-    .details-container {
-      color: var(--background-color);
-      background-color: var(--primary-color);
+  .details-container {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .news-pin {
+    height: 100%;
+  }
+
+  .details-image {
+    display: flex;
+    min-height: 25vh;
+    flex-direction: column;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    justify-content: center;
+  }
+
+  .details-h-conx {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--secondary-color);
+    border-top: 1px solid var(--light-color);
+    background-color: var(--tertiary-color);
+  }
+
+  .details-header-title {
+    padding: 10px;
+    text-align: center; 
+    text-transform: capitalize;
+  }
+
+  .details-header-title h1 {
+    font-size: 1rem;
+
+  }
+
+  .details-h {
+    height: inherit;
+    display: flex;
+    padding: 15px 8px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--light-color);
+    border-left: 0;
+    border-right: 0;
+    background-color: var(--primary-color);
+  }
+
+  .pulse {
+    margin: 10px;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    transform: scale(1);
+    background: rgb(36, 206, 240);
+    box-shadow: 0 0 0 0  rgb(36, 206, 240);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(36, 206, 240, 0.7);
     }
 
-    .news-pin {
-      height: 100%;
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(36, 206, 240, 0);
     }
 
-
-    .details-image {
-      gap: 50px;
-      height: 50vh;
-      display: flex;
-      padding: 20px;
-
-      flex-direction: column;
-      background-size: cover;
-      background-position:bottom;
-      backdrop-filter: blur(3px);
-      background-repeat: no-repeat;
-    }
-  
-    .details-h {
-      display: flex;
-      /* padding: 0 10px; */
-      align-items: center;
-      justify-content: space-between;
-    }
-  
-    .details-h h2 {
-      font-size: 1.4rem;
-      text-transform: capitalize;
-    }
-  
-    .details-h span {
-      width: 10px;
-      height: 10px;
-      border-radius: 360%;
-      background-color: var(--secondary-color);
-    }
-  
-    .details-arrow {
-      fill: var(--background-color);
-      transform: rotate(180deg);
-      cursor: pointer;
-      height: 20px;
-    }
-  
-    .details-image-d {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-  
-    }
-  
-    .details-d {
-      gap: 10px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      
-      
-    }
-  
-    .details-d  span {
-      font-size: 1rem;
-      text-transform: capitalize;
-    }
-  
-    .details-d-img {
-      height: 50px;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 20%;
-    }
-  
-    .details-score {
-      gap: 10px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-    
-    .details-score span {
-      font-size: .8rem;
-      font-weight: 400;
-      color: var(--secondary-color);
-    }
-  
-    .score-p  {
-      gap: 10px;
-      display: flex;
-    }
-    .score-p span {
-      color: var(--background-color);
-      font-size: 1.9rem;
-      font-weight: 600;
-    }
-  
-    .details-details {
-      gap: 20px;
-      height: 50%;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-      color: var(--secondary-color);
-    }
-  
-    .details-details h1 {
-      font-size: 1rem;
-      font-weight: 300;
-      text-transform: capitalize;
-    }
-  
-    .details-match {
-      gap: 10px;
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .match-su {
-      gap: 50px;
-      display: flex;
-      font-weight: 200;
-      align-items: center;
-      color: var(--light-color);
-      justify-content: space-between;
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(36, 206, 240, 0);
     }
   }
-  
-  /* using it as global style for larger devices  */
-  @media only screen and (min-width: 48em) {
-   
-    .details-container {
-      height: 100%;
-        padding-bottom: 0;
-      }
-  
-        
-    .details-wrapper {
-      height: 100%;
-    }
-      .details-image {
-      gap: 50px;
-      padding: 40px 50px;
-    }
-    
+
+  .details-h-inn {
+    gap: 10px;
+    display: flex;
+    align-items: center;
   }
-  
+
+  .details-h-inn h2 {
+    font-size: 0.8rem;
+    color: var(--light-color);
+    text-transform: capitalize;
+  }
+
+  .details-arrow {
+    fill: var(--light-color);
+    transform: rotate(180deg);
+    cursor: pointer;
+    height: 20px;
+  }
+
+  .details-image-d {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+  .details-d {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .details-d span {
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  .details-midd {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .details-d-img {
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+  }
+
+  .details-score {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .details-score span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--secondary-color);
+  }
+
+  .score-p {
+    gap: 10px;
+    display: flex;
+  }
+  .score-p span {
+    color: var(--background-color);
+    font-size: 1.9rem;
+    font-weight: 600;
+  }
+
+  .details-details {
+    gap: 20px;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--secondary-color);
+  }
+
+  .details-details h1 {
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: capitalize;
+  }
+
+  .details-match {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .match-su {
+    gap: 50px;
+    display: flex;
+    font-weight: 200;
+    align-items: center;
+    color: var(--light-color);
+    justify-content: space-between;
+  }
+
+  .nav-tips {
+    gap: 20px;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--light-color);
+    background-color: var(--dark-primary-color);
+  }
+
+  .nav-tip {
+    width: 100%;
+    display: flex;
+    font-size: 0.7rem;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: var(--background-color);
+    background-color: transparent;
+  }
+
+  .active-tip {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+  }
+
+  .description-container {
+    min-height: 200px;
+  }
+
+  .description-container h1 {
+    padding: 20px;
+    font-size: 0.8rem;
+    text-align: center;
+    text-transform: capitalize;
+    background-color: var(--tertiary-color);
+  }
+
+  .description-info{
+    padding:  10px;
+    background-color: var(--background-color);
+  }
+
+  .description-info p {
+    color: var(--primary-color);
+    text-align: justify;
+    font-size: .8rem;
+
+  }
+
+  .description-nop {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .description-nop p {
+    color: var(--light-color);
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .details-container {
+    height: 100%;
+    padding-bottom: 0;
+  }
+
+  .details-h-inn h2 {
+    font-size: 1rem;
+  }
+
+  .details-header-title h1 {
+    font-size: 1.2rem;
+
+  }
+  .description-info p {
+    font-size: .9rem;
+
+  }
+
+  .details-image {
+    height: 30vh;
+  }
+}

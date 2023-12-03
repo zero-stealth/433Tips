@@ -1,5 +1,5 @@
 @media screen {
-.auth-container {
+  .auth-container {
     top: 0;
     left: 0;
     right: 0;
@@ -10,112 +10,139 @@
     text-align: center;
     align-items: center;
     flex-direction: column;
+    background-size: cover;
     justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--tertiary-color);
-    background: var(--button-bg);
-}
-
-.form-l-wrapper {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background-color: var(--primary-color);
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .form-l-wrapper {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     flex-direction: column;
+    border-radius: 10px;
     border-radius: 8px;
     padding: 20px;
     display: flex;
+    width: 80%;
     gap: 5px;
+  }
 
-}
-
-.form-l-wrapper h1 {
+  .form-l-wrapper h1 {
     padding: 10px;
     font-size: 1rem;
     text-transform: capitalize;
-}
+  }
 
-.click-a {
+  .reverse {
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 200;
     text-decoration: underline;
-}
+  }
 
-.form-l-wrapper p {
-    font-size: .8rem;
-    color: var( --secondary-color) ;
-}
+  .click-a {
+    text-decoration: underline;
+  }
 
-.l-form {
+  .form-l-wrapper p {
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--tertiary-color);
+  }
+
+  .l-form {
     gap: 10px;
     display: flex;
     flex-direction: column;
-}
+  }
 
-.l-form span {
+  .l-form span {
     cursor: pointer;
     font-size: .8rem;
-    font-weight: 300;
     text-decoration: underline;
-}
+  }
 
-.input-l {
-    border: none;
+  .input-l {
     border-radius: 4px;
     padding: 10px 20px;
+    background: transparent;
     color: var(--tertiary-color);
-    border: 1px solid var(--light-color);
-    background-color: var(--primary-color);
-}
+    border: 1px solid var(--tertiary-color);
+  }
 
-.input-l::placeholder {
-    color: var(--light-color);
-}
+  .input-l:hover {
+    border: 1px solid var(--tertiary-color);
+  }
 
-.btn-f {
-    font-size: .7rem;
+  .input-l::placeholder {
+    font-size: 0.6rem;
+    text-transform: capitalize;
+    color: var(--tertiary-color);
+  }
+
+  .btn-f {
+    cursor: pointer;
+    font-size: 0.7rem;
     border-radius: 4px;
-    padding: 10px 20px;
+    padding: 15px 20px;
     text-transform: capitalize;
     color: var(--background-color);
-    background: var(--button-bg);
-}
+    background-color: var(--tertiary-color);
+  }
 
-.l-alternatives {
+  .btn-f:hover {
+    background: var(--tertiary-color);
+  }
+
+  .l-alternatives {
     gap: 10px;
     display: flex;
+    cursor: pointer;
     flex-direction: column;
-}
+  }
 
-.alt-btn {
+  .alt-btn {
     gap: 10px;
     display: flex;
-    font-size: .7rem;
+    font-size: 0.7rem;
     font-weight: 300;
     padding: 15px 20px;
     border-radius: 4px;
     align-items: center;
+    cursor: pointer;
     justify-content: center;
+    background-color: transparent;
     color: var(--tertiary-color);
-    background: var(--primary-bg);
-    border:1px solid var(--tertiary-color);
-    
-}
+    border: 1px solid var(--tertiary-color);
+  }
 
-.alt-btn:hover {
+  .alt-btn:hover {
     color: var(--background-color);
-    background-color: var(--secondary-color);
-    border:1px solid var(--secondary-color);
-
-}
-
-.alt-icon {
-    height: 18px;
-    fill: var(--light-color);
-}
-
-.alt-btn:hover .alt-icon {
-    fill: var(--background-color);
-}
-
+    background-color: var(--tertiary-color);
+  }
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+  .form-l-wrapper {
+    width: 20%;
+  }
 
 
 }

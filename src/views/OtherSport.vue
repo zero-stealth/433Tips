@@ -27,6 +27,8 @@
           :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
           :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
           :time="card.time"
+          @click="showCard(card.teamA, card.teamB, card._id)"
+
         />
       </div>
     </template>
@@ -40,17 +42,31 @@
     </div>
     <OtherComponent />
   </div>
+  <sportComponent/>
 </template>
 <script setup>
 import OtherComponent from '../components/OtherComponent.vue'
-import Card from '../components/CardComponent.vue'
+import sportComponent from '../components/sportComponent.vue'
+import Card from '../components/cardcomponent.vue'
 import { ref, watchEffect, onMounted } from 'vue'
+import { useToast } from 'vue-toastification';
+import { useGameStore } from '../stores/game'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 const cardData = ref([])
+const toast = useToast();
+const router = useRouter()
 const currentDate = ref('')
+const gameStore = useGameStore()
 const selectedDate = ref(formatDate(new Date()))
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+
+
+const showCard = (gameA, gameB, cardID) => {
+  router.push({ name: 'Tips', params: { tipName: `${gameA} vs ${gameB} prediction` } })
+  gameStore.updateGameId(cardID)
+}
 
 
 const showDate = () => {
@@ -69,10 +85,10 @@ const predictions = async () => {
     const response = await axios.get(
       `${SERVER_HOST}/predictions/tips/freeTip/${selectedDate.value}`
     )
-    console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.message);
+
   }
 }
 

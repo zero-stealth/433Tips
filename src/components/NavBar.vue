@@ -1,8 +1,7 @@
 <template>
   <div class="nav-main">
     <div class="nav-container">
-      <span>433Tips</span>
-      <!-- <img src="../assets/logo-spp.png" alt="logo" class="logo-spp" @click="goHome" /> -->
+      <img src="../assets/logo.png" alt="logo" class="logo-spp" @click="goHome" />
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
         <RouterLink :to="{ name: 'Vip' }" class="nav-link">Vip</RouterLink>

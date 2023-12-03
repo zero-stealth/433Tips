@@ -65,31 +65,33 @@
     </div>
     <OtherComponent />
   </div>
+  <vipComponent/>
 </template>
 
 <script setup>
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import MoneyIcon from '../icons/payIcon.vue'
-import Card from '../components/CardComponent.vue'
+import { useToast } from 'vue-toastification';
+import Card from '../components/cardcomponent.vue'
+import vipComponent from '../components/vipComponent.vue';
 import { ref, onMounted, watchEffect, watch } from 'vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const selectedDate = ref(formatDate(new Date()))
+const currentDate = ref('')
 const router = useRouter()
 const username = ref(null)
+const toast = useToast();
 const cardData = ref([])
-const currentDate = ref('')
 const paid = ref(false)
 const offset = ref(0)
 
 console.log(paid.value)
 const updateAuthStatus = () => {
   const token = JSON.parse(localStorage.getItem('token'))
-
   username.value = localStorage.getItem('username')
-
-  // Clear cardData if token does not exist
   if (!token) {
     cardData.value = []
   }
@@ -136,17 +138,17 @@ const getPrediction = async () => {
 
   try {
     const response = await axios.get(
-      `https://four33tips.onrender.com/predictions/vipPredictions/vip/${selectedDate.value}`,
+      `${SERVER_HOST}/predictions/vipPredictions/vip/${selectedDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }
     )
-    console.log(response.data)
     cardData.value = response.data
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.message);
+
   }
 }
 
@@ -155,18 +157,17 @@ const getAccountDetails = async () => {
   const id = localStorage.getItem('id')
 
   try {
-    const response = await axios.get(`https://four33tips.onrender.com/auth/${id}`, {
+    const response = await axios.get(`${SERVER_HOST}/auth/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
-    // console.log(response.data)
     username.value = response.data.username
     paid.value = response.data.paid
-    // console.log(response.data.paid)
     localStorage.setItem('paid', paid.value)
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.message);
+
   }
 }
 

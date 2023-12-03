@@ -27,6 +27,8 @@
           :teamBscore="card.teamBscore"
           :time="card.time"
           class="card-game-a"
+          @click="showCard(card.teamA, card.teamB, card._id)"
+
         />
       </div>
       </div>
@@ -39,14 +41,25 @@
   </div>
 </template>
 <script setup>
-import CardGame from '../components/CardGame.vue'
 import { ref, watchEffect, watch, onMounted } from 'vue'
+import CardGame from '../components/CardGame.vue'
+import { useGameStore } from '../stores/game'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 const cardData = ref([])
+const router = useRouter()
 const currentDate = ref('')
+const gameStore = useGameStore()
 const selectedDate = ref(formatDate(new Date()))
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+
+
+
+const showCard = (gameA, gameB, cardID) => {
+  router.push({ name: 'JackpotTip', params: { jackpotName: `${gameA} vs ${gameB} prediction` } })
+  gameStore.updateGameId(cardID)
+}
 
 
 const showDate = () => {

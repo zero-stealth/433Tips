@@ -8,12 +8,12 @@
     --green-color: #458700;
     --grey-color:#8A8F98;
     --light-color:#0d1529;
-    --background-color: #fff;
+    --background-color: #d8d8d8;
     --tertiary-color: #466598;
     --primary-color: #060c1b;
-    --secondary-color: #00eda1; /* Mixed shade of orange and red */
+    --secondary-color: #00eda1; 
     --background: linear-gradient(90deg, rgba(13,20,38,1) 35%, rgba(70,101,152,1) 100%);
-    --button-bg:  linear-gradient(90deg, rgba(70,101,152,1) 0%, rgba(0,237,161,1) 100%);
+    --button-bg:  linear-gradient(90deg, rgb(70, 101, 152) 0%, rgba(0,237,161,1) 100%);
 
     margin: 0;
     padding: 0;
@@ -85,7 +85,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--secondary-color);
+  background-color: var(--tertiary-color);
   border: 4px solid var(--light-primary-color);
 }
 
@@ -94,6 +94,7 @@
   /* Works on Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
   }
 
 

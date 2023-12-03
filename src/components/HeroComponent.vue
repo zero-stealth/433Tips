@@ -3,53 +3,43 @@
     <div class="hero-s-contain">
       <div class="hero-info">
         <h1>
-          Boost Your Success: Access Free Tips, Jackpot Predictions, and VIP Insights to Elevate
-          Your Game and Win Daily.
+          GET AMAZING FREE TIPS AND JACKPOT PREDICTIONS WITH US ON A DAILY 
         </h1>
         <p>
-          Witness excellence in football and sports predictions. Lean back and embrace effortless
-          success while we champion the complexities.
+          We provide the best betting tips and predictions for football and sports. Sit
+          back, relax, and enjoy the benefits. We've taken care of all the hard work for you.
         </p>
       </div>
-      <div class="hero-img">
-        <canvas id="canvas3d" class="canvas-s"></canvas>
-      </div>
+      <div
+        @mousemove="handleMouseMove"
+        class="hero-img"
+        :style="`background-image: url(${background}); transform: rotate(${rotation}deg);`"
+      ></div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
-import { Application } from '@splinetool/runtime'
+import { ref } from 'vue'
+import background from '../assets/background1.png'
 
-const urls = [
-  'https://prod.spline.design/lZh1e9ZavteNS3gy/scene.splinecode',
-  'https://prod.spline.design/CuHrlb7QPJeXBE2S/scene.splinecode',
-  'https://prod.spline.design/jxH1-fr45MZbqHr7/scene.splinecode',
-  'https://prod.spline.design/i7kqqLx8Xewv7Whv/scene.splinecode'
-]
 
-const currentIndex = ref(0)
 
-onMounted(() => {
-  const canvas = document.getElementById('canvas3d')
-  if (canvas) {
-    const spline = new Application(canvas)
-    setInterval(() => {
-      const newIndex = (currentIndex.value + 1) % urls.length
-      currentIndex.value = newIndex
-      spline.load(urls[newIndex])
-    }, 10000) // 10 seconds interval
-  } else {
-    console.error('Canvas element not found.')
-  }
-})
+const rotation = ref(0)
+
+const handleMouseMove = (event) => {
+  const { offsetX, offsetY } = event
+  const { width, height } = event.target.getBoundingClientRect()
+
+  const rotationX = ((offsetY - height / 2) / height) * 10
+  const rotationY = -((offsetX - width / 2) / width) * 10
+
+  rotation.value = rotationX + rotationY
+}
 </script>
 
 <style>
 @import '../style/nav.css';
-
-/* Add rotation transition */
 .hero-img {
   transition: transform 0.2s ease-in-out;
 }

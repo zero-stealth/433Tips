@@ -1,22 +1,27 @@
 <template>
-  <div>
-    <div class="form-container-h">
-      <h1>Sport</h1>
-    </div>
+  <div class="form-con">
     <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
       <div class="form-wrapper">
         <h1>Team A</h1>
         <div class="form-group">
           <label for="teamA">Name:</label>
-          <input v-model="teamA" type="text" class="form-g-input" placeholder="serena" id="teamA" />
+          <input v-model="teamA" type="text" class="form-g-input" placeholder="Manchester" id="teamA" />
         </div>
         <div class="form-group">
-          <label for="teamAIcon">Player image:</label>
+          <label for="teamAIcon">Logo:</label>
           <input @change="handleTeamALogo" type="file" class="form-g-input" id="teamAIcon" accept="image/*" />
         </div>
         <div class="form-group">
-          <label for="formationA">Form:</label>
-          <input v-model="formationA" type="text" class="form-g-input" placeholder="l-w-l-w" id="formationA" />
+          <label for="jackpot">Jackpot name:</label>
+          <input v-model="jackpot" type="text" class="form-g-input" placeholder="jackpot name" id="jackpot" />
+        </div>
+        <div class="form-group">
+          <label for="formationA">Formation:</label>
+          <input v-model="formationA" type="text" class="form-g-input" placeholder="l-w-d-w" id="formationA" />
+        </div>
+        <div class="form-group">
+          <label for="Status">Status:</label>
+          <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
         </div>
         <div class="form-group">
           <label for="teamAPosition">Position:</label>
@@ -48,21 +53,31 @@
           <label for="date">Match Date:</label>
           <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
         </div>
+        <div class="form-group">
+          <label for="category">Game category:</label>
+          <select v-model="category" class="form-g-input" id="category">
+            <option disabled value="">Choose games category</option>
+            <option value="Jackpot">Jackpot</option>
+            <option value="Freetips">Freetips</option>
+            <option value="Sports">Other sports</option>
+            <option value="Vip">VIP</option>
+          </select>
+        </div>
         <button type="submit" class="btn-f-f f-desktop">Submit</button>
       </div>
       <div class="form-wrapper">
         <h1>Team B</h1>
         <div class="form-group">
           <label for="teamB">Name:</label>
-          <input v-model="teamB" type="text" class="form-g-input" placeholder="william" id="teamB" />
+          <input v-model="teamB" type="text" class="form-g-input" placeholder="Arsenal" id="teamB" />
         </div>
         <div class="form-group">
-          <label for="teamBIcon">Player image:</label>
+          <label for="teamBIcon">Logo:</label>
           <input @change="handleTeamBLogo" type="file" class="form-g-input" id="teamBIcon" accept="image/*" />
         </div>
         <div class="form-group">
           <label for="formationB">Form:</label>
-          <input v-model="formationB" type="text" class="form-g-input" placeholder="l-w-l-w" id="formationB" />
+          <input v-model="formationB" type="text" class="form-g-input" placeholder="l-w-d-w" id="formationB" />
         </div>
         <div class="form-group">
           <label for="teamBPosition">Position:</label>
@@ -79,11 +94,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+import { ref , watch } from 'vue';
 import axios from 'axios';
 
 const teamA = ref('');
 const teamB = ref('');
+const category = ref(null)
 const teamAIcon = ref(null);
 const teamBIcon = ref(null);
 const leagueIcon = ref(null);
@@ -93,12 +110,35 @@ const teamAPosition = ref('');
 const teamBPosition = ref('');
 const time = ref('');
 const league = ref('');
-const date = ref('');
+const jackpot = ref('');
+const status = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
+const date = ref('');
 const tip = ref('');
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+const url = ref(null);
 
+watch(category, () => {
+  switch (category.value) {
+    case 'Sports':
+    url.value = `${SERVER_HOST}/sports/create/Sports`
+      break;
+      case 'Jackpot':
+    url.value = `${SERVER_HOST}/predictions/create/jackpot-prediction/jackpot`
+      break;
+      case 'Freetips':
+    url.value = `${SERVER_HOST}/predictions/create/tip/freeTip`
+      break;
+      case 'Vip':
+    url.value = `${SERVER_HOST}/predictions/create/vip`
+      break;
+      case null || '':
+      alert('No empty fields allowed');
+      break;
+    default:
+      break;
+  }
+});
 
 function handleFileUpload(event, targetRef) {
   const file = event.target.files[0];
@@ -119,6 +159,9 @@ function handleLeagueLogo(event) {
   handleFileUpload(event, leagueIcon);
 }
 
+
+
+
 async function handleSubmit() {
   if (
     teamA.value.trim() !== '' &&
@@ -129,13 +172,14 @@ async function handleSubmit() {
     teamAscore.value !== null &&
     teamB.value.trim() !== '' &&
     teamBIcon.value !== null &&
+    category.value !== null &&
     formationB.value.trim() !== '' &&
     teamBPosition.value.trim() !== '' &&
     teamBscore.value !== null &&
     time.value.trim() !== '' &&
     tip.value !== null &&
-    date.value !== null &&
-    league.value !== null 
+    league.value !== null &&
+    date.value !== null 
   ) {
     const user = JSON.parse(localStorage.getItem('token'));
     try {
@@ -152,12 +196,13 @@ async function handleSubmit() {
       formData.append('teamBPosition', teamBPosition.value);
       formData.append('teamBscore', teamBscore.value);
       formData.append('time', time.value);
+      formData.append('status', status.value);
       formData.append('league', league.value);
-      formData.append('date', date.value)
+      formData.append('date', date.value);
       formData.append('tip', tip.value);
 
       const response = await axios.post(
-        `${SERVER_HOST}/sports/create/Tennis`,
+        `${url.value}`,
         formData,
         {
           headers: {
@@ -166,8 +211,7 @@ async function handleSubmit() {
           },
         }
       );
-      alert('tip posted')
-      // console.log(response.data);
+      alert('game posted')
     } catch (err) {
       console.log(err);
     }

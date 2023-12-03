@@ -1,91 +1,80 @@
 <template>
-  <div
-    class="auth-container">
+  <div class="auth-container">
     <div class="form-l-wrapper">
       <h1>Create an account</h1>
       <form @submit.prevent="create" class="l-form">
-        <input type="text" class="input-l" placeholder="Full Name" v-model="username" />
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
-        <select class="input-l" v-model="selectedCountry">
-          <option disabled value="">Select a country</option>
-          <option v-for="country in countriesData" :key="country.code" :value="country.code">
-            {{ country.name }}
-          </option>
-        </select>
-        <input type="password" class="input-l" placeholder="Password" v-model="password" />
-        <input type="password" class="input-l" placeholder="Confirm password" v-model="confirmPassword" />
-        <p>{{ errMsg }}</p>
+        <input
+          type="password"
+          class="input-l"
+          placeholder="Password (8 characters, uppercase, lowercase, number)"
+          v-model="password"
+        />
+        <input type="password" class="input-l" placeholder="Confirm Password" v-model="confirmPassword" />
+        <p v-if="errMsg" class="error-message">{{ errMsg }}</p>
         <button class="btn-f" type="submit">Sign up</button>
       </form>
       <span>or</span>
       <div class="l-alternatives">
-        <button class="alt-btn" @click="login">
-          Login
-        </button>
+        <button class="alt-btn" @click="login">Login</button>
+        <span @click="goHome()" class="reverse">Go back home</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import axios from 'axios'
-import { useRouter } from 'vue-router'
-import countriesData from '../components/countries.json'
+import { ref } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '../stores/auth';
+import { useToast } from 'vue-toastification';
 
-const selectedCountry = ref('')
-const router = useRouter()
-const username = ref('')
-const password = ref('')
-const errMsg = ref('')
-const email = ref('')
-const confirmPassword = ref('')
+
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
-
+const authStore = useAuthStore();
+const router = useRouter();
+const toast = useToast();
+const password = ref('');
+const errMsg = ref('');
+const email = ref('');
 
 const reset = () => {
-  email.value = ''
-  password.value = ''
-  username.value = ''
-  selectedCountry.value = ''
-  confirmPassword.value = ''
-}
+  email.value = '';
+  password.value = '';
+};
 
 const create = async () => {
-  if (username.value !== '' && password.value !== '') {
+  if (email.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post( `${SERVER_HOST}/auth/register`, {
-        username: username.value,
+      const response = await axios.post(`${SERVER_HOST}/auth/register`, {
         email: email.value,
         password: password.value,
-        country: selectedCountry.value,
-        confirmPassword: confirmPassword.value,
-        selectedCountry: selectedCountry.value
-      })
-      const token = response.data.token
-      const isPaid = response.data.paid
-      const id = response.data._id
-      localStorage.setItem('token', token)
-      localStorage.setItem('paid', isPaid)
-      localStorage.setItem('id', id)
-      router.push({ name: 'Vip' })
+      });
+
+      const token = response.data.token;
+      localStorage.setItem('email', email.value)
+      authStore.updateToken(JSON.stringify(token));
+      router.push({ name: 'Home' });
+      toast.success('Account created successfully!');
     } catch (error) {
-      errMsg.value = 'Invalid email or password';
-      alert(errMsg.value)
+      toast.error(error.response.data.message);
     }
   } else {
-    errMsg.value = 'Write something'
-    alert(errMsg.value)
-    reset()
+    toast.error('Please enter all the required fields');
+    reset();
   }
-}
-
+};
 
 const login = () => {
-  router.push({ name: 'Login' })
+  router.push({ name: 'Login' });
+};
+
+const goHome = () => {
+  router.push({ name: 'Home' });
 }
 </script>
 
 <style>
-@import '../style/auth.css';
+@import '@/style/auth.css';
 </style>

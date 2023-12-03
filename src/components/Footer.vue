@@ -127,6 +127,7 @@ const openYoutube = () => {
             </div>
             <div class="d2-con">
               <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">Disclaimer</RouterLink>
+              <RouterLink :to="{ name: 'FAQ' }" class="nav-link">FAQ</RouterLink>
               <RouterLink :to="{ name: 'Policy' }" class="nav-link">Policy</RouterLink>
               <RouterLink :to="{ name: 'Refund' }" class="nav-link">Refund policy</RouterLink>
               <RouterLink :to="{ name: 'Terms' }" class="nav-link">Terms & Condition</RouterLink>

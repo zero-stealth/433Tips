@@ -29,7 +29,8 @@
             :formationA="formatFormation(card.formationA)"
             :formationB="formatFormation(card.formationB)"
             :time="card.time"
-            @click="showCard(card._id)"
+            @click="showCard(card.teamA, card.teamB, card._id)"
+
           />
         </div>
       </template>
@@ -43,38 +44,43 @@
       <h1>Available Predictions</h1>
     </div>
     <OtherComponent />
-    <Upcoming />
     <AboutComponent />
   </div>
 </template>
 <script setup>
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+import { useGameStore } from '../stores/game'
+import { useToast } from 'vue-toastification';
 import Card from '../components/CardComponent.vue'
-import Upcoming from '../components/UpcomingPicks.vue'
 import HeroComponent from '../components/HeroComponent.vue'
 import AboutComponent from '../components/aboutComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const router = useRouter()
 const selectedDate = ref(formatDate(new Date()))
+const gameStore = useGameStore()
 const currentDate = ref('')
+const router = useRouter()
+const toast = useToast();
 const cardData = ref([])
 
-const showCard = (cardID) => {
-  router.push({ name: 'Tips', params: { id: cardID } })
+const showCard = (gameA, gameB, cardID) => {
+  router.push({ name: 'Tips', params: { tipName: `${gameA} vs ${gameB} prediction` } })
+  gameStore.updateGameId(cardID)
 }
+
+
 
 const predictions = async () => {
   try {
     const response = await axios.get(
       `${SERVER_HOST}/sports/sport/Tennis/${currentDate.value}`
     )
-    console.log(response.data)
     cardData.value = response.data
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.message);
+
   }
 }
 

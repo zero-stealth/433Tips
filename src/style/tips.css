@@ -14,25 +14,34 @@
 
   .form-as {
     gap: 20px;
-    padding: 10px;
     display: flex;
-    border-radius: 12px;
+    min-height: 200px;
     flex-direction: column;
-    background-color: var(--tertiary-color);
   }
 
   .team-header {
     gap: 10px;
     display: flex;
+    padding: 15px;
     align-items: center;
+    justify-content: center;
+    background-color: var(--tertiary-color);
   }
+
+  .team-header h1 {
+    font-size: .8rem;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
 
   .Cf-p {
     gap: 20px;
+    padding: 10px;
     display: flex;
-    align-items: start;
-    justify-content: start;
+    align-items: center;
     flex-direction: column;
+    justify-content: space-between;
   }
 
   .cp-sp {
@@ -76,33 +85,30 @@
 
   .team-form-a {
     gap: 20px;
-    padding: 10px;
     display: flex;
     overflow: hidden;
-    border-radius: 12px;
     flex-direction: column;
-    background-color: var(--tertiary-color);
   }
 
-  .team-header h1 {
-    font-size: 1.5rem;
-    text-transform: capitalize;
-  }
-
+ 
   .tbl-slider {
     width: 100%;
-    overflow-y: hidden;
-    overflow-x: auto;
+    background-color: var(--tertiary-color);
+
   }
 
-  table {
+  .tbl-slider table {
     width: 100%;
+    font-size: 0.7rem;
+    border: 1px solid var(--primary-color);
   }
 
   td {
     padding: 8px;
     font-size: 1rem;
     font-weight: 100;
+    border: 1px solid var(--primary-color);
+
     color: var(--background-color);
   }
 
@@ -113,7 +119,6 @@
   }
 
   .table-formation span {
-    font-size: 0.8rem;
     text-transform: capitalize;
   }
 
@@ -126,11 +131,11 @@
 
   th {
     padding: 10px;
-    font-size: 0.8rem;
     font-weight: 300;
     text-align: start;
     text-transform: uppercase;
     color: var(--background-color);
+    background-color: var(--primary-color);
   }
 
   /* table css  */
@@ -141,12 +146,10 @@
   .upcoming-in {
     padding: 30px 20px;
   }
-
-  .form-as {
-    padding: 30px;
+  .Cf-p {
+    flex-direction: row;
+    justify-content: space-between;
   }
 
-  .team-form-a {
-    padding: 30px;
-  }
+ 
 }

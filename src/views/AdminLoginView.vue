@@ -1,6 +1,5 @@
 <template>
-  <div
-    class="auth-container">
+  <div class="auth-container">
     <div class="form-l-wrapper">
       <h1>{{ title }}</h1>
       <form @submit.prevent="login" class="l-form" v-if="!resetPage">
@@ -12,9 +11,8 @@
       </form>
       <form @submit.prevent="resetAuth" class="l-form" v-else>
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
-        <input type="password" class="input-l" placeholder="Password" v-model="password" />
         <p>{{ errMsg }}</p>
-        <button class="btn-f" type="submit">Reset</button>
+        <button class="btn-f" type="submit">Request reset</button>
       </form>
       <span>or</span>
       <div class="l-alternatives">
@@ -25,20 +23,31 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import googleIcon from '../icons/googleIcon.vue'
+import { useAuthStore } from '../stores/auth'
+import { useToast } from 'vue-toastification';
 
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
+
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+const authStore = useAuthStore()
 const resetPage = ref(false)
 const router = useRouter()
-const password = ref('')
-const title = ref('Login')
+const title = ref('login')
+const toast = useToast();
 const errMsg = ref('')
 const email = ref('')
+const password = ref('')
+
+const reset = () => {
+  password.value = ''
+  email.value = ''
+}
+
+
+
 
 const login = async () => {
   if (email.value !== '' && password.value !== '') {
@@ -48,32 +57,30 @@ const login = async () => {
         password: password.value
       });
 
-      console.log(response.data); 
-      
-      const token = response.data.token;
-      if (token) {
-        const isAdmin = response.data.isAdmin;
-        const adminusername = response.data.username;
-
-        localStorage.setItem('admin', isAdmin);
-        localStorage.setItem('username', adminusername);
-        localStorage.setItem('token', JSON.stringify(token));
-
-        router.push({ name: 'Panel' });
+      const token = response.data.token
+      const isAdmin = response.data.isAdmin
+      localStorage.setItem('email', email.value)
+      authStore.updateToken(JSON.stringify(token))
+      if (isAdmin) {
+        authStore.updateAdmin(isAdmin)
+        localStorage.setItem('admin', isAdmin)
+        router.push({ name: 'Panel' })
       } else {
-        errMsg.value = 'Invalid email or password';
+        router.push({ name: 'Home' })
+
       }
     } catch (error) {
-      console.error(error);
-      errMsg.value = 'Login failed. Please check your email and password.';
+      toast.error(error.response.data.message);
     }
   } else {
-    errMsg.value = 'Please enter your email and password.';
-    alert(errMsg.value);
+    toast.error('Please enter all the required fields');
+
+    reset();
   }
 };
+
 const forgot = () => {
-  title.value = 'Reset Your Account'
+  title.value = 'write your email address'
   resetPage.value = !resetPage.value
 }
 
@@ -82,21 +89,24 @@ const create = () => {
 }
 
 const resetAuth = async () => {
-  if (email.value !== '' && password.value !== '') {
+  if (email.value !== '') {
     try {
-      const response = await axios.post('${SERVER_HOST}/auth/reset', {
+      const response = await axios.post(`${SERVER_HOST}/auth/reset`, {
         email: email.value,
-        password: password.value
       })
-      console.log(response.data) // Handle the response data as needed
-      resetPage.value = !resetPage.value
+      errMsg.value =  response.data.message
+      router.push({ name: 'Reset' })
+      alert(errMsg.value)
     } catch (error) {
-      errMsg.value = error
+      errMsg.value = 'Failed to send reset code. Please try again.'
     }
   } else {
-    errMsg.value = 'Write something'
+    errMsg.value = 'Write your email something'
+    reset()
   }
 }
+
+
 
 </script>
 

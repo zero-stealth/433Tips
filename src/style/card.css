@@ -1,6 +1,6 @@
 @media screen {
   .card-comp {
-    width: fit-content;
+    width: 100%;
     display: flex;
     padding: 10px;
     border-radius: 40px;
@@ -259,6 +259,9 @@
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+  .card-comp {
+    width: fit-content;
+  }
   .card-container {
     width: 400px;
     height: fit-content;

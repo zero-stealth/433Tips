@@ -15,6 +15,7 @@
       </div>
     </div>
   </div>
+  <jackpotComponent/>
 </template>
 <script setup>
 import axios from 'axios';
@@ -22,12 +23,15 @@ import news from '../components/newsComponent.vue'
 import league from '../components/league.vue'
 import adpanel from '../components/adPanel.vue'
 import gamePanel from '../components/gamePanel.vue'
+import jackpotComponent from '../components/jackpotComponent.vue';
 import { ref, onMounted, watch } from 'vue';
+import { useToast } from 'vue-toastification';
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 const upcomingDates = ref('');
 const currentDate = ref('');
 const cardData = ref([]);
+const toast = useToast();
 
 async function getPrediction() {
   const token = JSON.parse(localStorage.getItem('token'));
@@ -42,9 +46,9 @@ async function getPrediction() {
       }
     );
     cardData.value = response.data.length > 0 ? [response.data] : []; // Set the data or an empty array
-    console.log(cardData.value);
   } catch (err) {
-    console.log(err);
+    toast.error(err.response.data.message);
+
   }
 }
 

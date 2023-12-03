@@ -1,5 +1,7 @@
 @media screen {
-
+  .main-bet {
+    padding: 10px 5px;
+  }
 
   .match-table {
     overflow: hidden;
@@ -24,12 +26,14 @@
 
   .match-table th {
     font-weight: 500;
+
   }
 }
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
   .main-bet {
-    min-height: 80%;
+    padding: 10px;
+    min-height: 100%;
   }
 }

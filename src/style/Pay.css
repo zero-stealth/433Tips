@@ -1,263 +1,102 @@
 @media screen {
-  .pay-monitor {
-    display: flex;
-    flex-direction: column;
-    color: var(--background-color);
-    background-color: var(--primary-color);
-
-  }
-
-  .pay-contain {
-    gap: 20px;
-    height: 100%;
-    display: flex;
+  .payment-layout {
+    height: 100vh;
     padding: 10px;
-    flex-direction: column;
-
-
-  }
-
-  .pay-header {
-    gap: 10px;
-    display: flex;
-    padding: 15px 10px;
-    border-radius: 8px;
-    flex-direction: column;
-    background-color: var(--fade-color);
-
-  }
-
-  .sport-s-contain {
-    gap: 10px;
     display: flex;
     flex-direction: column;
   }
 
-  .sport-s-contain p, .pay-main p {
-    font-size: .8rem;
-    font-weight: 300;
-    color: var(--secondary-color);
-  }
-
-  .game-tips {
-    gap: 10px;
-    display: flex;
-    align-items: center;
-  }
-
-  .game-tips span {
-    cursor: pointer;
-    font-weight: 300;
-    font-size: 0.8rem;
-    text-decoration: underline;
-    color: var(--secondary-color);
-  }
-
-  .sport-selector {
-    gap: 10px;
-    padding: 10px;
-    font-weight: 300;
-    border-radius: 4px;
-    color: var(--grey-color);
-    border: 1px solid var(--light-color);
-    background-color: var(--primary-color);
-  }
-
-  .pay-op {
-    padding: 10px;
-  }
-
-  .icon-pay {
-    width: 24px;
-    height: 24px;
-    fill: var(--background-color);
-  }
-
-  .sport-label {
+  .payment-layout h1 {
     font-size: 1rem;
-    font-weight: 300;
-  }
-
-  .pay-title {
-    gap: 10px;
-    display: flex;
-    align-items: center;
-  }
-
-  .pay-title span {
-    font-size: 1rem;
-    font-weight: 300;
-  }
-
-  .pay-main {
-    gap: 10px;
-    display: flex;
-    padding: 10px;
-    border-radius: 8px;
-    flex-direction: column;
-    background: var(--light-color);
-  }
-
-  .pay-btn {
-    padding: 10px;
-    font-size: 0.8rem;
-    font-weight: 100;
-    border-radius: 4px;
-    color: var(--background-color);
-    background: var(--secondary-color);
-  }
-
-  .pay-info {
-    gap: 10px;
-    display: flex;
-    padding: 20px;
-    border-radius: 8px;
-    padding-bottom: 20%;
-    flex-direction: column;
-    background: var(--button-bg);
-  }
-
-  .pay-info h1 {
     text-align: center;
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-
-  .pay-info span {
-    cursor: pointer;
-    font-weight: 600;
-    font-style: italic;
-    color: var(--secondary-color);
-  }
-
-  .pay-info p, ul {
-    font-size: .8rem;
-    font-weight: 300;
-    list-style: square;
-  }
-
-  .step-pay {
-    gap: 5px;
-    display: flex;
-    padding: 20px 0;
-    text-align: center;
-    flex-direction: column;
-    border-top: 1px solid var(--light-color);
-  }
-
-
-  .step-pay h1 {
-    font-size: 1rem;
     text-decoration: underline;
-
-  }
-  .step-pay h2 {
-    font-size: 1rem;
-
+    text-transform: capitalize;
   }
 
-  .method-head {
+  .Available-payments {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 100px;
+    justify-content: space-between;
+  }
+
+  .selected {
+    width: fit-content;
+    border-bottom: 2px solid var(--red-color);
+  }
+
+  .payment-img-card {
+    height: 80px;
+    width: 100px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
-  .method-head h1 {
-    text-decoration: underline;
-    font-size: 1.2rem;
-    font-weight: 600;
+
+  .payment-image {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: center;
   }
 
-  .method-pay {
+  .paypal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .pay-input-container {
     gap: 10px;
     display: flex;
-    padding: 20px 10px;
     flex-direction: column;
-    border-top: 1px solid var(--light-color);
+    justify-content: space-between;
   }
 
-  .pay-info-spx {
+  .pay-controller {
     gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pay-input {
+    border: none;
     padding: 10px;
+    color: var(--background-color);
+    background-color: var(--light-color);
+    border: 1px solid var(--tertiary-color);
+  }
+
+  .pay-input::placeholder {
+    color: var(--tertiary-color);
+    text-transform: capitalize;
+  }
+
+  .btn-wp,
+  .btn-pay {
+    width: 100%;
     display: flex;
-    border-radius: 12px;
-    flex-direction: column;
-    background: var(--button-bg);
-  }
-  .pay-info-spx h1 {
-    font-size: 1rem;
-    text-decoration: underline;
+    align-items: center;
+    justify-content: center;
   }
 
-  .pay-info-spx p {
-    font-size: .8rem;
+  .btn-pay {
+    padding: 8px;
+    color: var(--background-color);
+    background-color: var(--red-color);
   }
-
-  .pay-info-spx h1 span {
-    color: var(--secondary-color);
-  }
-
-  .method-pay h1 {
-    text-decoration: underline;
-    font-size: 1rem;
-    font-weight: 600;
-  }
-
-  .Question {
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .Question-con {
-    gap: 10px;
-    display: flex;
-    padding: 20px 10px;
-    text-align: center;
-    flex-direction: column;
-    border-top: 1px solid var(--light-color);
-  }
-
-  .Question-con h1 {
-    font-size: 1rem;
-    font-weight: 600;
-  }
-
-  
 }
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-  .pay-header {
+  .payment-layout {
     padding: 20px;
   }
 
-  .pay-contain {
-    padding: 20px;
-  }
-
-  .pay-main {
-    padding: 20px;
-  }
-
-  .step-pay {
+  .payment-layout h1 {
     text-align: start;
   }
-  
-  .pay-info {
-    padding-bottom:0;
-  }
-  .pay-info h1 {
-    text-align: start;
-  }
-
-  .method-pay {
-    padding: 20px;
-  }
-
-  .Question-con {
-    padding: 20px;
-    text-align: start;
-  }
-
 }

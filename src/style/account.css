@@ -1,45 +1,37 @@
 @media screen {
   .Account-container {
-    gap: 30px;
+    gap: 20px;
     display: flex;
     width: inherit;
     flex-direction: column;
   }
 
-  .Account-header {
-    padding: 20px 0;
-    font-size: 0.7rem;
-    color: var(--light-color);
-    text-transform: capitalize;
+  .Account-card.selected {
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
   }
 
-  .Account-header span {
-    font-size: 1.5rem;
-    font-weight: 600;
+  .selected .icon-acc {
+    fill: var(--background-color);
   }
-
-  .Account-header h1 {
-    font-weight: 400;
-  }
-
   .Account-game-p {
-    padding: 10px;
     gap: 20px;
+    padding: 10px;
     display: flex;
     height: inherit;
     overflow: hidden;
     overflow-x: scroll;
     overflow-y: hidden;
-    background-color: var(--dark-primary-color);
+    background-color: var(--background-color);
   }
 
   .Account-info {
     gap: 10px;
+    padding: 10px;
     display: flex;
-    overflow-y: hidden;
     overflow: hidden;
-    align-items: center;
     overflow-x: auto;
+    align-items: center;
     justify-content: space-between;
   }
 
@@ -47,16 +39,16 @@
     width: 200px;
     display: flex;
     padding: 10px;
+    cursor: pointer;
     min-width: 200px;
-    border-radius: 8px;
     flex-direction: column;
-    background-color: var(--dark-primary-color);
+    color: var(--background-color);
+    background-color: var(--fade-color);
   }
 
   .Account-card h5 {
     font-size: 0.8rem;
     text-transform: capitalize;
-    color: var(--background-color);
   }
 
   .Account-card-icon {
@@ -68,36 +60,41 @@
   .Account-card-icon h1 {
     font-size: 2rem;
     font-weight: 600;
-    color: var(--background-color);
   }
 
   .icon-acc {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     fill: var(--background-color);
   }
 
   .acc-m {
-    padding: 20px;
-    height: 100%;
-    min-height: 100%;
-    min-width: 100%;
     overflow: hidden;
     overflow-x: auto;
-    overflow-y: auto;
-    border-radius: 8px;
-    background-color: var(--dark-primary-color);
+    overflow-y: scroll;
+  }
+
+  .hide-ds {
+    display: none;
+  }
+
+  .hide-mb {
+    display: flex;
   }
 
   .gm-m {
     overflow-x: auto;
     background-color: var(--dark-primary-color);
-
   }
 
   .acc-m thead {
+    font-size: 0.7rem;
     background-color: var(--primary-color);
     color: var(--background-color);
+  }
+
+  .acc-m tbody {
+    font-size: 0.7rem;
   }
 
   .acc-m th,
@@ -107,20 +104,17 @@
 
   .acc-m td {
     font-weight: 200;
-    text-align: center;
+    cursor: pointer;
     border-bottom: none;
     text-transform: capitalize;
     color: var(--background-color);
     border: 3px solid var(--primary-color);
     background-color: var(--light-primary-color);
-
   }
 
   .acc-m th {
-    
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--light-color);
   }
 
   .Account-tbl-img {
@@ -157,21 +151,20 @@
   }
 
   .Account-mode {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 360%;
-    background-color: var(--light-primary-color);
+    background-color: var(--background-color);
   }
 
   .Account-toggle span {
-    font-size: .8rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    color: var(--light-color);
   }
 
   .on {
     display: flex;
-    background-color: var(--secondary-color);
+    background-color: var(--tertiary-color);
   }
 
   .on span {
@@ -191,11 +184,10 @@
   }
 
   .icon-delete {
-    width:24px;
+    width: 24px;
     height: 24px;
     fill: var(--red-color);
   }
- 
 }
 
 .game-edit {
@@ -223,11 +215,21 @@
   display: none;
 }
 
-
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-.acc-m {
-  height: 428px;
-}
+  .acc-m {
+    max-height: 500px;
+  }
 
+  .acc-m td {
+    text-align: center;
+  }
+
+  .hide-ds {
+    display: flex;
+  }
+
+  .hide-mb {
+    display: none;
+  }
 }

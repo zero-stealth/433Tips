@@ -9,17 +9,17 @@ const router = createRouter({
       name: 'Home',
       component: HomeView,
       meta: {
-        title: '433tip - Free daily jackpot predictions and betting tips',
+        title: '433Tips - Sports Betting Predictions & Tips',
         description: '433tip provides accurate, free Jackpot betting predictions and other sports on a daily basis',
       },
     },
     {
-      path: '/naruto',
-      name: 'naruto',
+      path: '/panel',
+      name: 'Panel',
       component: () => import('../views/PanelView.vue'),
-      meta: {
-        isAdmin: true
-      }
+      // meta: {
+      //   isAdmin: true
+      // }
     },
     {
       path: '/ax-login',
@@ -63,8 +63,8 @@ const router = createRouter({
       name: 'Vip',
       component: () => import('../views/VipView.vue'),
       meta: {
-        title: "Vip - Get 99% accurate jackpot and other sport predictions",
-        description: "Get vip tips with 99% accuracy at affordable subcription ",
+        title: "433Tips VIP - Exclusive Sports Betting Predictions", 
+        description: "Join 433Tips VIP for exclusive sports betting predictions and tips. Elevate your betting game with our premium insights.",
       },
       // meta: { auth: true }
     },
@@ -72,17 +72,17 @@ const router = createRouter({
       path: '/free-tip',
       name: 'FreeTip',
       component: () => import('../views/FreeView.vue'),
-      meta: {
-        title: "FreeTip - Enjoy our free football and other sport betting tips",
+      meta: { 
+        title: "FreeTip - Free expert analysis of sports matches",
         description: "We offer freetips on football, tennis. basketball among other sports for you to enjoy freely",
       },
     },
     {
-      path: '/game/:gameName',
-      name: 'Game',
-      component: () => import('../views/GameView.vue'),
+      path: '/tip/:tipName',
+      name: 'Tips',
+      component: () => import('../views/TipsView.vue'),
       meta: {
-        title: "game - Game results and more info",
+        title: "Tips - tips results and more info",
         description: "Providing indepth game information for better analysis and informed betting descions",
       },
       props: true,
@@ -92,17 +92,27 @@ const router = createRouter({
       name: 'Jackpot',
       component: () => import('../views/JackpotView.vue'),
       meta: {
-        title: "Jackpot - Jackpot prediction made easier",
-        description: "Through indepth analysis we ensure you walk away with bonuses and also jackpot winning every week",
+        title: "433Tips - Jackpots Predictions & Tipss",
+        description: "Win big with 433Tips' jackpot predictions and tips. Get expert insights to improve your chances of hitting the jackpot.",
       },
+    },
+    {
+      path: '/jackpotTip/:jackpotName',
+      name: 'JackpotTip',
+      component: () => import('../views/JackpotTipsView.vue'),
+      meta: {
+        title: "433Tips - Jackpots Predictions & Tips",
+        description: "Win big with 433Tips' jackpot predictions and tips. Get expert insights to improve your chances of hitting the jackpot.",
+      },
+      props: true,
     },
     {
       path: '/other-sports',
       name: 'Sport',
       component: () => import('../views/OtherSport.vue'),
       meta: {
-        title: "Other Sports - Free betting tips for basketball, tennis, rugby, hockey among others",
-        description: "Get all sports prediction from basketball, tennis. rugby, hockey etc all in one place with high odds of winning ",
+        title: "433Tips - Betting Tips for Various Sports",
+        description: "Explore betting tips for various sports at 433Tips. From basketball to tennis, cricket to rugby, get expert predictions for your favorite sports.",
       },
     },
     {
@@ -130,6 +140,15 @@ const router = createRouter({
       meta: {
         title: "Policy - Our policy",
         description: "Know our policy to get better services and avoid being banned for misconduct",
+      },
+    },
+    {
+      path: '/FAQ',
+      name: 'FAQ',
+      component: () => import('../components/FAQComponent.vue'),
+      meta: {
+        title: "433Tips - Frequently Asked Questions (FAQ)",
+        description: "Find answers to frequently asked questions about sports betting, predictions, and more at 433Tips. Get the information you need to enhance your betting experience.",
       },
     },
     {
