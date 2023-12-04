@@ -24,6 +24,13 @@
           </div>
         </div> -->
       </div>
+      <GoogleTranslateSelect
+        default-language-code="en"
+        default-page-language-code="en"
+        :fetch-browser-language="false"
+        trigger="click"
+        @select="handleGoogleTranslateSelect"
+      />
       <div class="nav-btn-container" v-if="token !== null">
         <button @click="logOut" class="nav-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
@@ -48,7 +55,7 @@
     </div>
     <div class="mobile-container">
       <div class="mobile-link-container">
-        <RouterLink :to="{ name: 'Vip' }"  @click="showMenu()" class="mobile-link">Vip</RouterLink>
+        <RouterLink :to="{ name: 'Vip' }" @click="showMenu()" class="mobile-link">Vip</RouterLink>
         <RouterLink :to="{ name: 'Home' }" @click="showMenu()" class="mobile-link">
           Home
         </RouterLink>
@@ -59,7 +66,7 @@
         <div class="drop-container">
           <span @click="goSport()" class="nav-link">Other sport</span>
         </div>
-        <RouterLink :to="{ name: 'Pay' }" class="nav-link">How to pay</RouterLink>  
+        <RouterLink :to="{ name: 'Pay' }" class="nav-link">How to pay</RouterLink>
         <div @click="openTelegramX" class="mobile-link">Telegram tips</div>
         <!-- <div class="drop-container">
           <div class="drop-down" @click="showDrp()">
@@ -93,16 +100,16 @@
       </div>
     </div>
   </div>
-  <!-- mobile responsive -->
 </template>
 
 <script setup>
+import GoogleTranslateSelect from '@google-translate-select/vue3';
 import MobileMenuIcon from '../icons/mobileMenuIcon.vue'
-import { RouterLink, useRouter } from 'vue-router'
 import ProfileIcon from '../icons/profileIcon.vue'
+import { RouterLink, useRouter } from 'vue-router'
+import LogoutIcon from '../icons/logoutIcon.vue'
 import GroupIcon from '../icons/GroupIcon.vue'
 import ExitIcon from '../icons/ExitIcon.vue'
-import LogoutIcon from '../icons/logoutIcon.vue'
 import { ref, watchEffect } from 'vue'
 
 const router = useRouter()
@@ -110,20 +117,21 @@ const isOpen = ref(false)
 const isDrpOpen = ref(false)
 const token = ref(null)
 
-
 watchEffect(() => {
   token.value = localStorage.getItem('token')
 })
+
+const handleGoogleTranslateSelect = (language) => {
+  console.log(language)
+}
 
 const showMenu = () => {
   isOpen.value = !isOpen.value
   isDrpOpen.value = false
 }
 
-
 const openTelegram = () => {
   window.open('https://t.me/sportypredict_tips', '_blank')
-
 }
 
 const logOut = () => {
@@ -137,8 +145,6 @@ const openFreeTip = () => {
   router.push({ name: 'FreeTip' })
   showMenu()
 }
-
-
 
 const goSport = () => {
   router.push({ name: 'Sport' })
