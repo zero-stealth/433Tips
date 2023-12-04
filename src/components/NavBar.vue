@@ -100,6 +100,7 @@
       </div>
     </div>
   </div>
+  <!-- mobile responsive -->
 </template>
 
 <script setup>
