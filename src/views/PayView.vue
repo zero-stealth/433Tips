@@ -158,5 +158,5 @@ onMounted(() => {
 </script>
 
 <style>
-@import '../style/pay.css';
+@import '../style/Pay.css';
 </style>
