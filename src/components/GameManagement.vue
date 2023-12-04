@@ -392,14 +392,15 @@
 </template>
 <script setup>
 import axios from 'axios'
-import VipGames from './vipgamesedits.vue'
 import ExitIcon from '../icons/ExitIcon.vue'
 import FileIcon from '../icons/FileIcon.vue'
 import { useToast } from 'vue-toastification'
 import DeleteIcon from '../icons/DeleteIcon.vue'
 import Jackpot from '../components/JackpotEdit.vue'
 import Freetips from '../components/FreetipsEdit.vue'
-import Sport from '../components/SportGamesEdits.vue'
+import Sport from '../components/sportgamesedits.vue'
+import VipGames from '../components/vipgamesedits.vue'
+
 import { ref, watchEffect, onMounted, watch, shallowRef } from 'vue'
 
 const username = ref(null)
