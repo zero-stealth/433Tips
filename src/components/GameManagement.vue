@@ -398,7 +398,7 @@ import { useToast } from 'vue-toastification'
 import DeleteIcon from '@/icons/DeleteIcon.vue'
 import Jackpot from '@/components/JackpotEdit.vue'
 import Freetips from '@/components/FreetipsEdit.vue'
-import Sport from '@/components/sportgamesedits.vue'
+import Sport from '@/components/SportGamesEdits.vue'
 import VipGames from '@/components/vipgamesedits.vue'
 
 import { ref, watchEffect, onMounted, watch, shallowRef } from 'vue'
