@@ -73,6 +73,7 @@ const create = async () => {
       localStorage.setItem('paid', isPaid)
       localStorage.setItem('id', id)
       toast.success('Account created successfully')
+      router.push({ name: 'Vip' })
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         toast.error(error.response.data.message)

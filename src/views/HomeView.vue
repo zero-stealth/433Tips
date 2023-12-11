@@ -7,7 +7,8 @@
         <h1>Free tips {{ currentDate }}</h1>
       </div>
       <div class="header-btn">
-        <input type="date" v-model="selectedDate" @change="onDateChange" class="date-filter" />
+        <VueDatePicker v-model="selectedDate"></VueDatePicker>
+        <!-- <input type="date" v-model="" @change="onDateChange" class="date-filter" /> -->
       </div>
     </div>
       <template v-if="cardData.length > 0">
@@ -52,18 +53,22 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '../stores/game'
 import { useToast } from 'vue-toastification';
+import '@vuepic/vue-datepicker/dist/main.css'
 import Card from '../components/CardComponent.vue'
+import VueDatePicker from '@vuepic/vue-datepicker';
 import HeroComponent from '../components/HeroComponent.vue'
 import AboutComponent from '../components/aboutComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const selectedDate = ref(formatDate(new Date()))
+const selectedDate = ref()
 const gameStore = useGameStore()
 const currentDate = ref('')
 const router = useRouter()
 const toast = useToast();
 const cardData = ref([])
+
+console.log(selectedDate.value)
 
 const showCard = (gameA, gameB, cardID) => {
   router.push({ name: 'Tips', params: { tipName: `${gameA} vs ${gameB} prediction` } })
