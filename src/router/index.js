@@ -17,9 +17,9 @@ const router = createRouter({
       path: '/panel',
       name: 'Panel',
       component: () => import('../views/PanelView.vue'),
-      // meta: {
-      //   isAdmin: true
-      // }
+      meta: {
+        isAdmin: true
+      }
     },
     {
       path: '/ax-login',
@@ -85,7 +85,7 @@ const router = createRouter({
         title: "Tips - tips results and more info",
         description: "Providing indepth game information for better analysis and informed betting descions",
       },
-      props: true,
+    
     },
     {
       path: '/jackpot',
@@ -104,7 +104,7 @@ const router = createRouter({
         title: "433Tips - Jackpots Predictions & Tips",
         description: "Win big with 433Tips' jackpot predictions and tips. Get expert insights to improve your chances of hitting the jackpot.",
       },
-      props: true,
+    
     },
     {
       path: '/other-sports',
