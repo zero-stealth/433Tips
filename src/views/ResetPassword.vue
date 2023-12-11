@@ -24,14 +24,14 @@ import { useToast } from 'vue-toastification';
 import { useRouter, useRoute } from 'vue-router';
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
-const confirmPassword = ref('');
+
 const router = useRouter();
+const toast = useToast();
 const route = useRoute();
 const password = ref('');
-const toast = useToast();
-const token = ref(null);
 const errMsg = ref('');
-
+const token = ref(null);
+const confirmPassword = ref('');
 
 const reset = () => {
   password.value = '';
@@ -55,16 +55,19 @@ const resetPassword = async () => {
       );
 
       router.push({ name: 'Login' });
-      toast.success('Password changed successfully');
-
+      toast.success(response.data.message)
     } catch (error) {
-      toast.error(error.response.data.message);
-
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message)
+      } else if (error.response && error.response.data && error.response.data.error) {
+        toast.error(error.response.data.error)
+      } else {
+        toast.error('An error occurred while processing your request')
+      }
     }
   } else {
-    toast.error('Please enter password');
-    reset();
-
+    toast.error('Please enter all the required fields')
+ 
   }
 
   reset();

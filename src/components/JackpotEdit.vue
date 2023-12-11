@@ -62,13 +62,12 @@ async function handleSubmit() {
   if (teamAscore.value !== null && ShowScore.value !== null && teamBscore.value !== null) {
     try {
       emit('formSubmit', teamAscore.value, teamBscore.value, ShowScore.value)
-      toast.error('game updated')
+      toast.success('game updated')
     } catch (err) {
-      console.log(err)
+      toast.error(err.response.data.error)
     }
   } else {
     toast.error('No empty fields allowed')
-    alert()
   }
 }
 </script>

@@ -30,13 +30,13 @@
 
   .abt-p-in h1 {
     font-size: 1rem;
-    text-decoration: underline;
+    
   }
 
 
   .abt-p-in h2 {
     font-size: .9rem;
-    text-decoration: underline;
+    
   }
 
   .abt-p-in {
@@ -85,7 +85,7 @@
   }
 
   .info-dn h1 {
-    text-decoration: underline;
+    
     text-transform: uppercase;
   }
 

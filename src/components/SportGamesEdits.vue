@@ -33,11 +33,13 @@
 <script setup>
 import { ref } from 'vue';
 const emit = defineEmits('formSubmitSport')
+import { useToast } from 'vue-toastification'
 
 
 const teamAscore = ref();
 const teamBscore = ref();
 const ShowScore = ref();
+const toast = useToast()
 
 
 async function handleSubmit() {
@@ -49,12 +51,12 @@ async function handleSubmit() {
   ) {
     try {
       emit('formSubmitSport', teamAscore.value, teamBscore.value , ShowScore.value)
-      alert("game updated")
+      toast.success('game updated')
     } catch (err) {
-      console.log(err)
+      toast.error(err.response.data.error)
     }
   } else {
-    alert('No empty fields allowed')
+    toast.error('No empty fields allowed')
   }
 }
 </script>

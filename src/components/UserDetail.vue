@@ -85,14 +85,15 @@ import DeleteIcon from '../icons/DeleteIcon.vue'
 import { useDrawerStore } from '../stores/drawer'
 import ProfileIcon from '../icons/profileIcon.vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
+import { useToast } from 'vue-toastification'
 
 const accountInfo = ref([])
 const userData = ref([])
-const message = ref()
 const statusC = ref(null)
 const paidDate = ref(null)
 const futuresDate = ref(null)
 const endSub = ref(false)
+const toast = useToast()
 const drawerStore = useDrawerStore()
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
@@ -193,12 +194,11 @@ const deleteAccount = async (id) => {
         Authorization: `Bearer ${token}`
       }
     })
-    message.value = response.data.message
+    toast.success(response.data.message)
     await accountsData()
   } catch (err) {
-    message.value = err.message
+    toast.error(err.response.data.error)
   }
-  alert(message.value)
 }
 
 async function toggleStatus(account) {

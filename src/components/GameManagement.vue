@@ -32,7 +32,7 @@
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody v-for="item in freeTipData">
+            <tbody v-for="item in freeTipData" :key="item._id">
               <tr v-for="data in item" :key="data._id">
                 <td>
                   <div class="game-tbl-img">
@@ -67,7 +67,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="game-delete" @click="deleteFreetips(data._id)">
+                  <div class="game-delete" @click="deletePrediction(data._id)">
                     <DeleteIcon class="icon-delete" />
                   </div>
                 </td>
@@ -110,7 +110,7 @@
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody v-for="item in JackpotData">
+            <tbody v-for="item in JackpotData" :key="item._id">
               <tr v-for="data in item" :key="data._id">
                 <td>
                   <div class="game-tbl-img">
@@ -188,7 +188,7 @@
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody v-for="item in vipData">
+            <tbody v-for="item in vipData" :key="item._id">
               <tr v-for="data in item" :key="data._id">
                 <td>
                   <div class="game-tbl-img">
@@ -266,7 +266,7 @@
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody v-for="item in sportData">
+            <tbody v-for="item in sportData" :key="item._id">
               <tr v-for="data in item" :key="data._id">
                 <td>
                   <div class="game-tbl-img">
@@ -341,7 +341,7 @@
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody v-for="item in sportData">
+            <tbody v-for="item in adData" :key="item._id">
               <tr v-for="data in item" :key="data._id">
                 <td>
                   <div class="game-tbl-img">
@@ -355,17 +355,17 @@
                   <span>{{ data.Description }}</span>
                 </td>
                 <td>
-                  <div class="game-delete" @click="editSport(Sport, data._id)">
+                  <div class="game-delete" @click="editAds(AdsEdit, data._id)">
                     <FileIcon class="icon-file" />
                   </div>
                 </td>
                 <td>
-                  <div class="game-delete" @click="deleteSport(data._id)">
+                  <div class="game-delete" @click="deleteAds(data._id)">
                     <DeleteIcon class="icon-delete" />
                   </div>
                 </td>
               </tr>
-              <tr v-if="SportsData.length === 0">
+              <tr v-if="adData.length === 0">
                 <td colspan="8">No ads yet!</td>
               </tr>
             </tbody>
@@ -396,6 +396,7 @@ import ExitIcon from '@/icons/ExitIcon.vue'
 import FileIcon from '@/icons/FileIcon.vue'
 import { useToast } from 'vue-toastification'
 import DeleteIcon from '@/icons/DeleteIcon.vue'
+import AdsEdit from '@/components/AdsEdit.vue'
 import Jackpot from '@/components/JackpotEdit.vue'
 import Freetips from '@/components/FreetipsEdit.vue'
 import Sport from '@/components/SportGamesEdits.vue'
@@ -406,10 +407,10 @@ import { ref, watchEffect, onMounted, watch, shallowRef } from 'vue'
 const username = ref(null)
 const currentDate = ref('')
 const offset = ref(0)
-const message = ref()
 const toast = useToast()
 const isGameOpen = ref(false)
 const vipData = ref([])
+const adData = ref([])
 const freeTipData = ref([])
 const SportsData = ref([])
 const JackpotData = ref([])
@@ -419,10 +420,10 @@ const getJackpot = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(`${SERVER_HOST}/predictions/bet/jackpot/${currentDate.value}`)
-    // console.log(response.data)
     JackpotData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+       // console.log(err)
+
   }
 }
 
@@ -431,10 +432,10 @@ const getVipGames = async () => {
     const response = await axios.get(
       `${SERVER_HOST}/predictions/vipPredictions/vip/${currentDate.value}`
     )
-    // console.log(response.data)
     vipData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    // console.log(err)
+
   }
 }
 
@@ -442,10 +443,9 @@ const getSports = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(`${SERVER_HOST}/predictions/${currentDate.value}`)
-    // console.log(response.data)
     SportsData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+    // console.log(err)
   }
 }
 
@@ -453,10 +453,10 @@ const getFreeTips = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(`${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`)
-    // console.log(response.data)
     freeTipData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    console.log(err)
+       // console.log(err)
+
   }
 }
 
@@ -467,8 +467,6 @@ const showEdit = () => {
 const activePage = shallowRef(Freetips)
 const gameId = ref('')
 const sportId = ref('')
-const ScoreId = ref('')
-const TimeId = ref('')
 const AdsId = ref('')
 
 const editGame = (game, id) => {
@@ -477,11 +475,16 @@ const editGame = (game, id) => {
   showEdit()
 }
 
+const editAds = (ads, id) => {
+  activePage.value = ads
+  AdsId.value = id
+  showEdit()
+}
+
 const editSport = (sport, id) => {
   activePage.value = sport
   sportId.value = id
   showEdit()
-  console.log(sport)
 }
 
 async function updateGame(formData) {
@@ -552,10 +555,10 @@ async function updateGame(formData) {
         }
       }
     )
-    // console.log(response.data)
-    alert('game updated')
+    toast.success('game updated')
   } catch (error) {
-    console.error('Error updating game:', error)
+    toast.error(error.response.data.error)
+
   }
 }
 
@@ -624,10 +627,20 @@ async function updateSport(formData) {
         Authorization: `Bearer ${token}`
       }
     })
-    // console.log(response.data)
-    alert('game updated')
+    toast.success('game updated')
   } catch (error) {
-    console.error('Error updating game:', error)
+    toast.error(error.response.data.error)
+
+  }
+}
+
+const getAds = async () => {
+  try {
+    // const token = JSON.parse(localStorage.getItem('token'));
+    const response = await axios.get(`${SERVER_HOST}/ads`)
+    adData.value = response.data.length > 0 ? [response.data] : []
+  } catch (err) {
+    toast.error(err.response.data.error)
   }
 }
 
@@ -673,12 +686,11 @@ const deleteAds = async (id) => {
     const response = await axios.delete(`${SERVER_HOST}/ads/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    message.value = response.data.message
     await getAds()
+    toast.success(response.data.message)
   } catch (err) {
     toast.error(err.response.data.message)
   }
-  toast.error('deleted')
 }
 
 const deletePrediction = async (id) => {
@@ -688,7 +700,7 @@ const deletePrediction = async (id) => {
     const response = await axios.delete(`${SERVER_HOST}/predictions/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    message.value = response.data.message
+    toast.success(response.data.message)
     await getJackpot()
     await getVipGames()
     await getSports()
@@ -696,7 +708,6 @@ const deletePrediction = async (id) => {
   } catch (err) {
     toast.error(err.response.data.message)
   }
-  toast.error('deleted')
 }
 
 const deleteSport = async (id) => {
@@ -706,9 +717,11 @@ const deleteSport = async (id) => {
     const response = await axios.delete(`${SERVER_HOST}/sports/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    message.value = response.data.message
-    await getTennisBets()
-    await getBasketballBets()
+    toast.success(response.data.message)
+    await getJackpot()
+    await getVipGames()
+    await getSports()
+    await getFreeTips()
   } catch (err) {
     toast.error(err.response.data.message)
   }

@@ -95,6 +95,7 @@
 
 <script setup>
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+import { useToast } from 'vue-toastification'
 import { ref , watch } from 'vue';
 import axios from 'axios';
 
@@ -111,6 +112,7 @@ const teamBPosition = ref('');
 const time = ref('');
 const league = ref('');
 const jackpot = ref('');
+const toast = useToast()
 const status = ref('');
 const teamAscore = ref(0);
 const teamBscore = ref(0);
@@ -133,7 +135,7 @@ watch(category, () => {
     url.value = `${SERVER_HOST}/predictions/create/vip`
       break;
       case null || '':
-      alert('No empty fields allowed');
+      toast.error('No empty fields allowed')
       break;
     default:
       break;
@@ -211,12 +213,13 @@ async function handleSubmit() {
           },
         }
       );
-      alert('game posted')
+      toast.success('game updated')
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data.error)
     }
   } else {
-    alert('No empty fields allowed');
+    toast.error('No empty fields allowed')
+
   }
 }
 </script>

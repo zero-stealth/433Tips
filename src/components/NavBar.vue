@@ -1,7 +1,9 @@
 <template>
   <div class="nav-main">
     <div class="nav-container">
-      <img src="../assets/logo.png" alt="logo" class="logo-spp" @click="goHome" />
+      <img src="../assets/logo.png" alt="logo" class="logo-spp" @click="goHome" 
+      draggable="false"
+      />
       <div class="nav-link-container">
         <RouterLink :to="{ name: 'Home' }" class="nav-link">Home</RouterLink>
         <RouterLink :to="{ name: 'Vip' }" class="nav-link">Vip</RouterLink>
@@ -10,28 +12,15 @@
         <RouterLink :to="{ name: 'Sport' }" class="nav-link">Other sport</RouterLink>
         <div class="nav-link" @click="openTelegram">Telegram</div>
         <RouterLink :to="{ name: 'Pay' }" class="nav-link">How to pay</RouterLink>
-        <!-- <div class="drop-container">
-          <div class="drop-down" @click="showDrop()">
-            <span>Extra Predictions</span>
-            <ArrowIcon class="drop-icon" />
-          </div>
-          <div class="drop-down-panel" :class="[isDropOpen ? 'show' : 'hide']">
-            <span @click="goToC('Double Chance')">Double Chance</span>
-            <span @click="goToC('Over 2.5 Goals')">Over 2.5 Goals</span>
-            <span @click="goToC('Over 1.5 Goals')">Over 1.5 Goals</span>
-            <span @click="goToC('Both Teams To Score')">Both Team To Score</span>
-            <span @click="goToC('Under 2.5 Goals')">Under 2.5 Goals</span>
-          </div>
-        </div> -->
       </div>
       <GoogleTranslateSelect
         default-language-code="en"
         default-page-language-code="en"
         :fetch-browser-language="false"
-        trigger="click"
+        trigger="hover"
         @select="handleGoogleTranslateSelect"
       />
-      <div class="nav-btn-container" v-if="token !== null">
+      <div class="nav-btn-container" v-if="authStore.token !== null">
         <button @click="logOut" class="nav-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
           Log out
@@ -68,21 +57,8 @@
         </div>
         <RouterLink :to="{ name: 'Pay' }" class="nav-link">How to pay</RouterLink>
         <div @click="openTelegramX" class="mobile-link">Telegram tips</div>
-        <!-- <div class="drop-container">
-          <div class="drop-down" @click="showDrp()">
-            <span>Extra Predictions</span>
-            <ArrowIcon class="drop-icon" />
-          </div>
-          <div class="drop-down-panels" :class="[isDrpOpen ? 'show' : 'hide']">
-            <span @click="goTo('Double Chance')">Double chance</span>
-            <span @click="goTo('Over 2.5 Goals')">Over 2.5 Goals</span>
-            <span @click="goTo('Over 1.5 Goals')">Over 1.5 Goals</span>
-            <span @click="goTo('Both Teams To Score')">Both Team To Score</span>
-            <span @click="goTo('Under 2.5 Goals')">Under 2.5 Goals</span>
-          </div>
-        </div> -->
       </div>
-      <div class="mobile-btn-container" v-if="token !== null">
+      <div class="mobile-btn-container" v-if="authStore.token !== null">
         <button @click="logOut" class="mobile-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
           Log out
@@ -110,20 +86,22 @@ import ProfileIcon from '../icons/profileIcon.vue'
 import { RouterLink, useRouter } from 'vue-router'
 import LogoutIcon from '../icons/logoutIcon.vue'
 import GroupIcon from '../icons/GroupIcon.vue'
+import { useAuthStore } from '../stores/auth'
 import ExitIcon from '../icons/ExitIcon.vue'
 import { ref, watchEffect } from 'vue'
 
+const authStore = useAuthStore()
+const isDrpOpen = ref(false)
 const router = useRouter()
 const isOpen = ref(false)
-const isDrpOpen = ref(false)
 const token = ref(null)
 
 watchEffect(() => {
   token.value = localStorage.getItem('token')
 })
 
-const handleGoogleTranslateSelect = (language) => {
-  console.log(language)
+const handleGoogleTranslateSelect = () => {
+  // console.log(language)
 }
 
 const showMenu = () => {
@@ -132,7 +110,8 @@ const showMenu = () => {
 }
 
 const openTelegram = () => {
-  window.open('https://t.me/sportypredict_tips', '_blank')
+  window.open('https://t.me/@four_three_three_tips', '_blank')
+
 }
 
 const logOut = () => {
@@ -161,7 +140,8 @@ const goSignin = () => {
 }
 
 const openTelegramX = () => {
-  window.open('https://t.me/sportypredict_tips', '_blank')
+  window.open('https://t.me/@four_three_three_tips', '_blank')
+
 }
 </script>
 

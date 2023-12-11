@@ -1,7 +1,7 @@
 @media screen {
   .nav-main {
     position: sticky;
-    z-index: 100;
+    z-index: 9999;
     top: 0;
   }
 
@@ -265,8 +265,8 @@
   .hero-section {
     gap: 20px;
     display: flex;
-    color: var(--background-color);
     flex-direction: column;
+    color: var(--background-color);
     background: var(--primary-color);
    
   }
@@ -458,7 +458,8 @@
   }
 
   .hero-section {
-    height: 70vh;
+    height: 500px;
+    height:;
   }
 
   .btn-view {

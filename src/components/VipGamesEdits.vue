@@ -170,6 +170,7 @@
 <script setup>
 import { ref } from 'vue'
 const emit = defineEmits(['formSubmit'])
+import { useToast } from 'vue-toastification'
 
 const teamA = ref('')
 const teamB = ref('')
@@ -181,6 +182,7 @@ const formationB = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
 const time = ref('')
+const toast = useToast()
 const status = ref('')
 const league = ref('')
 const teamAscore = ref('');
@@ -210,7 +212,6 @@ function handleLeagueLogo(event) {
 
 
 function handleSubmit() {
-  // ... (your existing code)
   try {
     const formData = {
       teamAscore: teamAscore.value,
@@ -234,7 +235,7 @@ function handleSubmit() {
 
     emit('formSubmit', formData)
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
   }
 }
 </script>

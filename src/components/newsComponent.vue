@@ -13,7 +13,6 @@ const getNews = async () => {
       }
     })
     newsData.value = response.data
-    console.log(newsData.value)
   } catch (err) {
     console.log(err)
   }

@@ -5,24 +5,18 @@
       <form @submit.prevent="login" class="l-form" v-if="!resetPage">
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
         <input type="password" class="input-l" placeholder="Password" v-model="password" />
-        <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Login</button>
         <span @click="forgot">Forgot password</span>
       </form>
       <form @submit.prevent="resetAuth" class="l-form" v-else>
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
-        <p>{{ errMsg }}</p>
         <button class="btn-f" type="submit">Request reset</button>
       </form>
       <span>or</span>
       <div class="l-alternatives">
         <button class="alt-btn" @click="create">
-          Create an account
+          create an account
         </button>
-        <!-- <div class="auth-google-contain" @click="loginInWithGoogle">
-          <googleIcon class="auth-google" />
-          <span> sign in with google</span>
-        </div> -->
       </div>
     </div>
   </div>
@@ -41,9 +35,9 @@ const resetPage = ref(false)
 const router = useRouter()
 const title = ref('login')
 const toast = useToast();
-const errMsg = ref('')
 const email = ref('')
 const password = ref('')
+
 
 const reset = () => {
   password.value = ''
@@ -59,50 +53,63 @@ const login = async () => {
       const response = await axios.post(`${SERVER_HOST}/auth/login`, {
         email: email.value,
         password: password.value
-      });
+      })
 
-      const token = response.data.token;
-      authStore.updateToken(JSON.stringify(token));
-      router.push({ name: 'Home' });
-      toast.success('welcome!');
+      const responseData = response.data
+      const token = responseData.token
 
+      if (token) {
+        const isPaid = responseData.paid
+        const username = responseData.username
+        const id = responseData._id
+        authStore.toggleToken(JSON.stringify(token))
+        localStorage.setItem('username', username)
+        localStorage.setItem('token', JSON.stringify(token))
+        localStorage.setItem('paid', isPaid)
+        localStorage.setItem('id', id)
+        router.push({ name: 'Vip' })
+        toast.success('welcome back!');
+      } else {
+        toast.error('Login failed');
+      }
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.error)
+
     }
   } else {
-    toast.error('Please enter your email and password.');
-    reset();
+    toast.error('Please enter your email and password.')
+    reset()
   }
-};
+}
 
 const forgot = () => {
-  title.value = 'write your email address'
+  title.value = 'write your email account'
   resetPage.value = !resetPage.value
 }
 
 const create = () => {
-  router.push({ name: 'Signup' })
+  router.push({ name: 'Signin' })
 }
 
 const resetAuth = async () => {
   if (email.value !== '') {
     try {
-      const response = await axios.post(`${SERVER_HOST}/auth/reset`, {
+      const response = await axios.post(`${SERVER_HOST}/auth/request-reset`, {
         email: email.value,
       })
-      errMsg.value =  response.data.message
-      localStorage.setItem('email', email.value)
+
       router.push({ name: 'Reset' })
-      alert(errMsg.value)
+      toast.success(response.data.message)
     } catch (error) {
-      errMsg.value = 'Failed to send reset code. Please try again.'
+      toast.error(error.response.data.error)
+
+
     }
   } else {
-    errMsg.value = 'Write your email something'
+    toast.error('Write your email something')
     reset()
   }
 }
-
 
 
 </script>

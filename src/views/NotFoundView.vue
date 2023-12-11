@@ -1,8 +1,6 @@
 <template>
   <Teleport to="body">
     <div class="container-not-found">
-      <h1>It's empty 😇 , care to add</h1>
-      <img src="../assets/404.gif" alt="gif_ing" class="imag-gif" />
       <button class="not-f-btn" @click="goHome">Go home</button>
     </div>
   </Teleport>

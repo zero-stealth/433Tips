@@ -33,10 +33,12 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { useToast } from 'vue-toastification'
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 const description = ref('')
 const adsImage = ref(null)
+const toast = useToast()
 const category = ref('')
 const link = ref('')
 
@@ -66,12 +68,14 @@ async function handleSubmit() {
           Authorization: `Bearer ${user}`
         }
       })
-      alert('Ads posted')
+      toast.success('Time posted')
+
     } catch (err) {
-      console.log(err)
+      toast.error(err.response.data.error)
     }
   } else {
-    alert('No empty fields allowed')
+    toast.error('Please enter all the required fields')
+
   }
 }
 

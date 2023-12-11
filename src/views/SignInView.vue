@@ -3,78 +3,96 @@
     <div class="form-l-wrapper">
       <h1>Create an account</h1>
       <form @submit.prevent="create" class="l-form">
+        <input type="text" class="input-l" placeholder="Full Name" v-model="username" />
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
+        <select class="input-l" v-model="selectedCountry">
+          <option disabled value="">Select your country</option>
+          <option v-for="country in countriesData" :key="country.code" :value="country.code">
+            {{ country.name }}
+          </option>
+        </select>
+        <input type="password" class="input-l" placeholder="Password" v-model="password" />
         <input
           type="password"
           class="input-l"
-          placeholder="Password (8 characters, uppercase, lowercase, number)"
-          v-model="password"
+          placeholder="Confirm password"
+          v-model="confirmPassword"
         />
-        <input type="password" class="input-l" placeholder="Confirm Password" v-model="confirmPassword" />
-        <p v-if="errMsg" class="error-message">{{ errMsg }}</p>
-        <button class="btn-f" type="submit">Sign up</button>
+        <button class="btn-f" type="submit">Create</button>
       </form>
       <span>or</span>
       <div class="l-alternatives">
         <button class="alt-btn" @click="login">Login</button>
-        <span @click="goHome()" class="reverse">Go back home</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import axios from 'axios';
-import { useRouter } from 'vue-router';
-import { useAuthStore } from '../stores/auth';
-import { useToast } from 'vue-toastification';
+import { ref } from 'vue'
+import axios from 'axios'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
+import { useToast } from 'vue-toastification'
+import countriesData from '../components/countries.json'
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
-
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
-const authStore = useAuthStore();
-const router = useRouter();
-const toast = useToast();
-const password = ref('');
-const errMsg = ref('');
-const email = ref('');
+const authStore = useAuthStore()
+const selectedCountry = ref('')
+const confirmPassword = ref('')
+const router = useRouter()
+const username = ref('')
+const password = ref('')
+const toast = useToast()
+const email = ref('')
 
 const reset = () => {
-  email.value = '';
-  password.value = '';
-};
+  email.value = ''
+  password.value = ''
+  username.value = ''
+  selectedCountry.value = ''
+  confirmPassword.value = ''
+}
 
 const create = async () => {
-  if (email.value !== '' && password.value !== '') {
+  if (username.value !== '' && password.value !== '') {
     try {
       const response = await axios.post(`${SERVER_HOST}/auth/register`, {
+        username: username.value,
         email: email.value,
         password: password.value,
-      });
-
-      const token = response.data.token;
-      localStorage.setItem('email', email.value)
-      authStore.updateToken(JSON.stringify(token));
-      router.push({ name: 'Home' });
-      toast.success('Account created successfully!');
+        country: selectedCountry.value,
+        confirmPassword: confirmPassword.value,
+        selectedCountry: selectedCountry.value
+      })
+      const token = response.data.token
+      const isPaid = response.data.paid
+      const id = response.data._id
+      authStore.toggleToken(JSON.stringify(token))
+      localStorage.setItem('token', token)
+      localStorage.setItem('paid', isPaid)
+      localStorage.setItem('id', id)
+      toast.success('Account created successfully')
     } catch (error) {
-      toast.error(error.response.data.message);
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message)
+      } else if (error.response && error.response.data && error.response.data.error) {
+        toast.error(error.response.data.error)
+      } else {
+        toast.error('An error occurred while processing your request')
+      }
     }
   } else {
-    toast.error('Please enter all the required fields');
-    reset();
+    toast.error('Please enter all the required fields')
+    reset()
   }
-};
+}
 
 const login = () => {
-  router.push({ name: 'Login' });
-};
-
-const goHome = () => {
-  router.push({ name: 'Home' });
+  router.push({ name: 'Login' })
 }
 </script>
 
 <style>
-@import '@/style/auth.css';
+@import '../style/auth.css';
 </style>

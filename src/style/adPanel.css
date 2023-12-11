@@ -56,7 +56,7 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
   .ad-container {
-    height: 120px;
+    height: 100%;
   }
 
   .ad-info {

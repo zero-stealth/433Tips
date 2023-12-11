@@ -28,11 +28,13 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
 const emit = defineEmits(['formSubmitAds'])
 
 const description = ref('');
 const adsImage = ref(null);
 const category = ref('');
+const toast = useToast()
 const link = ref('');
 
 
@@ -58,7 +60,8 @@ function handleSubmit() {
 
     emit('formSubmitAds', formData);
   } catch (err) {
-    console.log(err)
+    toast.error(err.response.data.error)
+
   }
 }
 </script>

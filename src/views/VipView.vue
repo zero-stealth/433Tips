@@ -88,7 +88,6 @@ const cardData = ref([])
 const paid = ref(false)
 const offset = ref(0)
 
-console.log(paid.value)
 const updateAuthStatus = () => {
   const token = JSON.parse(localStorage.getItem('token'))
   username.value = localStorage.getItem('username')
