@@ -27,7 +27,7 @@
             <GamePostIcon class="icon-panel" />
             <span> Post Games </span>
           </button>
-          <button @click="setActivePage(AdsComponent)" :class="getButtonClass(PostGames)">
+          <button @click="setActivePage(AdsComponent)" :class="getButtonClass(AdsComponent)">
             <AdsIcon class="icon-panel" />
             <span> Post Ads </span>
           </button>   

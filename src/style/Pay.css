@@ -1,9 +1,23 @@
 @media screen {
   .payment-layout {
-    height: 100vh;
-    padding: 10px;
+    gap: 10px;
+    padding: 10px ;
     display: flex;
+    padding-bottom: 100px;
     flex-direction: column;
+  }
+
+  .payment-layout P {
+    padding: 10px;
+    text-align: center;
+    background: var(--light-color);
+  }
+
+  .payment-layout P span {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--secondary-color);
   }
 
   .payment-layout h1 {
@@ -13,61 +27,17 @@
     text-transform: capitalize;
   }
 
-  .Available-payments {
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 100px;
-    justify-content: space-between;
-  }
-
-  .selected {
-    width: fit-content;
-    border-bottom: 2px solid var(--red-color);
-  }
-
-  .payment-img-card {
-    height: 80px;
-    width: 100px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .payment-image {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    object-position: center;
-  }
-
-  .paypal {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .pay-input-container {
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .pay-controller {
-    gap: 10px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
   .pay-input {
     border: none;
     padding: 10px;
+    border-radius: 4px;
     color: var(--background-color);
     background-color: var(--light-color);
     border: 1px solid var(--tertiary-color);
+  }
+
+  .pay-input option {
+    color: var(--background-color);
   }
 
   .pay-input::placeholder {
@@ -75,18 +45,46 @@
     text-transform: capitalize;
   }
 
-  .btn-wp,
-  .btn-pay {
+  .pay-controller {
+    gap: 10px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--tertiary-color);
+    background-color: var(--light-color);
+  }
+
+  .payment-image {
+    height: 100px;
+  }
+
+  .pay-input-container {
+    gap: 10px;
     width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .btn-pay,
+  .btn-wp {
+    width: 100%;
+    display: flex;
+    border-radius: 4px;
     align-items: center;
     justify-content: center;
   }
 
   .btn-pay {
-    padding: 8px;
+    padding: 10px;
     color: var(--background-color);
     background-color: var(--red-color);
+  }
+
+  .btn-pay:hover {
+    background-color: var(--tertiary-color);
   }
 }
 
@@ -94,9 +92,13 @@
 @media only screen and (min-width: 48em) {
   .payment-layout {
     padding: 20px;
+    padding-bottom: 200px;
   }
 
   .payment-layout h1 {
+    text-align: start;
+  }
+  .payment-layout P {
     text-align: start;
   }
 }

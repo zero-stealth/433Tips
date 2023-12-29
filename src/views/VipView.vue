@@ -24,10 +24,10 @@
       <div v-else>
         <div class="main-header vip-m">
           <div class="header-info">
-            <h1>Other Sports {{ currentDate }}</h1>
+            <h1>VIP {{ currentDate }}</h1>
           </div>
           <div class="header-btn">
-            <input type="date" v-model="selectedDate" @change="onDateChange" class="date-filter" />
+            <input type="date" @change="onDateChange" v-model="currentDate" class="date-filter" />
           </div>
         </div>
         <template v-if="paid && username && cardData.length > 0">
@@ -79,7 +79,6 @@ import { ref, onMounted, watchEffect, watch } from 'vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const selectedDate = ref(formatDate(new Date()))
 const currentDate = ref('')
 const router = useRouter()
 const username = ref(null)
@@ -96,23 +95,16 @@ const updateAuthStatus = () => {
   }
 }
 
-const showDate = () => {
-  if (selectedDate != '') {
-    watch(selectedDate, () => {
-      return selectedDate.value
-    })
-  } else {
-    return selectedDate.value
-  }
-}
 
 const onDateChange = () => {
-  updateCurrentDate()
+  currentDate.value = formatDate(new Date(currentDate.value))
   getPrediction()
 }
 
+
 const updateCurrentDate = () => {
-  currentDate.value = formatDate(new Date(selectedDate.value)) // Format selectedDate to "dd-mm-yyyy"
+  currentDate.value = formatDate(new Date())
+  getPrediction()
 }
 
 
@@ -137,7 +129,7 @@ const getPrediction = async () => {
 
   try {
     const response = await axios.get(
-      `${SERVER_HOST}/predictions/vipPredictions/vip/${selectedDate.value}`,
+      `${SERVER_HOST}/predictions/vipPredictions/vip/${currentDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -171,21 +163,15 @@ const getAccountDetails = async () => {
 }
 
 onMounted(() => {
-  getPrediction()
   updateAuthStatus()
   getAccountDetails()
-  updateCurrentDate() // Format currentDate on mount
+  updateCurrentDate() 
 
 })
 
 watchEffect(() => {
   getPrediction()
 })
-
-
-
-
-
 
 const formatFormation = (formation) => {
   if (Array.isArray(formation)) {

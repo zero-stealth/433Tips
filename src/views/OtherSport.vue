@@ -5,11 +5,11 @@
         <h1>Other Sports {{ currentDate }}</h1>
       </div>
       <div class="header-btn">
-        <input type="date" v-model="selectedDate" @change="onDateChange" class="date-filter" />
+        <input type="date" @change="onDateChange" v-model="currentDate" class="date-filter" />
       </div>
     </div>
     <template v-if="cardData.length > 0">
-      <div v-for="item in cardData" class="main-h-card booom-h">
+      <div v-for="item in cardData" :key="item" class="main-h-card booom-h">
         <Card
           v-for="(card) in item"
           :key="card._id"
@@ -59,7 +59,6 @@ const toast = useToast();
 const router = useRouter()
 const currentDate = ref('')
 const gameStore = useGameStore()
-const selectedDate = ref(formatDate(new Date()))
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 
 
@@ -69,21 +68,11 @@ const showCard = (gameA, gameB, cardID) => {
 }
 
 
-const showDate = () => {
-  if (selectedDate != '') {
-    watch(selectedDate, () => {
-      return selectedDate.value
-    })
-  } else {
-    return selectedDate.value
-  }
-}
 
 const predictions = async () => {
   try {
-    const token = localStorage.getItem('token')
     const response = await axios.get(
-      `${SERVER_HOST}/predictions/tips/freeTip/${selectedDate.value}`
+      `${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`
     )
     cardData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
@@ -93,22 +82,18 @@ const predictions = async () => {
 }
 
 const onDateChange = () => {
-  updateCurrentDate()
+  currentDate.value = formatDate(new Date(currentDate.value))
   predictions()
 }
+
+
 
 const updateCurrentDate = () => {
-  currentDate.value = formatDate(new Date(selectedDate.value)) // Format selectedDate to "dd-mm-yyyy"
+  currentDate.value = formatDate(new Date())
+
 }
 
-onMounted(() => {
-  updateCurrentDate() // Format currentDate on mount
-  predictions()
-})
 
-watchEffect(() => {
-  predictions()
-})
 
 const formatFormation = (formation) => {
   if (formation && formation.length > 0) {
@@ -116,6 +101,12 @@ const formatFormation = (formation) => {
   }
   return []
 }
+
+onMounted(() => {
+  updateCurrentDate();
+  predictions();
+});
+
 </script>
 
 <script>

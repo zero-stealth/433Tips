@@ -60,7 +60,7 @@ const login = async () => {
         localStorage.setItem('admin', isAdmin)
         localStorage.setItem('username', adminusername)
         localStorage.setItem('token', JSON.stringify(token))
-
+        console.log(isAdmin)
         router.push({ name: 'Panel' })
         toast.success('Welcome Admin')
       } else {

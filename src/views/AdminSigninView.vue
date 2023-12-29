@@ -72,8 +72,10 @@ const create = async () => {
       })
       const token = response.data.token
       const id = response.data._id
+
       authStore.toggleToken(JSON.stringify(token))
       localStorage.setItem('username', username)
+      localStorage.setItem('admin', true)
       localStorage.setItem('token', JSON.stringify(token))
       localStorage.setItem('id', id)
       router.push({ name: 'Panel' })

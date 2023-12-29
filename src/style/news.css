@@ -27,8 +27,7 @@
 
   .news-header h1 {
     font-size: 1rem;
-    text-align: justify;
-    font-weight: 400;
+    font-weight: 600;
     color: var(--background-color);
   }
 

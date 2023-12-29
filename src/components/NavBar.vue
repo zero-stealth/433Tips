@@ -23,7 +23,7 @@
       <div class="nav-btn-container" v-if="authStore.token !== null">
         <button @click="logOut" class="nav-btn btn-l btn-logout">
           <LogoutIcon class="icon-nav l-icon" />
-          Log out
+           Log out
         </button>
       </div>
       <div class="nav-btn-container" v-else>

@@ -1,8 +1,56 @@
 <template>
   <div class="form-con">
-    <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
+    <div class="sd-container">
+      <div class="fx-container">
+        <label for="date">Choose fixture date</label>
+        <input
+          type="date"
+          @change="onFixtureDateChange"
+          v-model="fixtureDate"
+          class="date-fixt"
+          id="date"
+        />
+      </div>
+      <div class="drop-container">
+        <div class="drop-down" @click="showDrp" :class="[isDrpOpen ? 'active' : '']">
+          <span>{{ category ? category : 'Game category' }}</span>
+          <ArrowIcon class="drop-icon" />
+        </div>
+        <div class="drop-down-panel game-drop-down" :class="[isDrpOpen ? 'show' : 'hide']" v-show="isDrpOpen">
+          <div v-for="c in categories" :key="c.id" class="drop-item" @click="updateUrl(c.name)">
+            <span >{{ c.name }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="drop-container">
+        <div class="drop-down" @click="showDrop" :class="[isDropOpen ? 'active' : '']">
+          <span>{{ leagueName ? leagueName : 'Choose fixture league:' }}</span>
+          <ArrowIcon class="drop-icon" />
+        </div>
+        <div
+          class="drop-down-panel"
+          :class="[isDropOpen ? 'show' : 'hide']"
+          v-show="isDropOpen"
+          v-if="fixtureData && fixtureData.length"
+        >
+          <div v-for="f in fixtureData" :key="f.id" class="drop-item">
+            <span @click="loadFixtures(f.league.id, f.league.season, f.league.name )">{{ f.league.name }}</span>
+            <img :src="f.league.logo" :alt="f.league.name + ' logo'" class="drop-img" />
+          </div>
+        </div>
+        <div
+          class="drop-down-panel no-data"
+          :class="[isDropOpen ? 'show' : 'hide']"
+          v-show="isDropOpen"
+          v-else
+        >
+          Choose a fixture date first
+        </div>
+      </div>
+    </div>
+    <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container" v-if="category === 'Sports'">
       <div class="form-wrapper">
-        <h1>Team A</h1>
+        <h1>Team A Sport</h1>
         <div class="form-group">
           <label for="teamA">Name:</label>
           <input v-model="teamA" type="text" class="form-g-input" placeholder="Manchester" id="teamA" />
@@ -51,22 +99,13 @@
         </div>
         <div class="form-group">
           <label for="date">Match Date:</label>
-          <input v-model="date" type="text" class="form-g-input" placeholder="03-06-2023" id="date" />
-        </div>
-        <div class="form-group">
-          <label for="category">Game category:</label>
-          <select v-model="category" class="form-g-input" id="category">
-            <option disabled value="">Choose games category</option>
-            <option value="Jackpot">Jackpot</option>
-            <option value="Freetips">Freetips</option>
-            <option value="Sports">Other sports</option>
-            <option value="Vip">VIP</option>
-          </select>
+          <span class="form-g-input"> {{  currentDate }}</span>
+        <input type="date" @change="onDateChange" v-model="currentDate" class="form-g-input" />
         </div>
         <button type="submit" class="btn-f-f f-desktop">Submit</button>
       </div>
       <div class="form-wrapper">
-        <h1>Team B</h1>
+        <h1>Team B Sport</h1>
         <div class="form-group">
           <label for="teamB">Name:</label>
           <input v-model="teamB" type="text" class="form-g-input" placeholder="Arsenal" id="teamB" />
@@ -90,79 +129,295 @@
         <button type="submit" class="btn-f-f f-mobile">Submit</button>
       </div>
     </form>
+    <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container" v-else>
+      <div class="form-wrapper">
+        <h1>Team A</h1>
+        <div class="form-group">
+          <label for="teamA">Name:</label>
+          <span class="form-g-input"  v-if="fixtureData && fixtureData.length">{{ teamA }}</span>
+          <input v-else type="text" class="form-g-input" placeholder="Man City" id="teamA" v-model="teamA" /> 
+        </div>
+        <div class="form-group">
+          <label for="teamAIcon">Logo:</label>
+          <img :src="teamAIcon" :alt="teamA" class="form-i-image" v-if="fixtureData && fixtureData.length">
+          <input v-else @change="handleTeamALogo" type="file" class="form-g-input" id="teamAIcon" accept="image/*" />
+        </div>
+        <div class="form-group">
+          <label for="jackpot">Jackpot name:</label>
+          <input
+            v-model="jackpot"
+            type="text"
+            class="form-g-input"
+            placeholder="jackpot name"
+            id="jackpot"
+          />
+        </div>
+        <div class="form-group">
+          <label for="formationA">Formation:</label>
+          <input
+            v-model="formationA"
+            type="text"
+            class="form-g-input"
+            placeholder="l-w-d-w"
+            id="formationA"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Status">Status:</label>
+          <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
+        </div>
+        <div class="form-group">
+          <label for="teamAPosition">Position:</label>
+          <input
+            v-model="teamAPosition"
+            type="text"
+            class="form-g-input"
+            placeholder="1"
+            id="teamAPosition"
+          />
+        </div>
+        <div class="form-group">
+          <label for="teamAscore">Score:</label>
+          <input
+            v-model="teamAscore"
+            type="text"
+            class="form-g-input"
+            placeholder="5"
+            id="teamAscore"
+          />
+        </div>
+      </div>
+      <div class="form-wrapper">
+        <div class="form-group">
+          <label for="tip">Match Tip:</label>
+          <input v-model="tip" type="text" class="form-g-input" placeholder="1" id="tip" />
+        </div>
+        <div class="form-group">
+          <label for="leagueIcon">League logo</label>
+          <img :src="leagueIcon" :alt="league" class="form-i-image" v-if="fixtureData && fixtureData.length">
+          <input v-else @change="handleLeagueLogo" type="file" class="form-g-input" id="leagueIcon" accept="image/*" />
+        </div>
+        <div class="form-group">
+          <label for="league">Match league:</label>
+          <span class="form-g-input" v-if="fixtureData && fixtureData.length">{{ league }}</span>
+          <input v-else type="text" class="form-g-input" placeholder="Premier League" id="league" v-model="league" />
+        </div>
+        <div class="form-group">
+          <label for="time">Match Time:</label>
+          <input v-model="time" type="time" class="form-g-input" placeholder="12:00pm" id="time" />
+        </div>
+        <div class="form-group">
+          
+          <label for="date">Match Date:</label>
+          <span class="form-g-input"> {{  currentDate }}</span>
+          <input type="date" @change="onDateChange" v-model="currentDate" class="form-g-input" />
+
+        </div>
+        <button type="submit"  class="btn-f-f f-desktop">Submit</button>
+      </div>
+      <div class="form-wrapper">
+        <h1>Team B</h1>
+        <div class="form-group">
+          <label for="teamB">Name:</label>
+          <span class="form-g-input" v-if="fixtureData && fixtureData.length">{{ teamB }}</span>
+          <input v-else type="text" class="form-g-input" placeholder="Man City" id="teamB" v-model="teamB" />
+        </div>
+        <div class="form-group">
+          <label for="teamBIcon">Logo:</label>
+          <img :src="teamBIcon" :alt="teamB" class="form-i-image" v-if="fixtureData && fixtureData.length">
+          <input v-else  @change="handleTeamBLogo" type="file" class="form-g-input" id="teamBIcon" accept="image/*" />
+        </div>
+        <div class="form-group">
+          <label for="formationB">Form:</label>
+          <input
+            v-model="formationB"
+            type="text"
+            class="form-g-input"
+            placeholder="l-w-d-w"
+            id="formationB"
+          />
+        </div>
+        <div class="form-group">
+          <label for="teamBPosition">Position:</label>
+          <input
+            v-model="teamBPosition"
+            type="text"
+            class="form-g-input"
+            placeholder="2"
+            id="teamBPosition"
+          />
+        </div>
+        <div class="form-group">
+          <label for="teamBscore">Score:</label>
+          <input
+            v-model="teamBscore"
+            type="text"
+            class="form-g-input"
+            placeholder="5"
+            id="teamBscore"
+          />
+        </div>
+        <button type="submit"  class="btn-f-f f-mobile">Submit</button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script setup>
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+const SPORT_API = import.meta.env.VITE_SPORT_API
+const SPORT_KEY = import.meta.env.VITE_SPORT_KEY
+import { ref, watch, onMounted } from 'vue'
+import ArrowIcon from '../icons/ArrowIcon.vue'
 import { useToast } from 'vue-toastification'
-import { ref , watch } from 'vue';
-import axios from 'axios';
+import axios from 'axios'
 
-const teamA = ref('');
-const teamB = ref('');
+const teamA = ref('')
+const teamB = ref('')
+const leagueName = ref(null)
+const isDropOpen = ref(false)
+const isDrpOpen = ref(false)
 const category = ref(null)
-const teamAIcon = ref(null);
-const teamBIcon = ref(null);
-const leagueIcon = ref(null);
-const formationA = ref('l-d-w-d');
-const formationB = ref('l-d-w-d');
-const teamAPosition = ref('');
-const teamBPosition = ref('');
-const time = ref('');
-const league = ref('');
-const jackpot = ref('');
+const teamAIcon = ref(null)
+const teamBIcon = ref(null)
+const leagueIcon = ref(null)
+const formationA = ref('')
+const formationB = ref('')
+const teamAPosition = ref('')
+const teamBPosition = ref('')
+const time = ref('')
+const league = ref('')
+const jackpot = ref('')
 const toast = useToast()
-const status = ref('');
-const teamAscore = ref(0);
-const teamBscore = ref(0);
-const date = ref('');
-const tip = ref('');
-const url = ref(null);
+const status = ref('')
+const teamAscore = ref(0)
+const teamBscore = ref(0)
+const currentDate = ref('')
+const fixtureDate = ref('')
+const fixtureData = ref([])
+const selectedFixture = ref(null)
+const tip = ref('')
+const url = ref(null)
+
+
+const showDrop = () => {
+  isDropOpen.value = !isDropOpen.value
+}
+
+const showDrp = () => {
+  isDrpOpen.value = !isDrpOpen.value
+}
+
+const updateUrl = (name) => {
+  category.value = name
+  showDrp()
+}
+
+const categories = [
+  { name: 'Sports', endpoint: 'sports/create/Sports' },
+  { name: 'Jackpot', endpoint: 'predictions/create/jackpot-prediction/jackpot' },
+  { name: 'Freetips', endpoint: 'predictions/create/tip/freeTip' },
+  { name: 'Vip', endpoint: 'predictions/create/vip' }
+]
 
 watch(category, () => {
-  switch (category.value) {
-    case 'Sports':
-    url.value = `${SERVER_HOST}/sports/create/Sports`
-      break;
-      case 'Jackpot':
-    url.value = `${SERVER_HOST}/predictions/create/jackpot-prediction/jackpot`
-      break;
-      case 'Freetips':
-    url.value = `${SERVER_HOST}/predictions/create/tip/freeTip`
-      break;
-      case 'Vip':
-    url.value = `${SERVER_HOST}/predictions/create/vip`
-      break;
-      case null || '':
-      toast.error('No empty fields allowed')
-      break;
-    default:
-      break;
+  const selectedCategory = categories.find((c) => c.name === category.value)
+
+  if (selectedCategory) {
+    url.value = `${SERVER_HOST}/${selectedCategory.endpoint}`
+  } else if (!category.value) {
+    toast.error('Please select game category')
   }
-});
+})
+
 
 function handleFileUpload(event, targetRef) {
-  const file = event.target.files[0];
+  const file = event.target.files[0]
   if (file) {
-    targetRef.value = file;
+    targetRef.value = file
   }
 }
 
 function handleTeamALogo(event) {
-  handleFileUpload(event, teamAIcon);
+  handleFileUpload(event, teamAIcon)
 }
 
 function handleTeamBLogo(event) {
-  handleFileUpload(event, teamBIcon);
+  handleFileUpload(event, teamBIcon)
 }
 
 function handleLeagueLogo(event) {
-  handleFileUpload(event, leagueIcon);
+  handleFileUpload(event, leagueIcon)
 }
 
+const onDateChange = () => {
+  currentDate.value = formatDate(new Date(currentDate.value))
+}
 
+const updateCurrentDate = () => {
+  currentDate.value = formatDate(new Date())
 
+}
+
+const onFixtureDateChange = () => {
+  fixtureDate.value = formatFixtureDate(new Date(fixtureDate.value))
+  getFixture(fixtureDate.value)
+}
+
+const loadFixtures = (leagueID, seasonID, Name) => {
+  leagueName.value = Name
+  getSpecificFixture(fixtureDate.value, leagueID, seasonID)
+  showDrop()
+}
+
+const getFixture = async (fdate) => {
+
+  try {
+    const response = await axios.get(`${SPORT_API}/fixtures`, {
+      params: {
+        date: fdate
+      },
+      headers: {
+        'x-apisports-key': SPORT_KEY
+      }
+    })
+
+    fixtureData.value = response.data.response
+    toast.success('Fixture data fetched')
+    showDrop()
+  } catch (error) {
+    toast.error('Error fetching fixture data')
+  }
+}
+
+const getSpecificFixture = async (fdate, fid, sid) => {
+  try {
+    const response = await axios.get(`${SPORT_API}/fixtures`, {
+      params: {
+        date: fdate,
+        league: fid,
+        season: sid
+      },
+      headers: {
+        'x-apisports-key': SPORT_KEY
+      }
+    })
+
+    selectedFixture.value = response.data.response
+    teamA.value = selectedFixture.value[0].teams.home.name
+    teamB.value = selectedFixture.value[0].teams.away.name
+    // teamAscore.value = selectedFixture.value[0].goals.home
+    // teamBscore.value = selectedFixture.value[0].goals.away
+    league.value = selectedFixture.value[0].league.name
+    teamAIcon.value = selectedFixture.value[0].teams.home.logo
+    teamBIcon.value = selectedFixture.value[0].teams.away.logo
+    leagueIcon.value = selectedFixture.value[0].league.logo
+    toast.success('Fixture data fetched')
+
+  } catch (error) {
+    toast.error('Error fetching fixture data')
+  }
+}
 
 async function handleSubmit() {
   if (
@@ -171,59 +426,71 @@ async function handleSubmit() {
     leagueIcon.value !== null &&
     formationA.value.trim() !== '' &&
     teamAPosition.value.trim() !== '' &&
-    teamAscore.value !== null &&
     teamB.value.trim() !== '' &&
     teamBIcon.value !== null &&
     category.value !== null &&
     formationB.value.trim() !== '' &&
     teamBPosition.value.trim() !== '' &&
-    teamBscore.value !== null &&
     time.value.trim() !== '' &&
-    tip.value !== null &&
-    league.value !== null &&
-    date.value !== null 
+    tip.value.trim()  !== '' &&
+    league.value.trim()  !== '' &&
+    currentDate.value.trim()  !== ''
   ) {
-    const user = JSON.parse(localStorage.getItem('token'));
+    const user = JSON.parse(localStorage.getItem('token'))
     try {
-      const formData = new FormData();
-      formData.append('teamA', teamA.value);
-      formData.append('teamAIcon', teamAIcon.value);
-      formData.append('leagueIcon', leagueIcon.value);
-      formData.append('formationA', formationA.value);
-      formData.append('teamAPosition', teamAPosition.value);
-      formData.append('teamAscore', teamAscore.value);
-      formData.append('teamB', teamB.value);
-      formData.append('teamBIcon', teamBIcon.value);
-      formData.append('formationB', formationB.value);
-      formData.append('teamBPosition', teamBPosition.value);
-      formData.append('teamBscore', teamBscore.value);
-      formData.append('time', time.value);
-      formData.append('status', status.value);
-      formData.append('league', league.value);
-      formData.append('date', date.value);
-      formData.append('tip', tip.value);
+      const formData = new FormData()
+      formData.append('teamA', teamA.value)
+      formData.append('teamAIcon', teamAIcon.value)
+      formData.append('leagueIcon', leagueIcon.value)
+      formData.append('formationA', formationA.value)
+      formData.append('teamAPosition', teamAPosition.value)
+      formData.append('teamAscore', teamAscore.value)
+      formData.append('teamB', teamB.value)
+      formData.append('teamBIcon', teamBIcon.value)
+      formData.append('formationB', formationB.value)
+      formData.append('teamBPosition', teamBPosition.value)
+      formData.append('teamBscore', teamBscore.value)
+      formData.append('time', time.value)
+      formData.append('status', status.value)
+      formData.append('league', league.value)
+      formData.append('date', currentDate.value)
+      formData.append('tip', tip.value)
+      formData.append('jackpot', jackpot.value)
 
-      const response = await axios.post(
-        `${url.value}`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${user}`,
-          },
+      const response = await axios.post(`${url.value}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${user}`
         }
-      );
+      })
       toast.success('game updated')
     } catch (err) {
       toast.error(err.response.data.error)
     }
   } else {
     toast.error('No empty fields allowed')
-
   }
 }
-</script>
 
+onMounted(() => {
+  updateCurrentDate();
+})
+</script>
+<script>
+const formatDate = (date) => {
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${day}-${month}-${year}`
+}
+
+const formatFixtureDate = (date) => {
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${year}-${month}-${day}`
+}
+</script>
 <style>
 @import '../style/games.css';
 </style>

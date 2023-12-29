@@ -64,7 +64,7 @@ const openInstagram = () => {
 }
 
 const openTiktok = () => {
-  window.open(' tiktok.com/@433__tips', '_blank')
+  window.open('https://tiktok.com/@433__tips', '_blank')
 }
 
 const openYoutube = () => {

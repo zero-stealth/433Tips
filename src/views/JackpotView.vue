@@ -38,14 +38,14 @@ async function getPrediction() {
 
   try {
     const response = await axios.get(
-      `${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`,
+      `${SERVER_HOST}/predictions/bet/jackpot/${currentDate.value}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }
     );
-    cardData.value = response.data.length > 0 ? [response.data] : []; // Set the data or an empty array
+    cardData.value = response.data.length > 0 ? [response.data] : [];
   } catch (err) {
     toast.error(err.response.data.message);
 

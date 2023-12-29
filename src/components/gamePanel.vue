@@ -2,10 +2,10 @@
   <div class="main-bet">
     <div class="main-header m-sgam">
       <div class="header-info">
-        <h1>Jackpot {{ currentDate }}</h1>
+        <h1>{{  jackpotName }} {{ currentDate }}</h1>
       </div>
       <div class="header-btn">
-        <input type="date" v-model="selectedDate" @change="onDateChange" class="date-filter" />
+        <input type="date" @change="onDateChange" v-model="currentDate" class="date-filter" />
       </div>
     </div>
     <template v-if="cardData.length > 0">
@@ -41,7 +41,7 @@
   </div>
 </template>
 <script setup>
-import { ref, watchEffect, watch, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import CardGame from '../components/CardGame.vue'
 import { useGameStore } from '../stores/game'
 import { useRouter } from 'vue-router'
@@ -50,8 +50,8 @@ import axios from 'axios'
 const cardData = ref([])
 const router = useRouter()
 const currentDate = ref('')
+const jackpotName = ref('')
 const gameStore = useGameStore()
-const selectedDate = ref(formatDate(new Date()))
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
 
@@ -61,49 +61,35 @@ const showCard = (gameA, gameB, cardID) => {
   gameStore.updateGameId(cardID)
 }
 
-
-const showDate = () => {
-  if (selectedDate.value != '') {
-    watch(selectedDate, () => {
-      return selectedDate.value
-    })
-  } else {
-    return selectedDate.value
-  }
-}
-
 const predictions = async () => {
   try {
     // const token = localStorage.getItem('token')
     const response = await axios.get(
-      `${SERVER_HOST}/predictions/tips/freeTip/${selectedDate.value}`
+      `${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`
     )
     console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []
+    jackpotName.value = response.data[0].jackpot
   } catch (err) {
     console.log(err)
   }
 }
 
 const onDateChange = () => {
-  updateCurrentDate()
+  currentDate.value = formatDate(new Date(currentDate.value))
   predictions()
-  showDate()
 }
 
+
 const updateCurrentDate = () => {
-  currentDate.value = formatDate(new Date(selectedDate.value)) // Format selectedDate to "dd-mm-yyyy"
+  currentDate.value = formatDate(new Date())
+
 }
 
 onMounted(() => {
-  updateCurrentDate() // Format currentDate on mount
-  predictions()
-})
-
-watchEffect(() => {
-  predictions()
-})
-
+  updateCurrentDate();
+  predictions();
+});
 </script>
 
 <script>

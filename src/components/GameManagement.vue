@@ -7,15 +7,7 @@
             <h1>Free tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
-              previous
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-              Today
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-              Tomorrow
-            </button>
+            <input type="date" @change="onDateChange" v-model="currentDate" class="date-filter" />
           </div>
         </div>
         <div class="game-table">
@@ -85,15 +77,7 @@
             <h1>Jackpot tips ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
-              previous
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-              Today
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-              Tomorrow
-            </button>
+            <input type="date" @change="onDateChange" v-model="currentDate" class="date-filter" />
           </div>
         </div>
         <div class="game-table">
@@ -163,15 +147,7 @@
             <h1>Vip games ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
-              previous
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-              Today
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-              Tomorrow
-            </button>
+            <input type="date" @change="onDateChange" v-model="currentDate" class="date-filter" />
           </div>
         </div>
         <div class="game-table">
@@ -241,15 +217,7 @@
             <h1>Other sport ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
-              previous
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-              Today
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-              Tomorrow
-            </button>
+            <input type="date" @change="onDateChange" v-model="currentDate" class="date-filter" />
           </div>
         </div>
         <div class="game-table">
@@ -319,15 +287,7 @@
             <h1>Ads ({{ currentDate }})</h1>
           </div>
           <div class="header-btn">
-            <button class="game-h-b" :class="{ 'active-btn': offset > 0 }" @click="previousDay">
-              previous
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 0 }" @click="setOffset(0)">
-              Today
-            </button>
-            <button class="game-h-b" :class="{ 'active-btn': offset === 1 }" @click="setOffset(1)">
-              Tomorrow
-            </button>
+            <input type="date" @change="onDateChange" v-model="currentDate" class="date-filter" />
           </div>
         </div>
         <div class="game-table">
@@ -406,7 +366,6 @@ import { ref, watchEffect, onMounted, watch, shallowRef } from 'vue'
 
 const username = ref(null)
 const currentDate = ref('')
-const offset = ref(0)
 const toast = useToast()
 const isGameOpen = ref(false)
 const vipData = ref([])
@@ -419,11 +378,11 @@ const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const getJackpot = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.get(`${SERVER_HOST}/predictions/bet/jackpot/${currentDate.value}`)
+    const response = await axios.get(`${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`)
     JackpotData.value = response.data.length > 0 ? [response.data] : []
+    
   } catch (err) {
-       // console.log(err)
-
+    // console.log(err)
   }
 }
 
@@ -435,7 +394,6 @@ const getVipGames = async () => {
     vipData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     // console.log(err)
-
   }
 }
 
@@ -455,8 +413,7 @@ const getFreeTips = async () => {
     const response = await axios.get(`${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`)
     freeTipData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-       // console.log(err)
-
+    // console.log(err)
   }
 }
 
@@ -558,7 +515,6 @@ async function updateGame(formData) {
     toast.success('game updated')
   } catch (error) {
     toast.error(error.response.data.error)
-
   }
 }
 
@@ -630,7 +586,6 @@ async function updateSport(formData) {
     toast.success('game updated')
   } catch (error) {
     toast.error(error.response.data.error)
-
   }
 }
 
@@ -644,27 +599,19 @@ const getAds = async () => {
   }
 }
 
-const setOffset = (value) => {
-  offset.value = value
-  updateCurrentDate()
+
+const onDateChange = () => {
+  currentDate.value = formatDate(new Date(currentDate.value))
+  getJackpot()
+  getVipGames()
+  getSports()
+  getFreeTips()
 }
 
-const previousDay = () => {
-  offset.value--
-  updateCurrentDate()
-}
-
-const getFormattedDate = (offset) => {
-  const today = new Date()
-  today.setDate(today.getDate() + offset)
-  const day = String(today.getDate()).padStart(2, '0')
-  const month = String(today.getMonth() + 1).padStart(2, '0')
-  const year = today.getFullYear()
-  return `${day}-${month}-${year}`
-}
 
 const updateCurrentDate = () => {
-  currentDate.value = getFormattedDate(offset.value)
+  currentDate.value = formatDate(new Date())
+
 }
 
 watchEffect(() => {
@@ -677,6 +624,7 @@ onMounted(() => {
   getVipGames()
   getSports()
   getFreeTips()
+  updateCurrentDate();
 })
 
 const deleteAds = async (id) => {
@@ -741,6 +689,15 @@ watch(currentDate, () => {
   getFreeTips()
 })
 </script>
+<script>
+const formatDate = (date) => {
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${day}-${month}-${year}`
+}
+</script>
+
 <style scoped>
 @import '@/style/gameManagement.css';
 </style>

@@ -199,7 +199,7 @@ const currentUser = () => {
 
 const isAdmin = () => {
   const admin = localStorage.getItem('admin');
-  return admin === 'true'; // Return true if admin is 'true', false otherwise
+  return admin === 'true'; 
 }
 
 

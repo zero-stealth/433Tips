@@ -7,7 +7,7 @@ const getApp = () => {}
 <template>
   <div class="ad-container" :style="{ backgroundImage: `url(${banner})` }">
     <div class="ad-info">
-      <h1>Amaizing jackpot predictions</h1>
+      <h1>Amazing jackpot predictions</h1>
       <p>For better predictions join our vip subscriptions🌟</p>
       <button @click="getApp()" class="ads-btn">Pay For Vip</button>
     </div>

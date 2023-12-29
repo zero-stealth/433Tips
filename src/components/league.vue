@@ -1,63 +1,85 @@
 <script setup>
-import ArrowIcon from '../icons/ArrowIcon.vue'
-import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import ArrowIcon from '../icons/ArrowIcon.vue';
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
+import { useToast } from 'vue-toastification';
 
 const LeagueData = ref([]);
-const isLeague = ref(true)
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
-
+const isLeague = ref(true);
+const currentDate = ref(formatFixtureDate(new Date()));
+const SPORT_API = import.meta.env.VITE_SPORT_API;
+const SPORT_KEY = import.meta.env.VITE_SPORT_KEY;
+const toast = useToast();
 
 const showLeague = () => {
-  isLeague.value = !isLeague.value
-}
+  isLeague.value = !isLeague.value;
+};
 
+const updateCurrentDate = () => {
+  currentDate.value = formatFixtureDate(new Date());
+};
 
-const getPrediction = async () => {
+const getFixture = async () => {
   try {
-    const response = await axios.get(
-      `${SERVER_HOST}/predictions/tips/freeTip/07-08-2023`
-    )
-    LeagueData.value = response.data
-  } catch (err) {
-    console.log(err)
+    const response = await axios.get(`${SPORT_API}/fixtures`, {
+      params: {
+        date: currentDate.value,
+      },
+      headers: {
+        'x-apisports-key': SPORT_KEY,
+      },
+    });
+
+    LeagueData.value = response.data.response;
+    toast.success('Fixture data fetched');
+  } catch (error) {
+    console.error('Error fetching fixture data', error);
+    toast.error('Error fetching fixture data');
   }
-}
+};
 
 onMounted(() => {
-  getPrediction()
-})
-
+  getFixture();
+  updateCurrentDate();
+});
+</script>
+<script>
+const formatFixtureDate = (date) => {
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${year}-${month}-${day}`
+}
 </script>
 <template>
-   <template v-if="LeagueData.length > 0">
+  <template v-if="LeagueData.length > 0">
     <div class="league-container">
-    <div class="l-c-wrapper">
-      <div class="league-header" @click="showLeague()">
-        <h1>league</h1>
-        <ArrowIcon class="league-icon" :class="[isLeague == true ? 'icon-active' : '']" />
-        <span v-if="isLeague"> Hide all</span>
-        <span v-else>View all</span>
-      </div>
-      <div class="l-items-list" v-show="isLeague == true" >
-        <div class="l-items-container"  v-for="({ league,  leagueIcon, }, index) in LeagueData"
-        :key="index">
-          <div :style="{ backgroundImage: `url(${leagueIcon})`}" class="l-items-image">
-            <!-- img -->
+      <div class="l-c-wrapper">
+        <div class="league-header" @click="showLeague">
+          <h1>league</h1>
+          <ArrowIcon class="league-icon" :class="[isLeague ? 'icon-active' : '']" />
+          <span v-if="isLeague">Hide all</span>
+          <span v-else>View all</span>
+        </div>
+        <div class="l-items-list" v-show="isLeague">
+          <div class="l-items-container" v-for="(l, index) in LeagueData" :key="index">
+            <div :style="{ backgroundImage: `url(${l.league.logo})` }" class="l-items-image">
+              <!-- img -->
+            </div>
+            <span>Country: {{ l.league.country }}</span>
+            <span>{{ l.league.name }}</span>
           </div>
-          <span>{{ league }}</span>
-        </div> 
+        </div>
       </div>
     </div>
-  </div>
   </template>
   <template v-else>
     <div class="no-news">
-        <span>No league yet!</span>
-      </div>
-    </template>
- 
+      <span>No league yet!</span>
+    </div>
+  </template>
 </template>
+
 <style>
 @import '../style/league.css';
 </style>
