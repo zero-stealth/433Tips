@@ -2,7 +2,6 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
-import emailIcon from '../icons/email.vue'
 import tiktokIcon from '../icons/tiktokIcon.vue'
 import youtubeIcon from '../icons/youtubeIcon.vue'
 import twitterIcon from '../icons/twitterIcon.vue'
@@ -13,6 +12,7 @@ import telegramIcon from '../icons/telegram.vue'
 import ThreadIcon from '../icons/ThreadIcon.vue'
 import background from '../assets/background.png'
 import background1 from '../assets/background.gif'
+import emailIcon from '../icons/email.vue'
 
 const router = useRouter()
 const phoneNumber = ref('+254115734732')
@@ -71,6 +71,9 @@ const openYoutube = () => {
   window.open(' https://www.youtube.com/@433__Tips', '_blank')
 }
 
+const WhatsappChannel = () => {
+  window.open(' https://whatsapp.com/channel/0029VaIfGfUCRs1k81P0VR1J', '_blank')
+}
 
 </script>
 
@@ -88,6 +91,7 @@ const openYoutube = () => {
             <instagramIcon class="bk-icon" @click="openInstagram" />
             <tiktokIcon class="bk-icon" @click="openTiktok" />
             <youtubeIcon class="bk-icon" @click="openYoutube" />
+            <whatsappIcon class="bk-icon" @click="WhatsappChannel" />
           </div>
       </div>
     <div class="contact-so" >
@@ -126,6 +130,7 @@ const openYoutube = () => {
               <h1>Information</h1>
             </div>
             <div class="d2-con">
+              <a rel="me" style="display: none;"    href="https://mastodon.social/@433tips">Mastodon</a>
               <RouterLink :to="{ name: 'Disclaimer' }" class="nav-link">Disclaimer</RouterLink>
               <RouterLink :to="{ name: 'FAQ' }" class="nav-link">FAQ</RouterLink>
               <RouterLink :to="{ name: 'Policy' }" class="nav-link">Policy</RouterLink>

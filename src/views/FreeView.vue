@@ -49,12 +49,10 @@ import OtherComponent from '../components/OtherComponent.vue'
 import sportComponent from '../components/sportComponent.vue'
 import Card from '../components/CardComponent.vue'
 import { ref, onMounted } from 'vue'
-import { useToast } from 'vue-toastification';
 import { useGameStore } from '../stores/game'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
-const toast = useToast();
 const cardData = ref([])
 const router = useRouter()
 const currentDate = ref('')
@@ -75,7 +73,7 @@ const predictions = async () => {
     )
     cardData.value = response.data
   } catch (err) {
-    toast.error(err.response.data.message);
+    // toast.error(err.response.data.message);
 
   }
 }

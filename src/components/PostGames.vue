@@ -75,10 +75,7 @@
           <label for="teamAPosition">Position:</label>
           <input v-model="teamAPosition" type="text" class="form-g-input" placeholder="1" id="teamAPosition" />
         </div>
-        <div class="form-group">
-          <label for="teamAscore">Score:</label>
-          <input v-model="teamAscore" type="text" class="form-g-input" placeholder="2" id="teamAscore" />
-        </div>
+
       </div>
       <div class="form-wrapper">
         <div class="form-group">
@@ -115,17 +112,14 @@
           <input @change="handleTeamBLogo" type="file" class="form-g-input" id="teamBIcon" accept="image/*" />
         </div>
         <div class="form-group">
-          <label for="formationB">Form:</label>
+          <label for="formationB">Formation:</label>
           <input v-model="formationB" type="text" class="form-g-input" placeholder="l-w-d-w" id="formationB" />
         </div>
         <div class="form-group">
           <label for="teamBPosition">Position:</label>
           <input v-model="teamBPosition" type="text" class="form-g-input" placeholder="2" id="teamBPosition" />
         </div>
-        <div class="form-group">
-          <label for="teamBscore">Score:</label>
-          <input v-model="teamBscore" type="text" class="form-g-input" placeholder="5" id="teamBscore" />
-        </div>
+
         <button type="submit" class="btn-f-f f-mobile">Submit</button>
       </div>
     </form>
@@ -176,16 +170,7 @@
             id="teamAPosition"
           />
         </div>
-        <div class="form-group">
-          <label for="teamAscore">Score:</label>
-          <input
-            v-model="teamAscore"
-            type="text"
-            class="form-g-input"
-            placeholder="5"
-            id="teamAscore"
-          />
-        </div>
+  
       </div>
       <div class="form-wrapper">
         <div class="form-group">
@@ -228,7 +213,7 @@
           <input v-else  @change="handleTeamBLogo" type="file" class="form-g-input" id="teamBIcon" accept="image/*" />
         </div>
         <div class="form-group">
-          <label for="formationB">Form:</label>
+          <label for="formationB">Formation:</label>
           <input
             v-model="formationB"
             type="text"
@@ -247,16 +232,7 @@
             id="teamBPosition"
           />
         </div>
-        <div class="form-group">
-          <label for="teamBscore">Score:</label>
-          <input
-            v-model="teamBscore"
-            type="text"
-            class="form-g-input"
-            placeholder="5"
-            id="teamBscore"
-          />
-        </div>
+
         <button type="submit"  class="btn-f-f f-mobile">Submit</button>
       </div>
     </form>
@@ -290,8 +266,6 @@ const league = ref('')
 const jackpot = ref('')
 const toast = useToast()
 const status = ref('')
-const teamAscore = ref(0)
-const teamBscore = ref(0)
 const currentDate = ref('')
 const fixtureDate = ref('')
 const fixtureData = ref([])
@@ -444,12 +418,12 @@ async function handleSubmit() {
       formData.append('leagueIcon', leagueIcon.value)
       formData.append('formationA', formationA.value)
       formData.append('teamAPosition', teamAPosition.value)
-      formData.append('teamAscore', teamAscore.value)
+      formData.append('teamAscore', "0")
       formData.append('teamB', teamB.value)
       formData.append('teamBIcon', teamBIcon.value)
       formData.append('formationB', formationB.value)
       formData.append('teamBPosition', teamBPosition.value)
-      formData.append('teamBscore', teamBscore.value)
+      formData.append('teamBscore', "0")
       formData.append('time', time.value)
       formData.append('status', status.value)
       formData.append('league', league.value)

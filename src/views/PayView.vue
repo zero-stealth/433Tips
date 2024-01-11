@@ -39,6 +39,16 @@
     </div>
     <div
       class="pay-controller"
+      v-if="
+        ['NG', 'CM', 'GH', 'ZA', 'ZM', 'RW', 'MW'].includes(selectedCountry) &&
+        selectedCountry !== ''
+      "
+    >
+      <img :src="paystack" alt="paystack logo" class="payment-image" />
+      <button type="button" @click="paystackPay" class="btn-pay">Subscribe Now</button>
+    </div>
+    <div
+      class="pay-controller"
       v-if="selectedCountry === 'TZ' || selectedCountry === 'UG' || selectedCountry === 'KE'"
     >
       <img :src="airtel" alt="paystack logo" class="payment-image" />
@@ -133,26 +143,24 @@ const payAirtel = async () => {
       }
     ],
     reference: 'vip subscription',
-    pin: AIRTEL_PIN,
-  };
+    pin: AIRTEL_PIN
+  }
 
   const headers = {
     'Content-Type': 'application/json',
     Accept: '*/*',
     'X-Country': 'UG',
     'X-Currency': 'UGX',
-    Authorization: `Bearer ${AIRTEL_AUTH}`, 
-  };
+    Authorization: `Bearer ${AIRTEL_AUTH}`
+  }
 
   try {
-    const response = await axios.post(`${AIRTEL_URL}`, inputBody, { headers });
-    console.log(response.data);
+    const response = await axios.post(`${AIRTEL_URL}`, inputBody, { headers })
+    console.log(response.data)
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error:', error)
   }
 }
-
-
 
 const coinbasePay = () => {
   toast.success('redirected successfully')
@@ -168,7 +176,8 @@ const paystackPay = () => {
 }
 
 const payPaypal = async () => {
-  paypal.Buttons({
+  paypal
+    .Buttons({
       createOrder: (data, actions) => {
         // Create an order with your purchase details
         return actions.order.create({

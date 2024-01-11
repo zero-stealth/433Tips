@@ -108,6 +108,7 @@
   }
 
   .l-items-container span {
+    cursor: pointer;
     display: contents;
     font-size: 0.8rem;
     text-transform: capitalize;

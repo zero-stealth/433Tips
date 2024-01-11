@@ -84,6 +84,7 @@
           <table>
             <thead>
               <tr>
+                <th>Jackpot name</th>
                 <th>League</th>
                 <th>TeamA</th>
                 <th>TeamB</th>
@@ -96,6 +97,9 @@
             </thead>
             <tbody v-for="item in JackpotData" :key="item._id">
               <tr v-for="data in item" :key="data._id">
+                <td>
+                  <span>{{ data.jackpotName }}</span>
+                </td>
                 <td>
                   <div class="game-tbl-img">
                     <img :src="data.leagueIcon" alt="game-p" class="game-pi" />
@@ -129,12 +133,12 @@
                   </div>
                 </td>
                 <td>
-                  <div class="game-delete" @click="deleteJackpot(data._id)">
+                  <div class="game-delete" @click="deletePrediction(data._id)">
                     <DeleteIcon class="icon-delete" />
                   </div>
                 </td>
               </tr>
-              <tr v-if="freeTipData.length === 0">
+              <tr v-if="JackpotData.length === 0">
                 <td colspan="8">No games yet!</td>
               </tr>
             </tbody>
@@ -199,7 +203,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="game-delete" @click="deleteVip(data._id)">
+                  <div class="game-delete" @click="deletePrediction(data._id)">
                     <DeleteIcon class="icon-delete" />
                   </div>
                 </td>
@@ -234,7 +238,7 @@
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody v-for="item in sportData" :key="item._id">
+            <tbody v-for="item in SportsData" :key="item._id">
               <tr v-for="data in item" :key="data._id">
                 <td>
                   <div class="game-tbl-img">
@@ -380,9 +384,10 @@ const getJackpot = async () => {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(`${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`)
     JackpotData.value = response.data.length > 0 ? [response.data] : []
-    
+    console.log(JackpotData.value)
   } catch (err) {
     // console.log(err)
+    console.log(currentDate.value)
   }
 }
 
@@ -392,6 +397,7 @@ const getVipGames = async () => {
       `${SERVER_HOST}/predictions/vipPredictions/vip/${currentDate.value}`
     )
     vipData.value = response.data.length > 0 ? [response.data] : []
+    
   } catch (err) {
     // console.log(err)
   }
@@ -657,6 +663,7 @@ const deletePrediction = async (id) => {
     toast.error(err.response.data.message)
   }
 }
+
 
 const deleteSport = async (id) => {
   try {

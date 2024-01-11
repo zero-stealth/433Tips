@@ -110,7 +110,7 @@ const showMenu = () => {
 }
 
 const openTelegram = () => {
-  window.open('https://t.me/@four_three_three_tips', '_blank')
+  window.open('https://t.me/four_three_three_tips', '_blank')
 
 }
 
@@ -140,7 +140,7 @@ const goSignin = () => {
 }
 
 const openTelegramX = () => {
-  window.open('https://t.me/@four_three_three_tips', '_blank')
+  window.open('https://t.me/four_three_three_tips', '_blank')
 
 }
 </script>

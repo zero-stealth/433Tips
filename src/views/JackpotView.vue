@@ -25,13 +25,11 @@ import adpanel from '../components/adPanel.vue'
 import gamePanel from '../components/gamePanel.vue'
 import jackpotComponent from '../components/jackpotComponent.vue';
 import { ref, onMounted, watch } from 'vue';
-import { useToast } from 'vue-toastification';
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 const upcomingDates = ref('');
 const currentDate = ref('');
 const cardData = ref([]);
-const toast = useToast();
 
 async function getPrediction() {
   const token = JSON.parse(localStorage.getItem('token'));
@@ -47,7 +45,7 @@ async function getPrediction() {
     );
     cardData.value = response.data.length > 0 ? [response.data] : [];
   } catch (err) {
-    toast.error(err.response.data.message);
+    // toast.error(err.response.data.message);
 
   }
 }

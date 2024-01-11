@@ -41,7 +41,7 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted , watchEffect, computed} from 'vue'
 import CardGame from '../components/CardGame.vue'
 import { useGameStore } from '../stores/game'
 import { useRouter } from 'vue-router'
@@ -51,6 +51,7 @@ const cardData = ref([])
 const router = useRouter()
 const currentDate = ref('')
 const jackpotName = ref('')
+const filterAccount = ref([]);
 const gameStore = useGameStore()
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
@@ -67,13 +68,33 @@ const predictions = async () => {
     const response = await axios.get(
       `${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`
     )
-    console.log(response.data)
     cardData.value = response.data.length > 0 ? [response.data] : []
-    jackpotName.value = response.data[0].jackpot
+    jackpotName.value = response.data[0].jackpotName
   } catch (err) {
     console.log(err)
   }
 }
+
+watchEffect(() => {
+  filterAccount.value = computed(() => {
+    const leagueName = localStorage.getItem('leagueName');
+    const countryName = localStorage.getItem('CountryName');
+    const teamName = localStorage.getItem('TeamName');
+    if (leagueName || countryName || teamName) {
+      return cardData.value.filter((account) =>
+        (account.league && (account.league.includes(leagueName) || account.league.toUpperCase().includes(leagueName.toUpperCase()))) ||
+        (account.teamA && (account.teamA.includes(teamName) || account.teamA.toUpperCase().includes(teamName.toUpperCase()))) ||
+        (account.teamB && (account.teamB.includes(teamName) || account.teamB.toUpperCase().includes(teamName.toUpperCase()))) ||
+        (account.teamB && account.teamB.includes(countryName)) ||
+        (account.league && account.league.toUpperCase().includes(countryName.toUpperCase()))
+      );
+    } else {
+      return cardData.value;
+    }
+  }).value;
+});
+
+
 
 const onDateChange = () => {
   currentDate.value = formatDate(new Date(currentDate.value))

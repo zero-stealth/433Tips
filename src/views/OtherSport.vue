@@ -2,60 +2,58 @@
   <div class="main-bet">
     <div class="main-header">
       <div class="header-info">
-        <h1>Other Sports {{ currentDate }}</h1>
+        <h1>Other sport {{ currentDate }}</h1>
       </div>
       <div class="header-btn">
         <input type="date" @change="onDateChange" v-model="currentDate" class="date-filter" />
       </div>
     </div>
-    <template v-if="cardData.length > 0">
-      <div v-for="item in cardData" :key="item" class="main-h-card booom-h">
-        <Card
-          v-for="(card) in item"
-          :key="card._id"
-          :tip="card.tip"
-          :status="card.status"
-          :leagueIcon="card.leagueIcon"
-          :teamAIcon="card.teamAIcon"
-          :teamBIcon="card.teamBIcon"
-          :teamA="card.teamA"
-          :teamB="card.teamB"
-          :league="card.league"
-          :showScore="card.showScore"
-          :teamAscore="card.teamAscore"
-          :teamBscore="card.teamBscore"
-          :formationA="formatFormation(card.formationA) ? card.formationA[0].split('-') : []"
-          :formationB="formatFormation(card.formationB) ? card.formationB[0].split('-') : []"
-          :time="card.time"
-          @click="showCard(card.teamA, card.teamB, card._id)"
+      <template v-if="cardData.length > 0">
+        <div class="main-h-card">
+          <Card
+            v-for="(card) in cardData"
+            :key="card._id"
+            :tip="card.tip"
+            :status="card.status"
+            :leagueIcon="card.leagueIcon"
+            :teamAIcon="card.teamAIcon"
+            :teamBIcon="card.teamBIcon"
+            :teamA="card.teamA"
+            :teamB="card.teamB"
+            :league="card.league"
+            :showScore="card.showScore"
+            :teamAscore="card.teamAscore"
+            :teamBscore="card.teamBscore"
+            :formationA="formatFormation(card.formationA)"
+            :formationB="formatFormation(card.formationB)"
+            :time="card.time"
+            @click="showCard(card.teamA, card.teamB, card._id)"
 
-        />
-      </div>
-    </template>
-    <template v-else>
-      <div class="home-freetip">
-        <h1>No predictions yet! Check back later.</h1>
-      </div>
-    </template>
+          />
+        </div>
+      </template>
+      <template v-else>
+        <div class="home-freetip">
+          <h1>No predictions yet! Check back later.</h1>
+        </div>
+      </template>
     <div class="main-header header-info c-info">
       <h1>Available Predictions</h1>
     </div>
     <OtherComponent />
   </div>
-  <sportComponent/>
+<sportComponent/>
 </template>
 <script setup>
 import OtherComponent from '../components/OtherComponent.vue'
 import sportComponent from '../components/sportComponent.vue'
 import Card from '../components/CardComponent.vue'
-import { ref, watchEffect, onMounted } from 'vue'
-import { useToast } from 'vue-toastification';
+import { ref, onMounted } from 'vue'
 import { useGameStore } from '../stores/game'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 const cardData = ref([])
-const toast = useToast();
 const router = useRouter()
 const currentDate = ref('')
 const gameStore = useGameStore()
@@ -68,18 +66,16 @@ const showCard = (gameA, gameB, cardID) => {
 }
 
 
-
 const predictions = async () => {
   try {
-    const response = await axios.get(
-      `${SERVER_HOST}/predictions/tips/freeTip/${currentDate.value}`
-    )
-    cardData.value = response.data.length > 0 ? [response.data] : []
+    const response = await axios.get(`${SERVER_HOST}/predictions/${currentDate.value}`)
+    cardData.value = response.data
   } catch (err) {
-    toast.error(err.response.data.message);
+    // toast.error(err.response.data.message);
 
   }
 }
+
 
 const onDateChange = () => {
   currentDate.value = formatDate(new Date(currentDate.value))
@@ -87,13 +83,10 @@ const onDateChange = () => {
 }
 
 
-
 const updateCurrentDate = () => {
   currentDate.value = formatDate(new Date())
 
 }
-
-
 
 const formatFormation = (formation) => {
   if (formation && formation.length > 0) {
@@ -106,7 +99,6 @@ onMounted(() => {
   updateCurrentDate();
   predictions();
 });
-
 </script>
 
 <script>

@@ -1,10 +1,10 @@
 <template>
   <div class="abt-info-p">
     <div class="abt-p-in">
-      <h1>Jackpot Prediction Area Content</h1>
+      <h1>Jackpot Prediction</h1>
       <h2>Unlock the Jackpot Secrets with 433Tips</h2>
       <p>
-        Welcome to our exclusive Jackpot Prediction Area, where we turn your dreams of striking it
+        Welcome to our exclusive Jackpot Prediction, where we turn your dreams of striking it
         big into a reality. At 433Tips, we understand the thrill of chasing those life-changing
         wins. Our expert tipsters are here to provide you with the most accurate and data-driven
         predictions for high-stakes jackpot games. With us, you're not simply guessing; you're

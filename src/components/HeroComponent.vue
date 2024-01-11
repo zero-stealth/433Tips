@@ -3,7 +3,7 @@
     <div class="hero-s-contain">
       <div class="hero-info">
         <h1>
-          GET AMAZING FREE TIPS AND JACKPOT PREDICTIONS WITH US ON A DAILY 
+          GET AMAZING FREE TIPS AND JACKPOT PREDICTIONS WITH US DAILY 
         </h1>
         <p>
           We provide the best betting tips and predictions for football and sports. Sit
