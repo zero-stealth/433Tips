@@ -38,7 +38,7 @@
         </div>
       </template>
     <div class="main-header header-info c-info">
-      <h1>Available Predictions</h1>
+      <h1>Available predictions</h1>
     </div>
     <OtherComponent />
   </div>
@@ -65,21 +65,18 @@ const showCard = (gameA, gameB, cardID) => {
   gameStore.updateGameId(cardID)
 }
 
-
-const predictions = async () => {
+const getSports = async () => {
   try {
-    const response = await axios.get(`${SERVER_HOST}/predictions/${currentDate.value}`)
-    cardData.value = response.data
+    // const token = JSON.parse(localStorage.getItem('token'));
+    const response = await axios.get(`${SERVER_HOST}/sports/${currentDate.value}`)
+    cardData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
-    // toast.error(err.response.data.message);
-
+    // console.log(err)
   }
 }
-
-
 const onDateChange = () => {
   currentDate.value = formatDate(new Date(currentDate.value))
-  predictions()
+  getSports()
 }
 
 
@@ -97,7 +94,7 @@ const formatFormation = (formation) => {
 
 onMounted(() => {
   updateCurrentDate();
-  predictions();
+  getSports();
 });
 </script>
 

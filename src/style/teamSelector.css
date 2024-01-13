@@ -1,0 +1,119 @@
+@media screen {
+  .drop-container {
+    gap: 20px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .drop-down-panel {
+    top: 70px;
+    z-index: 999;
+    display: none;
+    width: inherit;
+    cursor: pointer;
+    overflow: hidden;
+    max-height: 300px;
+    font-size: 0.8rem;
+    position: absolute;
+    overflow-y: scroll;
+    flex-direction: column;
+    color: var(--secondary-color);
+    background-color: var(--light-color);
+  }
+
+  .drop-down-panel span {
+    font-size: 0.9rem;
+  }
+
+  .active span {
+    color: var(--secondary-color);
+
+  }
+
+  .active .drop-icon {
+    fill: var(--secondary-color);
+
+  }
+
+  .drop-down-panel:hover span {
+    color: var(--secondary-color);
+  }
+
+  .no-data {
+    display: flex;
+    width: inherit;
+    padding: 30px 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--secondary-color);
+
+  }
+
+  .drop-item{
+    gap: 10px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+  }
+
+  .drop-item:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .drop-item span {
+    font-size: .8rem;
+  }
+
+  .drop-item:hover span {
+    color: var(--primary-color);
+
+  }
+
+  .drop-img {
+    height: 24px;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .hide {
+    display: none;
+  }
+
+
+
+
+  .form-group {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group label {
+    font-size: .8rem;
+    font-weight: 400;
+  }
+
+  .form-g-input {
+    padding: 8px;
+    border: none;
+    outline: none;
+    color: var(--background-color);
+    background-color: var(--light-color);
+  }
+
+
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+ 
+
+}

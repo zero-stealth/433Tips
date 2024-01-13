@@ -13,7 +13,7 @@
     <div class="card-center">
       <div class="card-a">
         <div class="card-fade">
-          <div class="card-inner ">
+          <div class="card-inner">
             <img
               :src="teamAIcon"  
               :alt="teamA"

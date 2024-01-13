@@ -4,12 +4,11 @@ import { ref, onMounted } from 'vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
 
 const Data = ref([])
+const isTeam = ref(false)
 const isLeague = ref(false)
 const isCountry = ref(false)
-const isTeam = ref(false)
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const currentDate = ref(formatFixtureDate(new Date()))
-const SPORT_API = import.meta.env.VITE_SPORT_API
-const SPORT_KEY = import.meta.env.VITE_SPORT_KEY
 
 const showLeague = () => {
   isLeague.value = !isLeague.value
@@ -26,20 +25,14 @@ const updateCurrentDate = () => {
   currentDate.value = formatFixtureDate(new Date())
 }
 
-const getFixture = async () => {
-  try {
-    const response = await axios.get(`${SPORT_API}/fixtures`, {
-      params: {
-        date: currentDate.value
-      },
-      headers: {
-        'x-apisports-key': SPORT_KEY
-      }
-    })
 
-    Data.value = response.data.response
-  } catch (error) {
-    // console.log(error)
+const getJackpot = async () => {
+  try {
+    // const token = JSON.parse(localStorage.getItem('token'));
+    const response = await axios.get(`${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`)
+    Data.value = response.data.length > 0 ? [response.data] : []
+  } catch (err) {
+    // console.log(err)
   }
 }
 
@@ -59,7 +52,7 @@ const TeamName = (name) => {
 }
 
 onMounted(() => {
-  getFixture()
+  getJackpot()
   updateCurrentDate()
 })
 </script>
@@ -83,7 +76,7 @@ const formatFixtureDate = (date) => {
         </div>
         <div class="l-items-list" v-show="isLeague">
           <div class="l-items-container" v-for="(l, index) in Data" :key="index" @click="leagueName(l.league.name)">
-            <div :style="{ backgroundImage: `url(${l.league.logo})` }" class="l-items-image">
+            <div :style="{ backgroundImage: `url(${l.league.leagueIcon})` }" class="l-items-image">
               <!-- img -->
             </div>
             <span>{{ l.league.name }}</span>
@@ -99,9 +92,7 @@ const formatFixtureDate = (date) => {
         </div>
         <div class="l-items-list" v-show="isCountry">
           <div class="l-items-container" v-for="(l, index) in Data" :key="index" @click="CountryName(l.league.country)">
-            <div :style="{ backgroundImage: `url(${l.league.flag})` }" class="l-items-image">
-              <!-- img -->
-            </div>
+        
             <span>{{ l.league.country }}</span>
           </div>
         </div>
@@ -115,10 +106,14 @@ const formatFixtureDate = (date) => {
         </div>
         <div class="l-items-list" v-show="isTeam">
           <div class="l-items-container" v-for="(l, index) in Data" :key="index" @click="TeamName(l.teams.away.name)">
-            <div :style="{ backgroundImage: `url(${l.teams.away.logo})` }" class="l-items-image">
+            <div :style="{ backgroundImage: `url(${l.teamAIcon})` }" class="l-items-image">
               <!-- img -->
             </div>
-            <span>{{ l.teams.away.name}}</span>
+            <span>{{ l.teamA}}</span>
+            <div :style="{ backgroundImage: `url(${l.teamBIcon})` }" class="l-items-image">
+              <!-- img -->
+            </div>
+            <span>{{ l.teamB}}</span>
           </div>
         </div>
       </div>

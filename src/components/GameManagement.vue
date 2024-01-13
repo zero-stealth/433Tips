@@ -384,10 +384,8 @@ const getJackpot = async () => {
     // const token = JSON.parse(localStorage.getItem('token'));
     const response = await axios.get(`${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`)
     JackpotData.value = response.data.length > 0 ? [response.data] : []
-    console.log(JackpotData.value)
   } catch (err) {
     // console.log(err)
-    console.log(currentDate.value)
   }
 }
 
@@ -406,7 +404,7 @@ const getVipGames = async () => {
 const getSports = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.get(`${SERVER_HOST}/predictions/${currentDate.value}`)
+    const response = await axios.get(`${SERVER_HOST}/sports/${currentDate.value}`)
     SportsData.value = response.data.length > 0 ? [response.data] : []
   } catch (err) {
     // console.log(err)

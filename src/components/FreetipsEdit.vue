@@ -132,7 +132,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="formationB">Form:</label>
+          <label for="formationB">Formation:</label>
           <input
             v-model="formationB"
             type="text"
@@ -187,11 +187,11 @@ const teamAPosition = ref('')
 const teamBPosition = ref('')
 const toast = useToast()
 const time = ref('')
+const date = ref('')
 const status = ref('')
 const league = ref('')
 const teamAscore = ref('');
 const teamBscore = ref('');
-const date = ref('')
 const tip = ref('')
 const ShowScore = ref(false)
 const description = ref('');

@@ -142,7 +142,7 @@
   }
 
   .card-img {
-    height: 50px;
+    height: 65px;
     object-fit: contain;
     object-position: center;
     /* background-color: var(--fade-color); */
