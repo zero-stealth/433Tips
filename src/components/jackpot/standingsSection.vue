@@ -1,10 +1,10 @@
 <script setup>
 import axios from 'axios'
 import { onMounted, ref, computed } from 'vue'
-import { useGameStore } from '../../stores/game.js'
+import { useRoute} from 'vue-router'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const gameStore = useGameStore()
+const route = useRoute()
 
 const teamA = ref('')
 const teamB = ref('')
@@ -22,7 +22,7 @@ const formationsB = ref([])
 
 async function getTip() {
   try {
-    const response = await axios.get(`${SERVER_HOST}/sports/prediction/${gameStore.gameId}`)
+    const response = await axios.get(`${SERVER_HOST}/predictions/single/${route.params.date}/${route.params.teamA}/${route.params.teamB}`)
     teamA.value = response.data.teamA
     teamAIcon.value = response.data.teamAIcon
     teamBIcon.value = response.data.teamBIcon

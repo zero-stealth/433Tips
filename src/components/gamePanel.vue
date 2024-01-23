@@ -27,7 +27,8 @@
           :teamBscore="card.teamBscore"
           :time="card.time"
           class="card-game-a"
-          @click="showCard(card.teamA, card.teamB, card._id)"
+          @click="showCard(card.date, card.teamA, card.teamB)"
+
 
         />
       </div>
@@ -43,7 +44,6 @@
 <script setup>
 import { ref, onMounted , watchEffect, computed} from 'vue'
 import CardGame from '../components/CardGame.vue'
-import { useGameStore } from '../stores/game'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
@@ -52,15 +52,18 @@ const router = useRouter()
 const currentDate = ref('')
 const jackpotName = ref('')
 const filterAccount = ref([]);
-const gameStore = useGameStore()
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 
-
-
-const showCard = (gameA, gameB, cardID) => {
-  router.push({ name: 'JackpotTip', params: { jackpotName: `${gameA} vs ${gameB} prediction` } })
-  gameStore.updateGameId(cardID)
-}
+const showCard = (date, teamA, teamB) => {
+  router.push({
+    name: 'JackpotTip',
+    params: {
+      date: date,
+      teamA: teamA,
+      teamB: teamB,
+    },
+  });
+};
 
 const predictions = async () => {
   try {

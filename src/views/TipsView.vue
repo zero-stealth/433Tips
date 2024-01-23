@@ -1,10 +1,9 @@
 <script setup>
 import axios from 'axios'
-import { useRouter } from 'vue-router'
 import banner from '../assets/dark.png'
 import ArrowIcon from '@/icons/ArrowIcon.vue'
 import { onMounted, ref, shallowRef } from 'vue'
-import { useGameStore } from '../stores/game'
+import { useRoute ,useRouter} from 'vue-router'
 
 // pages
 import formationSection from '../components/tips/formationSection.vue'
@@ -12,8 +11,8 @@ import standingsSection from '../components/tips/standingsSection.vue'
 import tipsSection from '../components/tips/tipsSection.vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const gameStore = useGameStore()
 const router = useRouter()
+const route = useRoute()
 
 const teamA = ref('')
 const teamB = ref('')
@@ -40,7 +39,7 @@ const getButtonClass = (page) => {
 }
 
 async function getTip() {
-  const response = await axios.get(`${SERVER_HOST}/sports/prediction/${gameStore.gameId}`)
+  const response = await axios.get(`${SERVER_HOST}/predictions/single/${route.params.date}/${route.params.teamA}/${route.params.teamB}`)
   teamA.value = response.data.teamA
   teamB.value = response.data.teamB
   showScore.value = response.data.showScore

@@ -29,7 +29,7 @@
             :formationA="formatFormation(card.formationA)"
             :formationB="formatFormation(card.formationB)"
             :time="card.time"
-            @click="showCard(card.teamA, card.teamB, card._id)"
+            @click="showCard(card.date, card.teamA, card.teamB)"
 
           />
         </div>
@@ -48,7 +48,6 @@
 import axios from 'axios'
 import { ref , onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { useGameStore } from '../stores/game'
 import { useToast } from 'vue-toastification';
 import Card from '../components/CardComponent.vue'
 import HeroComponent from '../components/HeroComponent.vue'
@@ -56,17 +55,22 @@ import AboutComponent from '../components/aboutComponent.vue'
 import OtherComponent from '../components/OtherComponent.vue'
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const gameStore = useGameStore()
 const currentDate = ref('')
 const router = useRouter()
 const toast = useToast();
 const cardData = ref([])
 
 
-const showCard = (gameA, gameB, cardID) => {
-  router.push({ name: 'Tips', params: { tipName: `${gameA} vs ${gameB} prediction` } })
-  gameStore.updateGameId(cardID)
-}
+const showCard = (date, teamA, teamB) => {
+  router.push({
+    name: 'Tips',
+    params: {
+      date: date,
+      teamA: teamA,
+      teamB: teamB,
+    },
+  });
+};
 
 
 

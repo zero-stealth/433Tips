@@ -2,6 +2,24 @@
   <div class="form-con">
     <div class="sd-container">
       <div class="drop-container">
+        <div class="drop-down" @click="showDrop" :class="[isDropOpen ? 'active' : '']">
+          <span>{{ postType }}</span>
+          <ArrowIcon class="drop-icon" />
+        </div>
+        <div
+          class="drop-down-panel game-drop-down"
+          :class="[isDropOpen ? 'show' : 'hide']"
+          v-show="isDropOpen"
+        >
+          <div class="drop-item" @click="updatePostType('Manual')">
+            <span>Manual</span>
+          </div>
+          <div class="drop-item" @click="updatePostType('Automatic')">
+            <span>Automatic</span>
+          </div>
+        </div>
+      </div>
+      <div class="drop-container">
         <div class="drop-down" @click="showDrp" :class="[isDrpOpen ? 'active' : '']">
           <span>{{ category ? category : 'Game category' }}</span>
           <ArrowIcon class="drop-icon" />
@@ -17,321 +35,313 @@
         </div>
       </div>
     </div>
-    <form
-      @submit.prevent="handleSubmit"
-      enctype="multipart/form-data"
-      class="form-container"
-      v-if="category === 'Sports'"
-    >
-      <div class="form-wrapper">
-        <h1>Team A Sport</h1>
-        <div class="form-group">
-          <label for="teamA">Name:</label>
-          <input
-            v-model="teamA"
-            type="text"
-            class="form-g-input"
-            placeholder="Manchester"
-            id="teamA"
-          />
-        </div>
-        <div class="form-group">
-          <label for="teamAIcon">Logo:</label>
-          <input
-            @change="handleTeamALogo"
-            type="file"
-            class="form-g-input"
-            id="teamAIcon"
-            accept="image/*"
-          />
-        </div>
-        <div class="form-group">
-          <label for="jackpot">Jackpot name:</label>
-          <input
-            v-model="jackpot"
-            type="text"
-            class="form-g-input"
-            placeholder="jackpot name"
-            id="jackpot"
-          />
-        </div>
-        <div class="form-group">
-          <label for="formationA">Formation:</label>
-          <input
-            v-model="formationA"
-            type="text"
-            class="form-g-input"
-            placeholder="l-w-d-w"
-            id="formationA"
-          />
-        </div>
-        <div class="form-group">
-          <label for="Status">Status:</label>
-          <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
-        </div>
-        <div class="form-group">
-          <label for="teamAPosition">Position:</label>
-          <input
-            v-model="teamAPosition"
-            type="text"
-            class="form-g-input"
-            placeholder="1"
-            id="teamAPosition"
-          />
-        </div>
-      </div>
-      <div class="form-wrapper">
-        <div class="form-group">
-          <label for="tip">Match Tip:</label>
-          <input v-model="tip" type="text" class="form-g-input" placeholder="1" id="tip" />
-        </div>
-        <div class="form-group">
-          <label for="leagueIcon">League logo</label>
-          <input
-            @change="handleLeagueLogo"
-            type="file"
-            class="form-g-input"
-            id="leagueIcon"
-            accept="image/*"
-          />
-        </div>
-        <div class="form-group">
-          <label for="league">Match league:</label>
-          <input
-            v-model="league"
-            type="text"
-            class="form-g-input"
-            placeholder="team league"
-            id="league"
-          />
-        </div>
-        <div class="form-group">
-          <label for="time">Match Time:</label>
-          <input v-model="time" type="time" class="form-g-input" placeholder="12:00pm" id="time" />
-        </div>
-        <div class="form-group">
-          <label for="date">Match Date:</label>
-          <span class="form-g-input"> {{ currentDate }}</span>
-          <input type="date" @change="onDateChange" v-model="currentDate" class="form-g-input" />
-        </div>
-        <button type="submit" class="btn-f-f f-desktop">Submit</button>
-      </div>
-      <div class="form-wrapper">
-        <h1>Team B Sport</h1>
-        <div class="form-group">
-          <label for="teamB">Name:</label>
-          <input
-            v-model="teamB"
-            type="text"
-            class="form-g-input"
-            placeholder="Arsenal"
-            id="teamB"
-          />
-        </div>
-        <div class="form-group">
-          <label for="teamBIcon">Logo:</label>
-          <input
-            @change="handleTeamBLogo"
-            type="file"
-            class="form-g-input"
-            id="teamBIcon"
-            accept="image/*"
-          />
-        </div>
-        <div class="form-group">
-          <label for="formationB">Formation:</label>
-          <input
-            v-model="formationB"
-            type="text"
-            class="form-g-input"
-            placeholder="l-w-d-w"
-            id="formationB"
-          />
-        </div>
-        <div class="form-group">
-          <label for="teamBPosition">Position:</label>
-          <input
-            v-model="teamBPosition"
-            type="text"
-            class="form-g-input"
-            placeholder="2"
-            id="teamBPosition"
-          />
-        </div>
-
-        <button type="submit" class="btn-f-f f-mobile">Submit</button>
-      </div>
-    </form>
-    <form
-      @submit.prevent="handleSubmit"
-      enctype="multipart/form-data"
-      class="form-container"
-      v-else
-    >
-      <div class="form-wrapper">
-        <h1>Team A</h1>
-        <TeamSelector v-if="teamA.length === 0" @teamSelected="handleTeamASelected" />
-        <div class="form-g-input" v-else>
-          <span>{{ teamA }}</span>
-        </div>
-        <div class="form-group">
-          <label for="teamAIcon">Logo:</label>
-          <img
-            :src="teamAIcon"
-            :alt="teamA"
-            class="form-i-image"
-            v-if="fixtureData && fixtureData.length"
-          />
-          <input
-            v-else
-            @change="handleTeamALogo"
-            type="file"
-            class="form-g-input"
-            id="teamAIcon"
-            accept="image/*"
-          />
-        </div>
-        <div class="form-group">
-          <label for="jackpot">Jackpot name:</label>
-          <input
-            v-model="jackpot"
-            type="text"
-            class="form-g-input"
-            placeholder="jackpot name"
-            id="jackpot"
-          />
-        </div>
-        <div class="form-group">
-          <label for="formationA">Formation:</label>
-          <input
-            v-model="formationA"
-            type="text"
-            class="form-g-input"
-            placeholder="l-w-d-w"
-            id="formationA"
-          />
-        </div>
-        <div class="form-group">
-          <label for="Status">Status:</label>
-          <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
-        </div>
-        <div class="form-group">
-          <label for="teamAPosition">Position:</label>
-          <input
-            v-model="teamAPosition"
-            type="text"
-            class="form-g-input"
-            placeholder="1"
-            id="teamAPosition"
-          />
-        </div>
-      </div>
-      <div class="form-wrapper">
-        <div class="form-group">
-          <label for="tip">Match Tip:</label>
-          <input v-model="tip" type="text" class="form-g-input" placeholder="1" id="tip" />
-        </div>
-        <div class="form-group">
-          <label for="leagueIcon">League logo</label>
-          <img
-            :src="leagueIcon"
-            :alt="league"
-            class="form-i-image"
-            v-if="fixtureData && fixtureData.length"
-          />
-          <input
-            v-else
-            @change="handleLeagueLogo"
-            type="file"
-            class="form-g-input"
-            id="leagueIcon"
-            accept="image/*"
-          />
-        </div>
-        <div class="form-group">
-          <label for="league">Match league:</label>
-          <span class="form-g-input" v-if="fixtureData && fixtureData.length">{{ league }}</span>
-          <input
-            v-else
-            type="text"
-            class="form-g-input"
-            placeholder="Premier League"
-            id="league"
-            v-model="league"
-          />
-        </div>
-        <div class="form-group">
-          <label for="time">Match Time:</label>
-          <input v-model="time" type="time" class="form-g-input" placeholder="12:00pm" id="time" />
-        </div>
-        <div class="form-group">
-          <label for="date">Match Date:</label>
-          <span class="form-g-input"> {{ currentDate }}</span>
-          <input type="date" @change="onDateChange" v-model="currentDate" class="form-g-input" />
-        </div>
-        <button type="submit" class="btn-f-f f-desktop">Submit</button>
-      </div>
-      <div class="form-wrapper">
-        <h1>Team B</h1>
-        <TeamSelector v-if="teamB.length === 0" @teamSelected="handleTeamBSelected" />
-        <div class="form-g-input" v-else>
-          <span>{{ teamB }}</span>
-        </div>
-        <div class="form-group">
-          <label for="teamBIcon">Logo:</label>
-          <img
-            :src="teamBIcon"
-            :alt="teamB"
-            class="form-i-image"
-            v-if="fixtureData && fixtureData.length"
-          />
-          <input
-            v-else
-            @change="handleTeamBLogo"
-            type="file"
-            class="form-g-input"
-            id="teamBIcon"
-            accept="image/*"
-          />
-        </div>
-        <div class="form-group" v-if="category === 'Jackpot'">
-          <label for="country">Country:</label>
-          <input
-            v-if="countryName.length === 0"
-            v-model="countryName"
-            type="text"
-            class="form-g-input"
-            placeholder="England"
-            id="country"
-          />
+    <div v-if="postType === 'Automatic'">
+      <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
+        <div class="form-wrapper">
+          <h1>Team A</h1>
+          <TeamSelector v-if="teamA.length === 0" @teamSelected="handleTeamASelected" />
           <div class="form-g-input" v-else>
-            <span>{{ countryName }}</span>
+            <span>{{ teamA }}</span>
+          </div>
+          <div class="form-group">
+            <label for="teamAIcon">Logo:</label>
+            <img
+              :src="teamAIcon"
+              :alt="teamA"
+              class="form-i-image"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Status">Status:</label>
+            <input v-model="status" type="text" class="form-g-input" placeholder="true" id="status" />
+          </div>
+          <div class="form-group">
+            <label for="formationA">Formation:</label>
+            <input
+              v-model="formationA"
+              type="text"
+              class="form-g-input"
+              placeholder="l-w-d-w"
+              id="formationA"
+            />
+          </div>
+          <div class="form-group">
+            <label for="teamAPosition">Position:</label>
+            <input
+              v-model="teamAPosition"
+              type="text"
+              class="form-g-input"
+              placeholder="1"
+              id="teamAPosition"
+            />
           </div>
         </div>
-        <div class="form-group">
-          <label for="formationB">Formation:</label>
-          <input
-            v-model="formationB"
-            type="text"
-            class="form-g-input"
-            placeholder="l-w-d-w"
-            id="formationB"
-          />
+        <div class="form-wrapper">
+          <div class="form-group">
+            <label for="tip">Match Tip:</label>
+            <input v-model="tip" type="text" class="form-g-input" placeholder="1" id="tip" />
+          </div>
+          <div class="form-group">
+            <label for="leagueIcon">League logo</label>
+            <input
+              @change="handleLeagueLogo"
+              type="file"
+              class="form-g-input"
+              id="leagueIcon"
+              accept="image/*"
+            />
+          </div>
+   
+          <div class="form-group">
+            <label for="league">Match league:</label>
+            <span class="form-g-input" v-if="fixtureData && fixtureData.length">{{ league }}</span>
+            <input
+              v-else
+              type="text"
+              class="form-g-input"
+              placeholder="Premier League"
+              id="league"
+              v-model="league"
+            />
+          </div>
+          <div class="form-group">
+            <label for="time">Match Time:</label>
+            <input
+              v-model="time"
+              type="time"
+              class="form-g-input"
+              placeholder="12:00pm"
+              id="time"
+            />
+          </div>
+          <div class="form-group">
+            <label for="date">Match Date:</label>
+            <span class="form-g-input"> {{ currentDate }}</span>
+            <input type="date" @change="onDateChange" v-model="currentDate" class="form-g-input" />
+          </div>
+          <button type="submit" class="btn-f-f f-desktop">Submit</button>
         </div>
-        <div class="form-group">
-          <label for="teamBPosition">Position:</label>
-          <input
-            v-model="teamBPosition"
-            type="text"
-            class="form-g-input"
-            placeholder="2"
-            id="teamBPosition"
-          />
-        </div>
+        <div class="form-wrapper">
+          <h1>Team B</h1>
+          <TeamSelector v-if="teamB.length === 0" @teamSelected="handleTeamBSelected" />
+          <div class="form-g-input" v-else>
+            <span>{{ teamB }}</span>
+          </div>
+          <div class="form-group">
+            <label for="teamBIcon">Logo:</label>
+            <img
+              :src="teamBIcon"
+              :alt="teamB"
+              class="form-i-image"
+            />
+           
+          </div>
+          <div class="form-group">
+            <label for="jackpot">Jackpot name:</label>
+            <input
+              v-model="jackpot"
+              type="text"
+              class="form-g-input"
+              placeholder="jackpot name"
+              id="jackpot"
+            />
+          </div>
+          <div class="form-group" v-if="category === 'Jackpot'">
+            <label for="country">Country:</label>
+            <input
+              v-if="countryName.length === 0"
+              v-model="countryName"
+              type="text"
+              class="form-g-input"
+              placeholder="England"
+              id="country"
+            />
+            <div class="form-g-input" v-else>
+              <span>{{ countryName }}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="formationB">Formation:</label>
+            <input
+              v-model="formationB"
+              type="text"
+              class="form-g-input"
+              placeholder="l-w-d-w"
+              id="formationB"
+            />
+          </div>
+          <div class="form-group">
+            <label for="teamBPosition">Position:</label>
+            <input
+              v-model="teamBPosition"
+              type="text"
+              class="form-g-input"
+              placeholder="2"
+              id="teamBPosition"
+            />
+          </div>
 
-        <button type="submit" class="btn-f-f f-mobile">Submit</button>
-      </div>
-    </form>
+          <button type="submit" class="btn-f-f f-mobile">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div v-if="postType === 'Manual'">
+      <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="form-container">
+        <div class="form-wrapper">
+          <h1>Team A</h1>
+          <div class="form-group">
+            <label for="teamA">Name:</label>
+            <input
+              v-model="teamA"
+              type="text"
+              class="form-g-input"
+              placeholder="Manchester"
+              id="teamA"
+            />
+          </div>
+          <div class="form-group">
+            <label for="teamAIcon">Logo:</label>
+            <input
+              @change="handleTeamALogo"
+              type="file"
+              class="form-g-input"
+              id="teamAIcon"
+              accept="image/*"
+            />
+          </div>
+          <div class="form-group">
+            <label for="jackpot">Jackpot name:</label>
+            <input
+              v-model="jackpot"
+              type="text"
+              class="form-g-input"
+              placeholder="jackpot name"
+              id="jackpot"
+            />
+          </div>
+          <div class="form-group">
+            <label for="formationA">Formation:</label>
+            <input
+              v-model="formationA"
+              type="text"
+              class="form-g-input"
+              placeholder="l-w-d-w"
+              id="formationA"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Status">Status:</label>
+            <input v-model="status" type="text" class="form-g-input" placeholder="1" id="status" />
+          </div>
+          <div class="form-group">
+            <label for="teamAPosition">Position:</label>
+            <input
+              v-model="teamAPosition"
+              type="text"
+              class="form-g-input"
+              placeholder="1"
+              id="teamAPosition"
+            />
+          </div>
+        </div>
+        <div class="form-wrapper">
+          <div class="form-group">
+            <label for="tip">Match Tip:</label>
+            <input v-model="tip" type="text" class="form-g-input" placeholder="1" id="tip" />
+          </div>
+          <div class="form-group">
+            <label for="leagueIcon">League logo</label>
+            <input
+              @change="handleLeagueLogo"
+              type="file"
+              class="form-g-input"
+              id="leagueIcon"
+              accept="image/*"
+            />
+          </div>
+          <div class="form-group">
+            <label for="league">Match league:</label>
+            <input
+              v-model="league"
+              type="text"
+              class="form-g-input"
+              placeholder="team league"
+              id="league"
+            />
+          </div>
+          <div class="form-group">
+            <label for="time">Match Time:</label>
+            <input
+              v-model="time"
+              type="time"
+              class="form-g-input"
+              placeholder="12:00pm"
+              id="time"
+            />
+          </div>
+          <div class="form-group">
+            <label for="date">Match Date:</label>
+            <span class="form-g-input"> {{ currentDate }}</span>
+            <input type="date" @change="onDateChange" v-model="currentDate" class="form-g-input" />
+          </div>
+          <button type="submit" class="btn-f-f f-desktop">Submit</button>
+        </div>
+        <div class="form-wrapper">
+          <h1>Team B</h1>
+          <div class="form-group">
+            <label for="teamB">Name:</label>
+            <input
+              v-model="teamB"
+              type="text"
+              class="form-g-input"
+              placeholder="Arsenal"
+              id="teamB"
+            />
+          </div>
+          <div class="form-group">
+            <label for="teamBIcon">Logo:</label>
+            <input
+              @change="handleTeamBLogo"
+              type="file"
+              class="form-g-input"
+              id="teamBIcon"
+              accept="image/*"
+            />
+          </div>
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <input
+              v-model="countryName"
+              type="text"
+              class="form-g-input"
+              placeholder="England"
+              id="country"
+            />
+          </div>
+          <div class="form-group">
+            <label for="formationB">Formation:</label>
+            <input
+              v-model="formationB"
+              type="text"
+              class="form-g-input"
+              placeholder="l-w-d-w"
+              id="formationB"
+            />
+          </div>
+          <div class="form-group">
+            <label for="teamBPosition">Position:</label>
+            <input
+              v-model="teamBPosition"
+              type="text"
+              class="form-g-input"
+              placeholder="2"
+              id="teamBPosition"
+            />
+          </div>
+          <button type="submit" class="btn-f-f f-mobile">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -348,10 +358,12 @@ import axios from 'axios'
 const teamA = ref('')
 const teamB = ref('')
 const isDrpOpen = ref(false)
+const isDropOpen = ref(false)
 const category = ref(null)
 const teamAIcon = ref(null)
 const teamBIcon = ref(null)
 const leagueIcon = ref(null)
+const postType = ref('Manual')
 const formationA = ref('')
 const formationB = ref('')
 const teamAPosition = ref('')
@@ -367,13 +379,25 @@ const fixtureData = ref([])
 const tip = ref('')
 const url = ref(null)
 
-const handleTeamASelected = (name, country) => {
+const handleTeamASelected = (name, country, logo) => {
   teamA.value = name
+  teamAIcon.value = logo
   countryName.value = country
 }
 
-const handleTeamBSelected = (name) => {
+const handleTeamBSelected = (name, country, logo) => {
   teamB.value = name
+  teamBIcon.value = logo
+  countryName.value = country
+}
+
+const showDrop = () => {
+  isDropOpen.value = !isDropOpen.value
+}
+
+const updatePostType = (type) => {
+  postType.value = type
+  showDrop()
 }
 
 const showDrp = () => {
@@ -386,7 +410,7 @@ const updateUrl = (name) => {
 }
 
 const categories = [
-  { name: 'Sports', endpoint: 'sports/create/sport' },
+  { name: 'Sports', endpoint: 'sports/create/sport/others' },
   { name: 'Jackpot', endpoint: 'predictions/create/jackpot-prediction/jackpot' },
   { name: 'Freetips', endpoint: 'predictions/create/tip/freeTip' },
   { name: 'Vip', endpoint: 'predictions/create/vip' }
@@ -464,7 +488,10 @@ async function handleSubmit() {
       formData.append('league', league.value)
       formData.append('date', currentDate.value)
       formData.append('tip', tip.value)
-      formData.append('jackpot', jackpot.value)
+      if (category.value == 'Jackpot') {
+        formData.append('jackpotName', jackpot.value)
+      }
+
       if (countryName.value !== '') {
         formData.append('country', countryName.value)
       }

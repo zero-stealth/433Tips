@@ -29,8 +29,9 @@ const updateCurrentDate = () => {
 const getJackpot = async () => {
   try {
     // const token = JSON.parse(localStorage.getItem('token'));
-    const response = await axios.get(`${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`)
+    const response = await axios.get( `${SERVER_HOST}/predictions/jackpot-predictions/jackpot/${currentDate.value}`)
     Data.value = response.data.length > 0 ? [response.data] : []
+    console.log(Data.value)
   } catch (err) {
     // console.log(err)
   }

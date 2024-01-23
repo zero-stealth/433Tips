@@ -20,7 +20,7 @@
 <script setup>
 import axios from 'axios';
 import news from '../components/newsComponent.vue'
-import league from '../components/league.vue'
+import league from '../components/leagueComponent.vue'
 import adpanel from '../components/adPanel.vue'
 import gamePanel from '../components/gamePanel.vue'
 import jackpotComponent from '../components/jackpotComponent.vue';

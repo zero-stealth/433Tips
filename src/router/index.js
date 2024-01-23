@@ -78,7 +78,7 @@ const router = createRouter({
       },
     },
     {
-      path: '/tip/:tipName',
+      path: '/tips/:date/:teamA/vs/:teamB',
       name: 'Tips',
       component: () => import('../views/TipsView.vue'),
       meta: {
@@ -97,7 +97,7 @@ const router = createRouter({
       },
     },
     {
-      path: '/jackpotTip/:jackpotName',
+      path: '/jackpotTip/:date/:teamA/vs/:teamB',
       name: 'JackpotTip',
       component: () => import('../views/JackpotTipsView.vue'),
       meta: {
