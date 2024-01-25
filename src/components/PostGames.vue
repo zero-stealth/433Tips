@@ -410,7 +410,7 @@ const updateUrl = (name) => {
 }
 
 const categories = [
-  { name: 'Sports', endpoint: 'sports/create/sport/others' },
+  { name: 'Sports', endpoint: 'sports/create' },
   { name: 'Jackpot', endpoint: 'predictions/create/jackpot-prediction/jackpot' },
   { name: 'Freetips', endpoint: 'predictions/create/tip/freeTip' },
   { name: 'Vip', endpoint: 'predictions/create/vip' }
