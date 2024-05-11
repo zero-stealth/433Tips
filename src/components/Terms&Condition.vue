@@ -1,6 +1,6 @@
 <template>
   <div class="abt-info-p info-dn">
-    <h1>Terms & Condition</h1>
+    <h1>Terms and Condition</h1>
     <div class="abt-p-in">
       <p>
         Welcome to 433Tips! These Terms and Conditions govern your use of our website and services.

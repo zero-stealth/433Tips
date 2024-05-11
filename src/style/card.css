@@ -4,15 +4,11 @@
     display: flex;
     padding: 10px;
     border-radius: 40px;
-    transition: transform 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.3);
     background-repeat: no-repeat;
     background-size: cover;
   }
   
-  .card-comp:hover {
-    transform: rotate(4deg); /* Adjust the degree of tilt as needed */
-  }
 
   .card-container {
     width: 100%;

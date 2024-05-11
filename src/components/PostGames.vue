@@ -346,14 +346,15 @@
 </template>
 
 <script setup>
-const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
-const SPORT_API = import.meta.env.VITE_SPORT_API
-const SPORT_KEY = import.meta.env.VITE_SPORT_KEY
 import { ref, watch, onMounted } from 'vue'
 import TeamSelector from './TeamSelector.vue'
 import ArrowIcon from '../icons/ArrowIcon.vue'
 import { useToast } from 'vue-toastification'
 import axios from 'axios'
+const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
+const SPORT_API = import.meta.env.VITE_SPORT_API
+const SPORT_KEY = import.meta.env.VITE_SPORT_KEY
+
 
 const teamA = ref('')
 const teamB = ref('')
@@ -364,8 +365,6 @@ const teamAIcon = ref(null)
 const teamBIcon = ref(null)
 const leagueIcon = ref(null)
 const postType = ref('Manual')
-const formationA = ref('')
-const formationB = ref('')
 const teamAPosition = ref('')
 const teamBPosition = ref('')
 const time = ref('')
